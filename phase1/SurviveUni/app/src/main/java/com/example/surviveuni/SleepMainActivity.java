@@ -2,7 +2,9 @@ package com.example.surviveuni;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class SleepMainActivity extends AppCompatActivity {
 
@@ -10,5 +12,10 @@ public class SleepMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_main);
+    }
+
+    public void StartSleepGame(View view){
+        Intent startGame = new Intent(this, SleepGameActivity.class);
+        startActivity(startGame);
     }
 }
