@@ -34,7 +34,7 @@ public class StudyRoomView extends SurfaceView implements SurfaceHolder.Callback
     /**
      * The StudyRoom content.
      */
-    public EventManager eventManager;
+    public StudyEventManager eventManager;
 
     private StudyThread thread;
 
@@ -45,5 +45,71 @@ public class StudyRoomView extends SurfaceView implements SurfaceHolder.Callback
         setFocusable(true);
     }
 
-    
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+
+        // Figure out the size of a letter.
+        Paint paintText = new Paint();
+        paintText.setTextSize(36);
+        paintText.setTypeface(Typeface.DEFAULT_BOLD);
+        charWidth = paintText.measureText("a");
+        charHeight = -paintText.ascent() + paintText.descent();
+
+        // Use the letter size and screen height to determine the size of the fish tank.
+        eventManager = new StudyEventManager(
+                (int) (screenHeight / charHeight), (int) (screenWidth / charWidth));
+        eventManager.createEvents();
+
+        thread.setRunning(true);
+        thread.start();
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        boolean retry = true;
+        while (retry) {
+            try {
+                thread.setRunning(false);
+                thread.join();
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            retry = false;
+        }
+    }
+
+    public void update(){
+        eventManager.update();
+    }
+
+    public void draw(Canvas canvas){
+        eventManager.draw(canvas);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
