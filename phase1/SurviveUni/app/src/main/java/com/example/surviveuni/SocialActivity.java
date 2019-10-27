@@ -44,8 +44,5 @@ public class SocialActivity extends AppCompatActivity{
         }
     }
     public void update(){}
-    public void compare(){}
-    public void helper_compare(){}
-    public void draw(){}
 
 }
