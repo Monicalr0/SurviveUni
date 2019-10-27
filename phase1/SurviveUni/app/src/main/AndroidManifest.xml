@@ -34,6 +34,7 @@
         </activity>
         <activity android:name=".SocialActivity" />
         <activity android:name=".Socialfeedback" />
+        <activity android:name=".SocialMain" />
     </application>
 
 </manifest>
