@@ -24,7 +24,7 @@ public class Socialfeedback extends AppCompatActivity {
     }
 
     private String checkFeedback(String feedback) {
-        if (feedback.equals("Correct!")) {
+        if (feedback.equals("Correct! Let's be friend!")) {
             return ("Social: +10\nStudy:-5\nSleep:-5");
         } else {
             return ("Study:-5\nSleep:-5");
