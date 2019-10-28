@@ -11,6 +11,6 @@ public class SleepGameActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-    setContentView(new SheepView(this, getResources()));
+    setContentView(new SheepView(this));
   }
 }

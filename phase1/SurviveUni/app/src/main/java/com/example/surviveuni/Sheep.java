@@ -9,73 +9,87 @@ import android.graphics.Paint;
 /** A sheep. */
 class Sheep {
 
-  /** This sheep's first coordinate. */
-  private int x;
-  /** This sheep's second coordinate. */
-  private int y;
+    /** This sheep's first coordinate. */
+    private int x;
 
-  private Bitmap sheep_left, sheep_right, appearance;
+    /** This sheep's second coordinate. */
+    private int y;
 
-  /** Indicates whether this sheep is moving right. */
-  private boolean goingRight;
+    /** This sheep's width. */
+    private int sheepWidth;
 
-  /** Use for random movement up or down, turn around. */
-  private double d;
+    /** This sheep's height. */
+    private int sheepHeight;
 
-  private Paint paint = new Paint();
-  /**
-   * Constructs a new sheep at the specified cursor location (x, y).
-   *
-   * @param x the x coordinate of the sheep.
-   * @param y the y coordinate of the sheep.
-   */
-  Sheep(int x, int y, Resources res) {
-    this.x = x;
-    this.y = y;
-    goingRight = true;
-    sheep_left = BitmapFactory.decodeResource(res, R.drawable.sheep_left);
-    sheep_right = BitmapFactory.decodeResource(res, R.drawable.sheep_right);
-  }
+    /** Bitmap of sheep */
+    private Bitmap sheep_left, sheep_right, appearance;
 
-  void draw(Canvas canvas) {
-    canvas.drawBitmap(appearance, x , y, paint);
-  }
+    /** Indicates whether this sheep is moving right. */
+    private boolean goingRight;
 
-  /** Turns this sheep around, causing it to reverse direction. */
-  private void turnAround() {
-    d = Math.random();
-    if (d < 0.1) {
-      if (goingRight) appearance = sheep_left;
-      else appearance = sheep_right;
+    /** Use for random movement up or down, turn around. */
+    private double d;
 
-      goingRight = !goingRight;
+    /**
+     * Constructs a new sheep at the specified cursor location (x, y).
+     *
+     * @param x the x coordinate of the sheep.
+     * @param y the y coordinate of the sheep.
+     */
+    Sheep(int x, int y, Resources res) {
+        this.x = x;
+        this.y = y;
+        goingRight = true;
+        sheep_left = BitmapFactory.decodeResource(res, R.drawable.sheep_left);
+        sheep_right = BitmapFactory.decodeResource(res, R.drawable.sheep_right);
+        sheepWidth = sheep_left.getWidth();
+        sheepHeight = sheep_left.getHeight();
     }
-  }
 
-  /** Causes this sheep to move, change the coordinates. */
-  void move(int Height, int Width) {
-    turnAround();
-    moveRightLeft(Width);
-    moveUpDown(Height);
-  }
-
-  /**
-   * Move one spot to the right or left in the direction I'm going. turn around if bump into a wall.
-   */
-  private void moveRightLeft(int Width) {
-    if (goingRight) {
-      if (x >= Width - 5) turnAround();
-      else x++;
-    } else {
-      if (x <= 5) turnAround();
-      else x--;
+    void draw(Canvas canvas) {
+        canvas.drawBitmap(appearance, x, y, null);
     }
-  }
 
-  /** Figure out whether to move up or down, or neither. */
-  private void moveUpDown(int Height) {
-    d = Math.random();
-    if (d < 0.1 && y <= Height - 5) y++;
-    else if (d < 0.2 && y >= 5) y--;
-  }
+    /**
+     * Turns this sheep around, causing it to reverse direction.
+     */
+    private void turnAround() {
+        d = Math.random();
+        if (d < 0.1) {
+            if (goingRight) appearance = sheep_left;
+            else appearance = sheep_right;
+            goingRight = !goingRight;
+        }
+    }
+
+    /**
+     * Causes this sheep to move, change its corresponding coordinates.
+     */
+    void move(int Height, int Width) {
+        turnAround();
+        moveRightLeft(Width);
+        moveUpDown(Height);
+    }
+
+    /**
+     * Move Height / 50 steps to the right or left in the direction I'm going. turn around if bump into a wall.
+     */
+    private void moveRightLeft(int Width) {
+        if (goingRight) {
+            if (x + sheepWidth >= Width) turnAround();
+            else x += Width / 50;
+        } else {
+            if (x <= 0) turnAround();
+            else x -= Width / 50;
+        }
+    }
+
+    /**
+     * Figure out whether to move up or down Height / 50 steps, or neither.
+     */
+    private void moveUpDown(int Height) {
+        d = Math.random();
+        if (d < 0.1 && y + sheepHeight <= Height - Height / 50) y += Height / 50;
+        else if (d < 0.2 && y >= 10) y -= Height / 50;
+    }
 }

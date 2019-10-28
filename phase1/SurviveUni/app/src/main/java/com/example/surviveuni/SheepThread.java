@@ -7,7 +7,7 @@ import android.view.SurfaceHolder;
 public class SheepThread extends Thread {
 
     /** Where the sheep are drawn. */
-    private com.example.surviveuni.SheepView sheepView;
+    private SheepView sheepView;
     /** The canvas container. */
     private SurfaceHolder surfaceHolder;
     /** Whether the thread is running. */
@@ -50,7 +50,7 @@ public class SheepThread extends Thread {
             }
 
             try {
-                this.sleep(300);
+                this.sleep(50);
             } catch (Exception e) {
                 e.printStackTrace();
             }
