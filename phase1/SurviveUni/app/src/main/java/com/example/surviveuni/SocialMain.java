@@ -17,4 +17,9 @@ public class SocialMain extends AppCompatActivity {
         Intent startGame = new Intent(this, SocialActivity.class);
         startActivity(startGame);
     }
+
+    public void ExitSocialGame(View view) {
+        Intent exitGame = new Intent(this, MainActivity.class);
+        startActivity(exitGame);
+    }
 }
