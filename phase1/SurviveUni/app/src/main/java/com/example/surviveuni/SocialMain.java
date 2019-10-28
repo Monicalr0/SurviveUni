@@ -13,7 +13,7 @@ public class SocialMain extends AppCompatActivity {
         setContentView(R.layout.activity_social_main);
     }
 
-    public void StartSleepGame(View view){
+    public void StartSocialGame(View view){
         Intent startGame = new Intent(this, SocialActivity.class);
         startActivity(startGame);
     }
