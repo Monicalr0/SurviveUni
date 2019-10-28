@@ -8,14 +8,15 @@ import android.view.View;
 
 public class SleepMainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sleep_main);
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_sleep_main);
+  }
 
-    public void StartSleepGame(View view){
-        Intent startGame = new Intent(this, SleepGameActivity.class);
-        startActivity(startGame);
-    }
+  /** Start the game when the user clicks the start button */
+  public void StartSleepGame(View view) {
+    Intent startGame = new Intent(this, SleepGameActivity.class);
+    startActivity(startGame);
+  }
 }
