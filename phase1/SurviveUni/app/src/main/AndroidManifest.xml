@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SleepFeedbackActivity"></activity>
+        <activity
+            android:name=".StudyMenu"
+            android:label="@string/title_activity_study_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SleepFeedbackActivity" />
         <activity android:name=".SleepAnswerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
