@@ -8,18 +8,19 @@ import java.util.List;
 
 public class SheepManager {
 
-  /** The width of Sheep. */
-  private int gridWidth;
-  /** The height of Sheep. */
-  private int gridHeight;
+  /** The width of game screen. */
+  private int screenWidth;
+  /** The height of gamge screen. */
+  private int screenHeight;
+
   /** The list of sheep created* */
-  private List<com.example.surviveuni.Sheep> SheepList = new ArrayList<>();
+  private List<Sheep> SheepList = new ArrayList<>();
 
   private Resources res;
 
   SheepManager(int height, int width, Resources res) {
-    gridHeight = height;
-    gridWidth = width;
+    screenHeight = height;
+    screenWidth = width;
     this.res = res;
   }
 
@@ -31,16 +32,17 @@ public class SheepManager {
 
   void update() {
     for (com.example.surviveuni.Sheep sheep : SheepList) {
-      sheep.move(gridHeight, gridWidth);
+      sheep.move(screenHeight, screenWidth);
     }
   }
 
+  /** Create 5 - 15 numbers of sheep */
   void createSheep() {
-    int SheepNum = (int) (Math.random() * 15);
+    int SheepNum = (int) (Math.random() * 10) + 5;
     for (int i = 0; i < SheepNum; i++) {
-      int x = (int) (Math.random() * (gridWidth - 5)) + 5;
-      int y = (int) (Math.random() * (gridHeight - 5)) + 5;
-      SheepList.add(new com.example.surviveuni.Sheep(x, y, res));
+      int x = (int) (Math.random() * (screenWidth - 10)) + 10;
+      int y = (int) (Math.random() * (screenHeight - 10)) + 10;
+      SheepList.add(new Sheep(x, y, res));
     }
   }
 }
