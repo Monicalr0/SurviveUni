@@ -36,10 +36,10 @@ public class SocialActivity extends AppCompatActivity{
         int number = Integer.parseInt(answer);
         int correctAnswer = generate_expect(); // should be imported from previous activity
         if (number == correctAnswer) {
-            return "Correct!";
+            return "Correct! Let's be friend!";
             // update(stats);
         } else {
-            return "Sorry!";
+            return "Sorry! Maybe next time.";
             // update(stats);
         }
     }
