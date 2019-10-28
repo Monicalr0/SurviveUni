@@ -38,7 +38,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Game Rule: A number of sheep will appera on the screen, please count and  indicate the number later."
+        android:text="Game Rule: A number of sheep will appear on the screen, please count and  indicate the number later."
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
