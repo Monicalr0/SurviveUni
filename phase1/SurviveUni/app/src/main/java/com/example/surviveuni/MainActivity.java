@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setLogInBtn();
     }
 
-    private setLogInBtn(){
+    private void setLogInBtn(){
         EditText usernameInput = findViewById(R.id.MainUserNameInput);
         EditText passwordInput = findViewById(R.id.MainPassWordInput);
         Button loginBtn = findViewById(R.id.MainLogInBtn);

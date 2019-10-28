@@ -6,4 +6,5 @@
     <string name="title_activity_sleep_main">SleepMainActivity</string>
     <string name="title_activity_study_main_menu">StudyMainMenu</string>
     <string name="title_activity_study_menu">StudyMenu</string>
+    <string name="title_activity_study_game">StudyGame</string>
 </resources>
