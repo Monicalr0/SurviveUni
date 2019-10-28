@@ -39,6 +39,7 @@
         <activity android:name=".SocialActivity" />
         <activity android:name=".Socialfeedback" />
         <activity android:name=".SocialMain" />
+        <activity android:name=".GameActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

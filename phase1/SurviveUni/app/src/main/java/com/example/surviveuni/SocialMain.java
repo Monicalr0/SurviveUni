@@ -19,7 +19,7 @@ public class SocialMain extends AppCompatActivity {
     }
 
     public void ExitSocialGame(View view) {
-        Intent exitGame = new Intent(this, MainActivity.class);
+        Intent exitGame = new Intent(this, GameActivity.class);
         startActivity(exitGame);
     }
 }
