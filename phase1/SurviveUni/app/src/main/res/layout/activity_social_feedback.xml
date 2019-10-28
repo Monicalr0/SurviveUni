@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="350dp" />
+            app:layout_constraintGuide_begin="400dp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -31,12 +31,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="450dp" />
+            app:layout_constraintGuide_begin="500dp" />
 
         <TextView
             android:id="@+id/feedbackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@id/guideline17"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,13 +48,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="550dp" />
+            app:layout_constraintGuide_begin="600dp" />
 
         <TextView
             android:id="@+id/statsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@id/guideline18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="600dp" />
+            app:layout_constraintGuide_begin="650dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
