@@ -6,7 +6,7 @@ class User implements Serializable {
     private String username;
     private String password;
 
-    void User(String username, String password) {
+    User(String username, String password) {
         if(checkReasonable(username,password)){
             this.password = password;
             this.username = username;

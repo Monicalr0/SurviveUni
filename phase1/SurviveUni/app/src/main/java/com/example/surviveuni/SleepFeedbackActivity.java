@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class SleepFeedbackActivity extends AppCompatActivity {
@@ -30,5 +31,10 @@ public class SleepFeedbackActivity extends AppCompatActivity {
     } else {
       return ("Health: -10\nStudy:-5");
     }
+  }
+
+  public void nextRound(View view) {
+    Intent nxRound = new Intent(this, GameActivity.class);
+    startActivity(nxRound);
   }
 }

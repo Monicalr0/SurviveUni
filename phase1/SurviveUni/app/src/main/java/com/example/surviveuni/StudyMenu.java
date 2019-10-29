@@ -48,7 +48,7 @@ public class StudyMenu extends AppCompatActivity {
         findViewById(R.id.studyNewGameBtn).setOnClickListener(v -> {
             Manager.newStudyGame();
 
-            Intent i = new Intent(this, studyGame.class);
+            Intent i = new Intent(this, StudyGame.class);
             startActivity(i);
 
         });
@@ -58,7 +58,7 @@ public class StudyMenu extends AppCompatActivity {
         findViewById(R.id.studyNewGameBtn).setOnClickListener(v -> {
             Manager.loadGame();
 
-            Intent i = new Intent(this, studyGame.class);
+            Intent i = new Intent(this, StudyGame.class);
             startActivity(i);
 
         });
@@ -80,7 +80,7 @@ public class StudyMenu extends AppCompatActivity {
 
     private void setResumeGameBtn(){
         findViewById(R.id.studyResumeGameBtn).setOnClickListener(v -> {
-            Intent i = new Intent(this, studyGame.class);
+            Intent i = new Intent(this, StudyGame.class);
             i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(i);
         });
