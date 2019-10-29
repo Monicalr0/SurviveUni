@@ -9,11 +9,14 @@ import android.widget.EditText;
 
 public class SleepAnswerActivity extends AppCompatActivity {
   public static final String EXTRA_MESSAGE = "com.example.surviveuni.MESSAGE";
-
+  private int sheepNum;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sleep_answer);
+//    Intent intent = getIntent();
+//    sheepNum = intent.getIntExtra(SleepGameActivity.EXTRA_MESSAGE,0);
+    sheepNum=SheepManager.SheepNum;
   }
 
   public void submitAnswer(View view) {
@@ -27,8 +30,7 @@ public class SleepAnswerActivity extends AppCompatActivity {
 
   private String checkAnswer(String answer) {
     int number = Integer.parseInt(answer);
-    int correctAnswer = 5; // should be imported from previous activity
-    if (number == correctAnswer) {
+    if (number == sheepNum) {
       return "Correct!";
       // update(stats);
     } else {
