@@ -1,10 +1,13 @@
 package com.example.surviveuni;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.TextView;
+
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class StudyGame extends AppCompatActivity {
     private GameState gamestate;
@@ -34,6 +37,14 @@ public class StudyGame extends AppCompatActivity {
     private void setClearBtn(){
         findViewById(R.id.StudyGameClearBtn).setOnClickListener(v -> {
             gamestate.studyWork();
+        });
+    }
+
+    private void setPauseBtn() {
+        findViewById(R.id.StudyGamePauseBtn).setOnClickListener(v -> {
+            Intent i = new Intent(this, StudyMenu.class);
+            i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(i);
         });
     }
 }
