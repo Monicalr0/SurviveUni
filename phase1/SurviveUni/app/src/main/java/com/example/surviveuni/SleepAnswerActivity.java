@@ -10,13 +10,13 @@ import android.widget.EditText;
 public class SleepAnswerActivity extends AppCompatActivity {
   public static final String EXTRA_MESSAGE = "com.example.surviveuni.MESSAGE";
   private int sheepNum;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sleep_answer);
-//    Intent intent = getIntent();
-//    sheepNum = intent.getIntExtra(SleepGameActivity.EXTRA_MESSAGE,0);
-    sheepNum=SheepManager.SheepNum;
+    Intent intent = getIntent();
+    sheepNum = intent.getIntExtra(SleepGameActivity.EXTRA_MESSAGE,0);
   }
 
   public void submitAnswer(View view) {
