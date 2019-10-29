@@ -19,4 +19,10 @@ public class SleepMainActivity extends AppCompatActivity {
     Intent startGame = new Intent(this, SleepGameActivity.class);
     startActivity(startGame);
   }
+
+  /** Return to the Game main activity when user clicks the exit button */
+  public void ReturnGameMain(View viwe) {
+      Intent ReturnGame = new Intent(this, GameActivity.class);
+      startActivity(ReturnGame);
+  }
 }
