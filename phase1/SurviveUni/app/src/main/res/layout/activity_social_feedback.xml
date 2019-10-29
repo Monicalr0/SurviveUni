@@ -24,7 +24,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars[0]" />
+            app:srcCompat="@drawable/someguy"
+            tools:srcCompat="@drawable/someguy" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline17"
