@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".StudyGame"></activity>
+        <activity android:name=".StudyMenu" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
         <activity android:name=".SleepFeedbackActivity" />
         <activity android:name=".SleepAnswerActivity">
             <intent-filter>
