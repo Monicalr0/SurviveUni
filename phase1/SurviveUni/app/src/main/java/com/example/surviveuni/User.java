@@ -13,7 +13,7 @@ class User implements Serializable {
         }
     }
 
-    private boolean checkReasonable(String username,String password){
+    static boolean checkReasonable(String username,String password){
         if (password.equals("")) {
             throw new RuntimeException("Password Cannot Be Empty");
         } else if (username.equals("")) {
@@ -29,7 +29,7 @@ class User implements Serializable {
         return username;
     }
 
-    boolean checkPassword(String pw){
+    boolean checkPassowrd(String pw){
         return this.password.equals(pw);
     }
 }

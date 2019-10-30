@@ -9,10 +9,11 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 
 class UserManager {
-    private Map<String, User> users;
+    static Map<String, User> users;
     private Context context;
     private static final String FILENAME = "users.dat";
 
@@ -57,6 +58,14 @@ class UserManager {
     private void loadDemoUsers(){
         users.put("garyk", new User("kevinzzz", "1234567"));
         users.put("kevinw", new User("kevinyyy", "123123123"));
+    }
+
+    User authenticate(String username, String password){
+        if(!users.containsKey(username)) throw new InputMismatchException();
+
+        if(!users.get(username).checkPassowrd(password)) throw new InputMismatchException();
+
+        return users.get(username);
     }
 
 

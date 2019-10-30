@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/CreatePwInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline25" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/CreateUserInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -81,6 +81,7 @@
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="set"
             android:text="Submit"
             app:layout_constraintBottom_toTopOf="@+id/guideline27"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,6 +127,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="550dp" />
+
+        <EditText
+            android:id="@+id/CreatePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="103dp"
+            android:layout_marginBottom="37dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintBottom_toTopOf="@+id/CreateUserInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
