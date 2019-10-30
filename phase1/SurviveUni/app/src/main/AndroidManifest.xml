@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudyGame"></activity>
+        <activity android:name=".Create_account"></activity>
+        <activity android:name=".StudyGame" />
         <activity android:name=".StudyMenu" />
         <activity
             android:name=".LoginActivity"
@@ -41,7 +42,6 @@
         <activity android:name=".Socialfeedback" />
         <activity android:name=".SocialMain" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".CreateAccountActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
