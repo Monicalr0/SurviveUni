@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class Socialfeedback extends AppCompatActivity {
@@ -29,5 +30,10 @@ public class Socialfeedback extends AppCompatActivity {
         } else {
             return ("Study:-5\nSleep:-5");
         }
+    }
+
+    public void StartNextRound(View view) {
+        Intent NextRound = new Intent(this, GameActivity.class);
+        startActivity(NextRound);
     }
 }

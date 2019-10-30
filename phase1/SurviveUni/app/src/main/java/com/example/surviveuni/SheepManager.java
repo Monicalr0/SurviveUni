@@ -18,13 +18,10 @@ public class SheepManager {
 
   private Resources res;
 
-  static int SheepNum;;
-
   SheepManager(int height, int width, Resources res) {
     screenHeight = height;
     screenWidth = width;
     this.res = res;
-    SheepNum = (int) (Math.random() * 10) + 5;
   }
 
   void draw(Canvas canvas) {
@@ -40,7 +37,7 @@ public class SheepManager {
   }
 
   /** Create 5 - 15 numbers of sheep */
-  void createSheep() {
+  void createSheep(int SheepNum) {
     for (int i = 0; i < SheepNum; i++) {
       int x = (int) (Math.random() * (screenWidth - 10)) + 10;
       int y = (int) (Math.random() * (screenHeight - 10)) + 10;

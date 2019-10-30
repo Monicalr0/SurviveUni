@@ -17,6 +17,9 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
   /** The sleep game contents. */
   public SheepManager sheepManager;
 
+  /** Number of Sheep to be created */
+  private int SheepNum;
+
   /** The part of the program that manages time. */
   private SheepThread thread;
 
@@ -25,17 +28,18 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
    *
    * @param context the environment.
    */
-  public SheepView(Context context) {
+  public SheepView(Context context, int SheepNum) {
     super(context);
     getHolder().addCallback(this);
     thread = new SheepThread(getHolder(), this);
     setFocusable(true);
+    this.SheepNum = SheepNum;
   }
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
     sheepManager = new SheepManager(screenHeight, screenWidth, getResources());
-    sheepManager.createSheep();
+    sheepManager.createSheep(SheepNum);
 
     thread.setRunning(true);
     thread.start();
