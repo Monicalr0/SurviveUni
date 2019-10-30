@@ -20,7 +20,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void StartSocial(View view){
-        Intent startGame = new Intent(this, SocialActivity.class);
+        Intent startGame = new Intent(this, SocialMain.class);
         startActivity(startGame);
     }
 
