@@ -7,6 +7,8 @@ class GameState implements Serializable {
     private int spirit;
     private int hapiness;
     private int dayOfSurvival;
+    private int a;
+    private int b;
 
     int getGPA() {
         return GPA;
@@ -40,10 +42,21 @@ class GameState implements Serializable {
         this.dayOfSurvival = dayOfSurvival;
     }
 
-    void studyWork(){
-        double d = Math.random();
-        if(d < 0.05){
-            GPA ++;
-        }
+    void changeGPA(int GPA) { this.GPA += GPA;}
+
+    void changeSpirit(int sp) {this.spirit += sp;}
+
+    void changeHapiness(int hp) {this.hapiness += hp;}
+
+    int getFirstNum(){
+        a = ((int)(Math.random()*1000));
+        return a;
     }
+
+    int getSecondNum(){
+        b = ((int)(Math.random()*1000));
+        return b;
+    }
+
+    boolean studyCheck(int ans) {return ans == a+b;}
 }

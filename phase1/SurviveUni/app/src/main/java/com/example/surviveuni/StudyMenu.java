@@ -19,6 +19,7 @@ public class StudyMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_menu);
+        startActivity(new Intent(this, StudyGame.class));
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("USER");
         Manager = new GameManager(user, this);
@@ -85,29 +86,6 @@ public class StudyMenu extends AppCompatActivity {
             startActivity(i);
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
