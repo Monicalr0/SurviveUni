@@ -1,101 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudyGame">
+    android:background="@drawable/all_good"
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/StudyGuessPrompt"
+    <TextView
+        android:id="@+id/studyTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="148dp"
+        android:layout_gravity="center"
+        android:text="Time: 0"
+        android:textAlignment="center"
+
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/theButton"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginBottom="441dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:srcCompat="@null"
+        android:onClick="setUpButton"/>
 
-    <Button
-        android:id="@+id/StudyGameSubmitBtn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/studyResult"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="318dp"
-        android:onClick="setSubmitBtn"
-        android:text="SUBMIT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StudyGuessPrompt" />
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/StudyGameExitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="204dp"
-        android:onClick="setExitBtn"
-        android:text="Exit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StudyGameSubmitBtn" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/StudyGameShow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/StudyGameSubmitBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StudyGuessPrompt" />
+        <Button
+            android:id="@+id/exitStudyButton"
+            android:layout_weight="0"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:background="@android:drawable/button_onoff_indicator_off"
+            android:text="exit"
+            android:onClick="setExitBtn"/>
 
-    <EditText
-        android:id="@+id/StudyGameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="33dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Type Your Answer Here"
-        app:layout_constraintBottom_toTopOf="@+id/StudyGameShow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StudyGuessPrompt" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/StudyGameNewTurnBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="550dp"
-        android:onClick="setNewTurnBtn"
-        android:text="New Turn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/StudyGuessPrompt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,8 +1,10 @@
 package com.example.surviveuni;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.Serializable;
 
-class GameState implements Serializable {
+class GameState extends AppCompatActivity implements Serializable  {
     private int GPA;
     private int spirit;
     private int hapiness;
@@ -48,15 +50,5 @@ class GameState implements Serializable {
 
     void changeHapiness(int hp) {this.hapiness += hp;}
 
-    int getFirstNum(){
-        a = ((int)(Math.random()*1000));
-        return a;
-    }
 
-    int getSecondNum(){
-        b = ((int)(Math.random()*1000));
-        return b;
-    }
-
-    boolean studyCheck(int ans) {return ans == a+b;}
 }
