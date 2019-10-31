@@ -13,14 +13,13 @@ import java.util.InputMismatchException;
 import java.util.Map;
 
 class UserManager {
-    static Map<String, User> users= new HashMap<>();
+    Map<String, User> users = new HashMap<>();
     private Context context;
     private static final String FILENAME = "users.dat";
 
     public UserManager(Context context) {
         this.context = context;
         loadUsers();
-        loadDemoUsers();
     }
 
     private void loadUsers(){
@@ -55,13 +54,21 @@ class UserManager {
         }
     }
 
-    private void loadDemoUsers(){
-        users.put("garyk", new User("kevinzzz", "1234567"));
-        users.put("kevinw", new User("kevinyyy", "123123123"));
-    }
 
     User authenticate(String username, String password){
-        if(!users.containsKey(username)) throw new InputMismatchException();
+
+        System.out.println(username+" 111111 ");
+        System.out.println(username);
+        System.out.println(username);
+        System.out.println(username);
+        if(!users.containsKey(username)) {
+            for(Map.Entry<String,User> kv: users.entrySet()){
+                System.out.println(kv.getValue());
+            }
+            System.out.println("ERROR ERROR ERROR");
+            throw new InputMismatchException();
+
+        }
 
         if(!users.get(username).checkPassowrd(password)) throw new InputMismatchException();
 
