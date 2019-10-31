@@ -17,13 +17,11 @@ public class SleepGameActivity extends AppCompatActivity {
     supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(new SheepView(this, SheepNum));
     final Handler handler = new Handler();
-    handler.postDelayed(new Runnable() {
-      public void run() {
-        Intent intent = new Intent(SleepGameActivity.this, SleepAnswerActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, SheepNum);
-        SleepGameActivity.this.startActivity(intent);
-        SleepGameActivity.this.finish();
-      }
+    handler.postDelayed(() -> {
+      Intent intent = new Intent(SleepGameActivity.this, SleepAnswerActivity.class);
+      intent.putExtra(EXTRA_MESSAGE, SheepNum);
+      SleepGameActivity.this.startActivity(intent);
+      SleepGameActivity.this.finish();
     }, 5000);
   }
 }
