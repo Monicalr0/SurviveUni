@@ -23,11 +23,16 @@ public class LoginActivity extends AppCompatActivity {
 
         userManager = new UserManager(this);
 
+        setLoginBtn();
+
     }
 
-    public void setLoginBtn(View view){
+    public void setLoginBtn(){
         EditText usernameInput = findViewById(R.id.LogInAccount);
         EditText passwordInput = findViewById(R.id.LogInPw);
+        Button loginBtn = findViewById(R.id.CreateAccountSubmitBtn);
+
+        loginBtn.setOnClickListener((v) -> {
             try {
                 User user = userManager.authenticate(usernameInput.getText().toString(),
                         passwordInput.getText().toString());
@@ -44,5 +49,6 @@ public class LoginActivity extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
             }
+        });
     }
 }

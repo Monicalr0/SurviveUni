@@ -38,13 +38,13 @@ public class CreateAccountActivity extends AppCompatActivity{
             {
                 UserManager.users.put(accInput,new User(accInput,psInput));
                 prompt.setText("Your new acccount has been created!");
+                Intent back = new Intent(this, MainActivity.class);
+                startActivity(back);
             }
             else
             {
                 prompt.setText("Try Again!");
             }
-            Intent back = new Intent(this, MainActivity.class);
-            startActivity(back);
         });
 
     }

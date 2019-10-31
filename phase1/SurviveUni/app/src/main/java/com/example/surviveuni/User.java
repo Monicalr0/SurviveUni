@@ -15,11 +15,11 @@ class User implements Serializable {
 
     static boolean checkReasonable(String username,String password){
         if (password.equals("")) {
-            throw new RuntimeException("Password Cannot Be Empty");
+            return false;
         } else if (username.equals("")) {
-            throw new RuntimeException("Username Cannot Be Empty");
+            return false;
         } else if (password.length() <= 6 || username.length() <= 6) {
-            throw new RuntimeException("The Length Of Username And Password must be greater than 6");
+            return false;
         }
         return true;
 
