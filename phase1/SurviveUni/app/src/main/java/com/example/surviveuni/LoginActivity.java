@@ -25,30 +25,29 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void setLoginBtn(View view){
+    public void setLoginBtn(View view) {
         EditText usernameInput = findViewById(R.id.LogInAccount);
         EditText passwordInput = findViewById(R.id.LogInPw);
 
-            try {
-                User user = userManager.authenticate(usernameInput.getText().toString(),
-                        passwordInput.getText().toString());
+        try {
+            User user = userManager.authenticate(usernameInput.getText().toString(),
+                    passwordInput.getText().toString());
 
-                Intent i = new Intent(this, GameActivity.class);
-                i.putExtra("USER", user);
-                startActivity(i);
+            Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("USER", user);
+            startActivity(i);
 
-            } catch (InputMismatchException e) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Wrong Input")
-                        .setMessage("username or password is wrong")
-                        .setPositiveButton(android.R.string.yes, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-            }
+        } catch (InputMismatchException e) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Wrong Input")
+                    .setMessage("username or password is wrong")
+                    .setPositiveButton(android.R.string.yes, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
     }
 
-    public void setExitBtn(View view)
-    {
+    public void setExitBtn(View view) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
