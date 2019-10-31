@@ -23,5 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public void createAccount(View view) {
         Intent createAcc = new Intent(this, CreateAccountActivity.class);
         startActivity(createAcc);
+
     }
 }

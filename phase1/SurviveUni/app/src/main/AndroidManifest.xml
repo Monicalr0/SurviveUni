@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateAccountActivity"></activity>
+        <activity android:name=".CustomizeActivity"></activity>
+        <activity android:name=".CreateAccountActivity" />
         <activity android:name=".StudyGame" />
         <activity android:name=".StudyMenu" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".SleepFeedbackActivity" />
-        <activity android:name=".SleepAnswerActivity"/>
-
+        <activity android:name=".SleepAnswerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".SleepGameActivity" />
-        <activity android:name=".SleepMainActivity"/>
-
+        <activity android:name=".SleepMainActivity" />
         <activity android:name=".SocialActivity" />
         <activity android:name=".Socialfeedback" />
         <activity android:name=".SocialMain" />

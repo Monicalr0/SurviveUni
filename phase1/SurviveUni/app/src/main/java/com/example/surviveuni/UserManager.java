@@ -13,17 +13,17 @@ import java.util.InputMismatchException;
 import java.util.Map;
 
 class UserManager {
-    static Map<String, User> users;
+    static Map<String, User> users = new HashMap<>();
     private Context context;
     private static final String FILENAME = "users.dat";
 
     public UserManager(Context context) {
         this.context = context;
         loadUsers();
-        loadDemoUsers();
+        SaveToFile();
     }
 
-    private void loadUsers(){
+    private void loadUsers() {
         try {
             InputStream inputStream = context.openFileInput(FILENAME);
             if (inputStream != null) {
@@ -44,7 +44,7 @@ class UserManager {
     }
 
 
-    private void SaveToFile(){
+    void SaveToFile() {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     context.openFileOutput(FILENAME, context.MODE_PRIVATE));
@@ -55,16 +55,9 @@ class UserManager {
         }
     }
 
-    private void loadDemoUsers(){
-        users.put("garyk", new User("kevinzzz", "1234567"));
-        users.put("kevinw", new User("kevinyyy", "123123123"));
-    }
-
-    User authenticate(String username, String password){
-        if(!users.containsKey(username)) throw new InputMismatchException();
-
-        if(!users.get(username).checkPassowrd(password)) throw new InputMismatchException();
-
+    User authenticate(String username, String password) {
+        if (!users.containsKey(username)) throw new InputMismatchException();
+        if (!users.get(username).checkPassword(password)) throw new InputMismatchException();
         return users.get(username);
     }
 

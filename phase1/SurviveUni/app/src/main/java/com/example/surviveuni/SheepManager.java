@@ -36,7 +36,7 @@ public class SheepManager {
     }
   }
 
-  /** Create 5 - 15 numbers of sheep */
+  /** Create SheepNum numbers of sheep */
   void createSheep(int SheepNum) {
     for (int i = 0; i < SheepNum; i++) {
       int x = (int) (Math.random() * (screenWidth - 10)) + 10;

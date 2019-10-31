@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class SleepFeedbackActivity extends AppCompatActivity {
+    private GameState gameState;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class SleepFeedbackActivity extends AppCompatActivity {
     TextView textView = findViewById(R.id.feedbackText);
     textView.setText(feedback);
 
+    ChangeGameState(feedback);
     String statsFeedback = checkFeedback(feedback);
     TextView textView2 = findViewById(R.id.statsText);
     textView2.setText(statsFeedback);
@@ -27,10 +29,21 @@ public class SleepFeedbackActivity extends AppCompatActivity {
 
   private String checkFeedback(String feedback) {
     if (feedback.equals("Correct!")) {
-      return ("Health: +10\nStudy:-5");
+      return ("Spirit: +10\nGPA:-5");
     } else {
-      return ("Health: -10\nStudy:-5");
+      return ("Spirit: -10\nGPA:-5");
     }
+  }
+
+  /** Modify the static variable according to the game result */
+  private void ChangeGameState(String feedback) {
+    if (feedback.equals("Correct!")) {
+         gameState.changeSpirit(10);
+         gameState.changeGPA(-5);
+      } else {
+        gameState.changeSpirit(-10);
+        gameState.changeGPA(-5);
+      }
   }
 
   public void nextRound(View view) {
