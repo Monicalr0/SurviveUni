@@ -13,7 +13,7 @@ import java.util.InputMismatchException;
 import java.util.Map;
 
 class UserManager {
-    static Map<String, User> users;
+    static Map<String, User> users= new HashMap<>();
     private Context context;
     private static final String FILENAME = "users.dat";
 

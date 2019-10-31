@@ -7,11 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 
 public class GameActivity extends AppCompatActivity {
+    private User user;
+    private GameManager gameManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_main);
+
+        Intent i = getIntent();
+        user = (User)i.getSerializableExtra("USER");
+        gameManager = new GameManager(user, this);
     }
 
     public void StartSleep(View view){
