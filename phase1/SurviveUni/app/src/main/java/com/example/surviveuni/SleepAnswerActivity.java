@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SleepAnswerActivity extends AppCompatActivity {
   public static final String EXTRA_MESSAGE = "com.example.surviveuni.MESSAGE";
@@ -29,13 +30,18 @@ public class SleepAnswerActivity extends AppCompatActivity {
   }
 
   private String checkAnswer(String answer) {
-    int number = Integer.parseInt(answer);
-    if (number == sheepNum) {
-      return "Correct!";
-      // update(stats);
-    } else {
+    try{
+      int number = Integer.parseInt(answer);
+      if (number == sheepNum) {
+        return "Correct!";
+        // update(stats);
+      } else {
+        return "Sorry!";
+        // update(stats);
+      }
+    }catch (NumberFormatException e){
+      Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
       return "Sorry!";
-      // update(stats);
     }
   }
 }
