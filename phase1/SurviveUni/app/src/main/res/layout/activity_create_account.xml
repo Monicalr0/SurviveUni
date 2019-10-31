@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="97dp"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="101dp"
         android:layout_marginBottom="236dp"
         android:ems="10"
@@ -77,21 +77,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CreateAccountSubmitBtn" />
-
-    <EditText
-        android:id="@+id/CreateAccountPrompt"
-        android:layout_width="392dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="17dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/CreateAccountAccInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
