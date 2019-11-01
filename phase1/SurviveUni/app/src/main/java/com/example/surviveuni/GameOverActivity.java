@@ -14,6 +14,7 @@ public class GameOverActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        gameState=GameManager.getGameState();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
 

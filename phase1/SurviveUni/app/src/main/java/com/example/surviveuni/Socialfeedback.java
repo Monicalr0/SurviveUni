@@ -11,7 +11,6 @@ public class Socialfeedback extends AppCompatActivity {
     private GameState gameState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        GameState gameState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social_feedback);
         gameState = GameManager.getGameState();
@@ -34,7 +33,7 @@ public class Socialfeedback extends AppCompatActivity {
             gameState.changeHappiness(10);
             return ("Social: +10\nStudy:-5\nSleep:-5");
         } else {
-            gameState.changeGPA(-5);
+            gameState.changeGPA(-10);
             gameState.changeSpirit(-5);
             gameState.changeHappiness(-5);
             return ("Study:-5\nSleep:-5");
