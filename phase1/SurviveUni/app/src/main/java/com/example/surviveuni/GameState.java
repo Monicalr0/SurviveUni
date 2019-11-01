@@ -6,17 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 
-class GameState implements Serializable{
+class GameState implements Serializable {
     private int GPA;
     private int spirit;
     private int happiness;
     private int dayOfSurvival;
 
-    GameState(){
-        GPA=50;
-        spirit=50;
-        happiness=50;
-        dayOfSurvival=0;
+    GameState() {
+        GPA = 50;
+        spirit = 50;
+        happiness = 50;
+        dayOfSurvival = 0;
     }
 
     int getGPA() {
@@ -51,16 +51,24 @@ class GameState implements Serializable{
         this.dayOfSurvival = dayOfSurvival;
     }
 
-    void changeGPA(int GPA) { this.GPA += GPA;}
+    void changeGPA(int GPA) {
+        this.GPA += GPA;
+    }
 
-    void changeSpirit(int sp) {this.spirit += sp;}
+    void changeSpirit(int sp) {
+        this.spirit += sp;
+    }
 
-    void changeHappiness(int hp) {this.happiness += hp;}
+    void changeHappiness(int hp) {
+        this.happiness += hp;
+    }
+    void updateDay(){
+        dayOfSurvival++;
+    }
 
+    public int checkGameover() {
 
-    public int checkGameover(){
-
-        if(getSpirit() == 0 | getHappiness() == 0 | getGPA() ==0){
+        if (getSpirit() == 0 | getHappiness() == 0 | getGPA() == 0) {
             return 1;
         }
         return 0;

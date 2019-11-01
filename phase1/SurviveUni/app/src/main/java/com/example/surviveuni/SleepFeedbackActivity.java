@@ -53,7 +53,14 @@ public class SleepFeedbackActivity extends AppCompatActivity {
     }
 
     public void nextRound(View view) {
-        Intent nxRound = new Intent(this, GameActivity.class);
-        startActivity(nxRound);
+        Intent NextRound;
+        if(gameState.checkGameover() == 1){
+            NextRound = new Intent(this, GameOverActivity.class);
+        }
+        else {
+            gameState.updateDay();
+            NextRound = new Intent(this, GameActivity.class);
+        }
+        startActivity(NextRound);
     }
 }

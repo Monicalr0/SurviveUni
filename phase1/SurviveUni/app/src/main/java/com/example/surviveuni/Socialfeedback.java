@@ -48,6 +48,7 @@ public class Socialfeedback extends AppCompatActivity {
         }
         else {
             NextRound = new Intent(this, GameActivity.class);
+            gameState.updateDay();
         }
         startActivity(NextRound);
     }
