@@ -50,5 +50,6 @@ public class Socialfeedback extends AppCompatActivity {
             gameState.updateDay();
         }
         startActivity(NextRound);
+        finish();
     }
 }

@@ -25,6 +25,7 @@ public class SocialActivity extends AppCompatActivity{
         String feedBack = checkAnswer(answer);
         intent.putExtra(EXTRA_MESSAGE, feedBack);
         startActivity(intent);
+        finish();
     }
     public int generate_expect(){
         Random r = new Random();

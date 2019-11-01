@@ -62,5 +62,6 @@ public class SleepFeedbackActivity extends AppCompatActivity {
             NextRound = new Intent(this, GameActivity.class);
         }
         startActivity(NextRound);
+        finish();
     }
 }
