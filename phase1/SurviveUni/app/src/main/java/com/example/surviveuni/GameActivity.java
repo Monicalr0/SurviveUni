@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     private User user;
@@ -18,6 +20,13 @@ public class GameActivity extends AppCompatActivity {
         Intent i = getIntent();
         user = (User)i.getSerializableExtra("USER");
         gameManager = new GameManager(user, this);
+
+        GameState gs = GameManager.getGameState();
+        Toast.makeText(this, "Your Three Values, GPA, Spirit and Happiness are "
+                + gs.getGPA() + ", " + gs.getSpirit() + ", " + gs.getHapiness(), Toast.LENGTH_SHORT).show();
+
+        TextView day = findViewById(R.id.GameMainDayShow);
+        day.setText(" Your record of survive in Uni is " + gs.getDayOfSurvival() + " days ");
     }
 
     public void StartSleep(View view){
