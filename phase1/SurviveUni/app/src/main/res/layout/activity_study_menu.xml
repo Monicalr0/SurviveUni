@@ -35,4 +35,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StudyMenuGoBtn" />
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@android:style/Widget.Material.TextView"
+        android:layout_width="261dp"
+        android:layout_height="203dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="109dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="127dp"
+        android:fontFamily="cursive"
+        android:text="There may be various distraction accur during study time, what you need to do is click the distraction within 3 seconds so you can survive this day "
+        android:textColor="#E91E63"
+        android:textColorLink="#E91E63"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/StudyMenuGoBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.500" />
 </androidx.constraintlayout.widget.ConstraintLayout>

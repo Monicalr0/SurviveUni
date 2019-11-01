@@ -139,7 +139,7 @@ public class StudyGame extends AppCompatActivity {
 
         button = new ImageButton(this);
         button = findViewById(R.id.MessageButton);
-        button.setImageResource(R.drawable.message1);
+        //button.setImageResource(R.drawable.message1);
 
 
         button.setOnClickListener(new View.OnClickListener() {
