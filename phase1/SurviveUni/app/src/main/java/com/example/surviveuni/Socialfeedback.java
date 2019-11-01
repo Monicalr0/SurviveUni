@@ -32,11 +32,18 @@ public class Socialfeedback extends AppCompatActivity {
             gameState.changeSpirit(-5);
             gameState.changeHappiness(10);
             return ("Happiness:+10\nGPA:-5\nSpirit:-5");
-        } else {
+        }
+        else if (feedback.equals("Sorry! Maybe next time.")){
             gameState.changeGPA(-5);
             gameState.changeSpirit(-5);
             gameState.changeHappiness(-5);
             return ("Happiness:-5\nGPA:-5\nSpirit:-5");
+        }
+        else{
+            gameState.changeGPA(-5);
+            gameState.changeSpirit(-10);
+            gameState.changeHappiness(-10);
+            return ("Happiness:-10\nGPA:-5\nSpirit:-10");
         }
     }
 

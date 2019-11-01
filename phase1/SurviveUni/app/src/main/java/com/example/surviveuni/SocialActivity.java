@@ -39,9 +39,14 @@ public class SocialActivity extends AppCompatActivity{
         if (number == correctAnswer) {
             return "Correct! Let's be friend!";
             // update(stats);
-        } else {
+        }
+
+        else if(number <=5 && number >=1 ) {
             return "Sorry! Maybe next time.";
             // update(stats);
+        }
+        else{
+            return "You are not here to be friend with me!";
         }
     }
     public void update(){}
