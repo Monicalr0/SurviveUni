@@ -11,6 +11,7 @@ public class Socialfeedback extends AppCompatActivity {
     private GameState gameState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        GameState gameState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social_feedback);
         gameState = GameManager.getGameState();
@@ -41,7 +42,13 @@ public class Socialfeedback extends AppCompatActivity {
     }
 
     public void StartNextRound(View view) {
-        Intent NextRound = new Intent(this, GameActivity.class);
+        Intent NextRound;
+        if(gameState.checkGameover() == 1){
+            NextRound = new Intent(this, GameOverActivity.class);
+        }
+        else {
+            NextRound = new Intent(this, GameActivity.class);
+        }
         startActivity(NextRound);
     }
 }
