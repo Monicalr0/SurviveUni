@@ -31,12 +31,12 @@ public class Socialfeedback extends AppCompatActivity {
             gameState.changeGPA(-5);
             gameState.changeSpirit(-5);
             gameState.changeHappiness(10);
-            return ("Social: +10\nStudy:-5\nSleep:-5");
+            return ("Happiness: +10\nGPA:-5\nSpirit:-5");
         } else {
             gameState.changeGPA(-10);
             gameState.changeSpirit(-5);
-            gameState.changeHappiness(-5);
-            return ("Study:-5\nSleep:-5");
+            gameState.changeHappiness(-50);
+            return ("Happiness:+10\nGPA:-5\nSpirit:-5");
         }
     }
 

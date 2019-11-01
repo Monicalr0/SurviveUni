@@ -23,6 +23,14 @@ public class GameOverActivity extends AppCompatActivity {
         reason = "Sorry\n you failed to survive university\nyour record is\n" + record + "days";
         TextView textView = findViewById(R.id.reasonText);
         textView.setText(reason);
+        reset_data();
+    }
+
+    void reset_data(){
+        gameState.setSpirit(50);
+        gameState.setGPA(50);
+        gameState.setHappiness(50);
+        gameState.setDayOfSurvival(0);
     }
 
     public void NewGame(View view) {

@@ -66,9 +66,9 @@ class GameState implements Serializable {
         dayOfSurvival++;
     }
 
-    public int checkGameover() {
+    int checkGameover() {
 
-        if (getSpirit() == 0 | getHappiness() == 0 | getGPA() == 0) {
+        if (getSpirit() <= 0 | getHappiness() <= 0 | getGPA() <= 0) {
             return 1;
         }
         return 0;
