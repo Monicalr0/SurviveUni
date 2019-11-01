@@ -61,6 +61,7 @@ public class StudyGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         startingTime = LocalTime.now();
+        gameState=GameManager.getGameState();
         setContentView(R.layout.activity_study_game);
         setupTime();
 
