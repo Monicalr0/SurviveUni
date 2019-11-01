@@ -55,35 +55,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="100dp" />
+        app:layout_constraintGuide_begin="47dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="300dp" />
+        app:layout_constraintGuide_begin="265dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="400dp" />
+        app:layout_constraintGuide_begin="371dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="500dp" />
+        app:layout_constraintGuide_begin="476dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="600dp" />
+        app:layout_constraintGuide_begin="579dp" />
 
     <TextView
         android:id="@+id/textView5"

@@ -8,9 +8,12 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="221dp"
-        android:layout_height="43dp"
-        android:text="Welcome to Survive In University"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:fontFamily="casual"
+        android:text="Survive In University"
+        android:textAlignment="center"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline30"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintLeft_toLeftOf="parent"
