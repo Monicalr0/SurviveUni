@@ -4,30 +4,45 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 
-/** A sheep. */
+/**
+ * A sheep.
+ */
 class Sheep {
 
-    /** This sheep's first coordinate. */
+    /**
+     * This sheep's first coordinate.
+     */
     private int x;
 
-    /** This sheep's second coordinate. */
+    /**
+     * This sheep's second coordinate.
+     */
     private int y;
 
-    /** This sheep's width. */
+    /**
+     * This sheep's width.
+     */
     private int sheepWidth;
 
-    /** This sheep's height. */
+    /**
+     * This sheep's height.
+     */
     private int sheepHeight;
 
-    /** Bitmap of sheep */
+    /**
+     * Bitmap of sheep
+     */
     private Bitmap sheep_left, sheep_right, appearance;
 
-    /** Indicates whether this sheep is moving right. */
+    /**
+     * Indicates whether this sheep is moving right.
+     */
     private boolean goingRight;
 
-    /** Use for random movement up or down, turn around. */
+    /**
+     * Use for random movement up or down, turn around.
+     */
     private double d;
 
     /**
