@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class Socialfeedback extends AppCompatActivity {
+public class Socialfeedback extends GameState {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +26,14 @@ public class Socialfeedback extends AppCompatActivity {
 
     private String checkFeedback(String feedback) {
         if (feedback.equals("Correct! Let's be friend!")) {
+            changeGPA(-5);
+            changeSpirit(-5);
+            changeHapiness(10);
             return ("Social: +10\nStudy:-5\nSleep:-5");
         } else {
+            changeGPA(-5);
+            changeSpirit(-5);
+            changeHapiness(-5);
             return ("Study:-5\nSleep:-5");
         }
     }
