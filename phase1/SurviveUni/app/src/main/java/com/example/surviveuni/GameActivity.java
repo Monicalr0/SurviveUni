@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+
 public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        Intent intent = new Intent(this, CustomizeActivity.class);
-        startActivity(intent);
+        Intent i = new Intent(this, CustomizeActivity.class);
+        i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(i);
     }
 
 }
