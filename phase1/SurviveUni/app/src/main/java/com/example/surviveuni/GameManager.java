@@ -20,6 +20,8 @@ class GameManager {
         this.context = context;
     }
 
+    void newGame(){}
+
     void newStudyGame(){
         gameState.setGPA(0);
     }
