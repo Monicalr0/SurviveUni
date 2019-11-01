@@ -27,7 +27,7 @@ public class CustomizeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (gameManager.getGameState() == null) {
+        if (GameManager.getGameState() == null) {
             findViewById(R.id.CustomizeResumeBtn).setVisibility(View.GONE);
             findViewById(R.id.CustomizeSaveBtn).setVisibility(View.GONE);
         } else {

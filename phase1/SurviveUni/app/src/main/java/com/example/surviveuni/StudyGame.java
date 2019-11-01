@@ -20,12 +20,13 @@ import java.util.TimerTask;
 
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
-public class StudyGame extends GameState {
+public class StudyGame extends AppCompatActivity {
 
     /**
      * TextView for displaying time
      */
     private TextView timeDisplay;
+    private GameState gameState;
 
     /**
      * Time when the game starts or loads
@@ -129,8 +130,8 @@ public class StudyGame extends GameState {
 
     private void fail() {
 
-    changeHapiness(-5);
-    changeSpirit(-5);
+    gameState.changeHappiness(-5);
+    gameState.changeSpirit(-5);
     setUpResult(false);
     task2.cancel();
 
@@ -149,8 +150,8 @@ public class StudyGame extends GameState {
             public void onClick(View v) {
                 task2.cancel();
                 button.setImageDrawable(null);
-                changeHapiness(5);
-                changeSpirit(5);
+                gameState.changeHappiness(5);
+                gameState.changeSpirit(5);
                 setUpResult(true);
             }
 
@@ -174,12 +175,12 @@ public class StudyGame extends GameState {
                 // Stuff that updates the UI
                 if (isSuccess && usedTime<3) {
                     result.setText("Success! GPA goes up!");
-                    changeGPA(5);
+                    gameState.changeGPA(5);
                 }
 
                 else {
                     result.setText("Failure... :(");
-                    changeGPA(-5);
+                    gameState.changeGPA(-5);
                 }
             }
         });

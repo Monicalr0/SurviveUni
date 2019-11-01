@@ -23,7 +23,7 @@ public class GameActivity extends AppCompatActivity {
 
         GameState gs = GameManager.getGameState();
         Toast.makeText(this, "Your Three Values, GPA, Spirit and Happiness are "
-                + gs.getGPA() + ", " + gs.getSpirit() + ", " + gs.getHapiness(), Toast.LENGTH_SHORT).show();
+                + gs.getGPA() + ", " + gs.getSpirit() + ", " + gs.getHappiness(), Toast.LENGTH_SHORT).show();
 
         TextView day = findViewById(R.id.GameMainDayShow);
         day.setText(" Your record of survive in Uni is " + gs.getDayOfSurvival() + " days ");

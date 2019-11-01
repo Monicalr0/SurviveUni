@@ -14,6 +14,7 @@ public class SleepFeedbackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_feedback);
+        gameState=GameManager.getGameState();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
 

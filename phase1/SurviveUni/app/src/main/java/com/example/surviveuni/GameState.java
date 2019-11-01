@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 
-class GameState extends AppCompatActivity implements Serializable  {
+class GameState implements Serializable{
     private int GPA;
     private int spirit;
-    private int hapiness;
+    private int happiness;
     private int dayOfSurvival;
-    private int a;
-    private int b;
+
+    GameState(){
+        GPA=50;
+        spirit=50;
+        happiness=50;
+        dayOfSurvival=0;
+    }
 
     int getGPA() {
         return GPA;
@@ -20,8 +25,8 @@ class GameState extends AppCompatActivity implements Serializable  {
         return spirit;
     }
 
-    int getHapiness() {
-        return hapiness;
+    int getHappiness() {
+        return happiness;
     }
 
     int getDayOfSurvival() {
@@ -36,8 +41,8 @@ class GameState extends AppCompatActivity implements Serializable  {
         this.spirit = spirit;
     }
 
-    void setHapiness(int hapiness) {
-        this.hapiness = hapiness;
+    void setHappiness(int happiness) {
+        this.happiness = happiness;
     }
 
     public void setDayOfSurvival(int dayOfSurvival) {
@@ -48,7 +53,7 @@ class GameState extends AppCompatActivity implements Serializable  {
 
     void changeSpirit(int sp) {this.spirit += sp;}
 
-    void changeHapiness(int hp) {this.hapiness += hp;}
+    void changeHappiness(int hp) {this.happiness += hp;}
 
 
 }
