@@ -28,11 +28,5 @@ public class StudyMenu extends AppCompatActivity {
         startActivity(exitGame);
 
     }
-
-
-
-
-
-
 }
 

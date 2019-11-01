@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -110,11 +108,9 @@ public class StudyGame extends AppCompatActivity {
                         }
                     });
                 }
-
             }
         };
         timer.schedule(task2, 0, 1000);
-
     }
 
     int convertTime(long time) {
@@ -144,7 +140,6 @@ public class StudyGame extends AppCompatActivity {
                 button.setImageDrawable(null);
                 setUpResult(true);
             }
-
         });
     }
 
@@ -162,17 +157,16 @@ public class StudyGame extends AppCompatActivity {
                 button.setImageDrawable(null);
                 setUpResult(true);
             }
-
         });
     }
 
 
     public void setExitBtn(View view) {
         Intent i;
-
         if (gameState.checkGameover() == 1) {
             i = new Intent(this, GameOverActivity.class);
         } else {
+            gameState.updateDay();
             i = new Intent(this, StudyMenu.class);
         }
         i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -198,14 +192,8 @@ public class StudyGame extends AppCompatActivity {
                     task2.cancel();
                     result.setText("Failure... :(");
                     gameState.changeGPA(-5);
-
                 }
-
             }
         });
-
-
     }
-
-
 }
