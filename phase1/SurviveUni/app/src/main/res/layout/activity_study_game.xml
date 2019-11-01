@@ -23,13 +23,29 @@
         android:id="@+id/theButton"
 
         android:layout_width="wrap_content"
-        android:layout_height="264dp"
+        android:layout_height="262dp"
         android:layout_alignParentLeft="true"
         android:layout_gravity="center"
         android:background="@null"
-        android:onClick="setUpButton"
+        android:onClick="setUpPersonButton"
         android:scaleType="fitCenter"
         app:srcCompat="@null" />
+
+    <ImageButton
+        android:id="@+id/MessageButton"
+        android:layout_width="279dp"
+        android:layout_height="73dp"
+
+
+        android:layout_gravity="left"
+
+        android:layout_weight="0"
+        android:background="@null"
+        android:onClick="setUpMessageButton"
+        android:scaleType="centerInside"
+        app:srcCompat="@null" />
+
+
 
     <TextView
         android:id="@+id/studyResult"

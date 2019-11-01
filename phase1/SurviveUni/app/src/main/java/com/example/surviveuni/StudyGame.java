@@ -91,7 +91,13 @@ public class StudyGame extends AppCompatActivity {
                         public void run() {
 
                             // Stuff that updates the UI
-                            setUpButton();
+
+                            int i = (int) (Math.random()) + 1;
+                            if (i == 1)setUpMessageButton();
+
+                            else
+                                setUpPersonButton();
+
                         }
                     });
                 }
@@ -129,7 +135,25 @@ public class StudyGame extends AppCompatActivity {
 
 
 
-    private void setUpButton() {
+    private void setUpMessageButton() {
+
+        button = new ImageButton(this);
+        button = findViewById(R.id.MessageButton);
+        button.setImageResource(R.drawable.message1);
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                task2.cancel();
+                button.setImageDrawable(null);
+                setUpResult(true);
+            }
+
+        });
+    }
+
+    private void setUpPersonButton() {
 
         button = new ImageButton(this);
         button = findViewById(R.id.theButton);
@@ -146,6 +170,7 @@ public class StudyGame extends AppCompatActivity {
 
         });
     }
+
 
     public void setExitBtn(View view) {
         Intent i;
