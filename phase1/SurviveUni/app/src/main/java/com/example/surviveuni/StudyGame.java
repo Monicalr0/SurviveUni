@@ -124,19 +124,11 @@ public class StudyGame extends AppCompatActivity {
         String secStr = sec.toString();
 
         if (sec == 6)
-            fail();
+            setUpResult(false);
 
         return sec - 3;
     }
 
-    private void fail() {
-
-    gameState.changeHappiness(-5);
-    gameState.changeSpirit(-5);
-    setUpResult(false);
-    task2.cancel();
-
-    }
 
 
     private void setUpButton() {
@@ -151,8 +143,6 @@ public class StudyGame extends AppCompatActivity {
             public void onClick(View v) {
                 task2.cancel();
                 button.setImageDrawable(null);
-                gameState.changeHappiness(5);
-                gameState.changeSpirit(5);
                 setUpResult(true);
             }
 
@@ -173,6 +163,9 @@ public class StudyGame extends AppCompatActivity {
             @Override
             public void run() {
 
+                gameState.changeHappiness(-5);
+                gameState.changeSpirit(-5);
+
                 // Stuff that updates the UI
                 if (isSuccess && usedTime<3) {
                     result.setText("Success! GPA goes up!");
@@ -180,8 +173,10 @@ public class StudyGame extends AppCompatActivity {
                 }
 
                 else {
+                    task2.cancel();
                     result.setText("Failure... :(");
                     gameState.changeGPA(-5);
+
                 }
             }
         });

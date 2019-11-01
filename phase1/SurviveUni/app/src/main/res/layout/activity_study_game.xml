@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/studyTimeText"
         android:layout_width="wrap_content"
-        android:layout_height="148dp"
+        android:layout_height="168dp"
         android:layout_gravity="center"
         android:text="Time: 0"
         android:textAlignment="center"
@@ -23,13 +23,13 @@
         android:id="@+id/theButton"
 
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="264dp"
         android:layout_alignParentLeft="true"
         android:layout_gravity="center"
         android:background="@null"
+        android:onClick="setUpButton"
         android:scaleType="fitCenter"
-        app:srcCompat="@null"
-        android:onClick="setUpButton"/>
+        app:srcCompat="@null" />
 
     <TextView
         android:id="@+id/studyResult"
