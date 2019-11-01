@@ -22,6 +22,10 @@ public class CustomizeActivity extends AppCompatActivity {
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("USER");
         gameManager = new GameManager(user, this);
+        setNewGameBtn();
+        setLoadGameBtn();
+        setSaveGameBtn();
+        setResumeBtn();
     }
 
     @Override
@@ -38,7 +42,7 @@ public class CustomizeActivity extends AppCompatActivity {
     }
 
 
-    public void setNewGameBtn(View view){
+    public void setNewGameBtn() {
         findViewById(R.id.CustomizeNewGameBtn).setOnClickListener(v -> {
             gameManager.newGame();
 
@@ -49,7 +53,7 @@ public class CustomizeActivity extends AppCompatActivity {
 
     }
 
-    public void setLoadGameBtn(View view){
+    public void setLoadGameBtn() {
         findViewById(R.id.CustomizeLoadGameBtn).setOnClickListener(v -> {
             gameManager.loadGame();
 
@@ -60,7 +64,7 @@ public class CustomizeActivity extends AppCompatActivity {
 
     }
 
-    public void setSaveGameBtn(View view){
+    public void setSaveGameBtn() {
         findViewById(R.id.CustomizeSaveBtn).setOnClickListener(v -> {
 
             gameManager.saveGame();
@@ -74,7 +78,7 @@ public class CustomizeActivity extends AppCompatActivity {
         });
     }
 
-    public void setResumeBtn(View view){
+    public void setResumeBtn() {
         findViewById(R.id.CustomizeResumeBtn).setOnClickListener(v -> {
 
             Intent i = new Intent(this, Activity.class);

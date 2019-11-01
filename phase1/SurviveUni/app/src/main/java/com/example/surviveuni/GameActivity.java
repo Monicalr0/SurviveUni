@@ -9,17 +9,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
-    private User user;
-    private GameManager gameManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_main);
 
         Intent i = getIntent();
-        user = (User)i.getSerializableExtra("USER");
-        gameManager = new GameManager(user, this);
 
         GameState gs = GameManager.getGameState();
         Toast.makeText(this, "Your Three Values, GPA, Spirit and Happiness are "
@@ -29,19 +24,24 @@ public class GameActivity extends AppCompatActivity {
         day.setText(" Your record of survive in Uni is " + gs.getDayOfSurvival() + " days ");
     }
 
-    public void StartSleep(View view){
+    public void StartSleep(View view) {
         Intent startGame = new Intent(this, SleepMainActivity.class);
         startActivity(startGame);
     }
 
-    public void StartSocial(View view){
+    public void StartSocial(View view) {
         Intent startGame = new Intent(this, SocialMain.class);
         startActivity(startGame);
     }
 
-    public void StartStudy(View view){
+    public void StartStudy(View view) {
         Intent startGame = new Intent(this, StudyMenu.class);
         startActivity(startGame);
+    }
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, CustomizeActivity.class);
+        startActivity(intent);
     }
 
 }
