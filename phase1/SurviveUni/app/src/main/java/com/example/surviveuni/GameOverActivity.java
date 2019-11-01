@@ -15,18 +15,18 @@ public class GameOverActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        gameState=GameManager.getGameState();
+        gameState = GameManager.getGameState();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
 
         record = String.valueOf(gameState.getDayOfSurvival());
-        reason = "Sorry\n you failed to survive university\nyour record is\n" + record + "days";
+        reason = "Sorry\n you failed to survive university\nyour record is " + record + " days";
         TextView textView = findViewById(R.id.reasonText);
         textView.setText(reason);
         reset_data();
     }
 
-    void reset_data(){
+    void reset_data() {
         gameState.setSpirit(50);
         gameState.setGPA(50);
         gameState.setHappiness(50);
