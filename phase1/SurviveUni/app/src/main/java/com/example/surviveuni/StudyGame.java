@@ -119,9 +119,7 @@ public class StudyGame extends AppCompatActivity {
         Integer hour = (int) (time / 3600000);
         Integer min = (int) ((time % 3600000) / 60000);
         Integer sec = (int) ((time % 3600000 % 60000) / 1000) ;
-        String hourStr = hour.toString();
-        String minStr = min.toString();
-        String secStr = sec.toString();
+
 
         if (sec == 6)
             setUpResult(false);
@@ -150,7 +148,14 @@ public class StudyGame extends AppCompatActivity {
     }
 
     public void setExitBtn(View view) {
-        Intent i = new Intent(this, StudyMenu.class);
+        Intent i;
+
+        if(gameState.checkGameover() == 1){
+            i = new Intent(this, GameOverActivity.class);
+        }
+        else {
+            i = new Intent(this, StudyMenu.class);
+        }
         i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(i);
     }
@@ -178,6 +183,7 @@ public class StudyGame extends AppCompatActivity {
                     gameState.changeGPA(-5);
 
                 }
+
             }
         });
 
