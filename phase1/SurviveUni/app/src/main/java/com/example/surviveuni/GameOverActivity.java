@@ -11,6 +11,7 @@ public class GameOverActivity extends AppCompatActivity {
     private GameState gameState;
     String reason;
     String record;
+    private GameManager gameManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,12 @@ public class GameOverActivity extends AppCompatActivity {
     }
 
     public void NewGame(View view) {
+        gameState.setGPA(50);
+        gameState.setHappiness(50);
+        gameState.setSpirit(50);
+        gameState.setDayOfSurvival(0);
         Intent newgame = new Intent(this, GameActivity.class);
         startActivity(newgame);
+
     }
 }
