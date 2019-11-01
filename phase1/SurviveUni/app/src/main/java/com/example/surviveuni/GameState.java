@@ -1,5 +1,7 @@
 package com.example.surviveuni;
 
+import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
@@ -54,6 +56,15 @@ class GameState implements Serializable{
     void changeSpirit(int sp) {this.spirit += sp;}
 
     void changeHappiness(int hp) {this.happiness += hp;}
+
+
+    public int checkGameover(){
+
+        if(getSpirit() == 0 | getHappiness() == 0 | getGPA() ==0){
+            return 1;
+        }
+        return 0;
+    }
 
 
 }
