@@ -3,23 +3,33 @@ package com.example.surviveuni;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-/** Hacky way to manage threading and updates. */
+/**
+ * Hacky way to manage threading and updates.
+ */
 public class SheepThread extends Thread {
 
-    /** Where the sheep are drawn. */
+    /**
+     * Where the sheep are drawn.
+     */
     private SheepView sheepView;
-    /** The canvas container. */
+    /**
+     * The canvas container.
+     */
     private SurfaceHolder surfaceHolder;
-    /** Whether the thread is running. */
+    /**
+     * Whether the thread is running.
+     */
     private boolean isRunning;
-    /** The canvas on which to draw the sleep game */
+    /**
+     * The canvas on which to draw the sleep game
+     */
     public static Canvas canvas;
 
     /**
      * Construct the thread.
      *
      * @param surfaceHolder the canvas container.
-     * @param view where the sheep are drawn.
+     * @param view          where the sheep are drawn.
      */
     public SheepThread(SurfaceHolder surfaceHolder, com.example.surviveuni.SheepView view) {
         this.surfaceHolder = surfaceHolder;
