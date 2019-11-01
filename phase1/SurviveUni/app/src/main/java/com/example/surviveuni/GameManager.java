@@ -20,19 +20,7 @@ class GameManager {
         this.context = context;
     }
 
-    void newGame(){}
-
-    void newStudyGame(){
-        gameState.setGPA(0);
-    }
-
-    void newSleepGame(){
-        gameState.setSpirit(0);
-    }
-
-    void newSocialGame(){
-        gameState.setHapiness(0);
-    }
+    void newGame() {gameState = new GameState();}
 
     void loadGame(){
 

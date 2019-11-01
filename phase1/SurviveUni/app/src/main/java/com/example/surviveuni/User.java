@@ -1,5 +1,6 @@
 package com.example.surviveuni;
 
+
 import java.io.Serializable;
 
 class User implements Serializable {
@@ -33,5 +34,10 @@ class User implements Serializable {
 
     boolean checkPassword(String pw){
         return this.password.equals(pw);
+    }
+
+
+    public String toString(User user) {
+        return user.getPassword() + user.getUsername();
     }
 }
