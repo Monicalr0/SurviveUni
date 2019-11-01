@@ -13,6 +13,7 @@ public class Socialfeedback extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social_feedback);
+        gameState = GameManager.getGameState();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
 
@@ -23,11 +24,6 @@ public class Socialfeedback extends AppCompatActivity {
         String statsFeedback = checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        gameState = GameManager.getGameState();
     }
 
     private String checkFeedback(String feedback) {
