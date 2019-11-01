@@ -61,7 +61,7 @@ public class StudyGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         startingTime = LocalTime.now();
-        gameState=GameManager.getGameState();
+        gameState = GameManager.getGameState();
         setContentView(R.layout.activity_study_game);
         setupTime();
 
@@ -69,9 +69,8 @@ public class StudyGame extends AppCompatActivity {
     }
 
 
-
     /**
-     *  Time counting
+     * Time counting
      */
     private void setupTime() {
         timeDisplay = findViewById(R.id.studyTimeText);
@@ -84,7 +83,7 @@ public class StudyGame extends AppCompatActivity {
 
                 usedTime = convertTime(time);
 
-                if (usedTime == -1){
+                if (usedTime == -1) {
                     runOnUiThread(new Runnable() {
 
                         @Override
@@ -92,18 +91,15 @@ public class StudyGame extends AppCompatActivity {
 
                             // Stuff that updates the UI
 
-                            int i = (int) (Math.random()) + 1;
-                            if (i == 1)setUpMessageButton();
+                            double i = Math.random();
+                            if (i > 0.5) setUpMessageButton();
 
                             else
                                 setUpPersonButton();
 
                         }
                     });
-                }
-
-
-                else if (usedTime >= 0) {
+                } else if (usedTime >= 0) {
                     runOnUiThread(new Runnable() {
 
                         @Override
@@ -124,7 +120,7 @@ public class StudyGame extends AppCompatActivity {
     int convertTime(long time) {
         Integer hour = (int) (time / 3600000);
         Integer min = (int) ((time % 3600000) / 60000);
-        Integer sec = (int) ((time % 3600000 % 60000) / 1000) ;
+        Integer sec = (int) ((time % 3600000 % 60000) / 1000);
 
 
         if (sec == 6)
@@ -134,12 +130,11 @@ public class StudyGame extends AppCompatActivity {
     }
 
 
-
     private void setUpMessageButton() {
 
         button = new ImageButton(this);
         button = findViewById(R.id.MessageButton);
-        //button.setImageResource(R.drawable.message1);
+        button.setImageResource(R.drawable.message1);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -175,17 +170,16 @@ public class StudyGame extends AppCompatActivity {
     public void setExitBtn(View view) {
         Intent i;
 
-        if(gameState.checkGameover() == 1){
+        if (gameState.checkGameover() == 1) {
             i = new Intent(this, GameOverActivity.class);
-        }
-        else {
+        } else {
             i = new Intent(this, StudyMenu.class);
         }
         i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(i);
     }
 
-    public void setUpResult(boolean isSuccess){
+    public void setUpResult(boolean isSuccess) {
 
         result = findViewById(R.id.studyResult);
         runOnUiThread(new Runnable() {
@@ -197,12 +191,10 @@ public class StudyGame extends AppCompatActivity {
                 gameState.changeSpirit(-5);
 
                 // Stuff that updates the UI
-                if (isSuccess && usedTime<3) {
+                if (isSuccess && usedTime < 3) {
                     result.setText("Success! GPA goes up!");
                     gameState.changeGPA(5);
-                }
-
-                else {
+                } else {
                     task2.cancel();
                     result.setText("Failure... :(");
                     gameState.changeGPA(-5);
@@ -214,7 +206,6 @@ public class StudyGame extends AppCompatActivity {
 
 
     }
-
 
 
 }
