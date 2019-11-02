@@ -11,7 +11,6 @@ public class GameOverActivity extends AppCompatActivity {
     private GameState gameState;
     String reason;
     String record;
-    private GameManager gameManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

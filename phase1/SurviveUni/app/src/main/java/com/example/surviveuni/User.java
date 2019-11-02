@@ -14,7 +14,7 @@ class User implements Serializable {
         }
     }
 
-    boolean checkReasonable(String username,String password){
+    private boolean checkReasonable(String username,String password){
         if (password.equals("")) {
             return false;
         } else if (username.equals("")) {
@@ -26,9 +26,8 @@ class User implements Serializable {
 
     }
 
-    String getPassword() {return password;}
 
-    public String getUsername(){
+    String getUsername(){
         return username;
     }
 
@@ -37,7 +36,4 @@ class User implements Serializable {
     }
 
 
-    public String toString(User user) {
-        return user.getPassword() + user.getUsername();
-    }
 }

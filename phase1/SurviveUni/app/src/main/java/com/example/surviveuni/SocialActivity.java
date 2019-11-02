@@ -21,7 +21,7 @@ public class SocialActivity extends AppCompatActivity{
 
     public void submitAnswer(View view) {
         Intent intent = new Intent(this, Socialfeedback.class);
-        EditText editText = (EditText) findViewById(R.id.answerText);
+        EditText editText = findViewById(R.id.answerText);
         String answer = editText.getText().toString();
         String feedBack = checkAnswer(answer);
         intent.putExtra(EXTRA_MESSAGE, feedBack);
@@ -56,6 +56,5 @@ public class SocialActivity extends AppCompatActivity{
         }
 
     }
-    public void update(){}
 
 }

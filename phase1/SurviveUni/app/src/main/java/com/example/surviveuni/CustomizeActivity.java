@@ -24,17 +24,14 @@ public class CustomizeActivity extends AppCompatActivity {
         setNewGameBtn();
         setLoadGameBtn();
         setSaveGameBtn();
-//        setResumeBtn();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if (GameManager.getGameState() == null) {
-//            findViewById(R.id.CustomizeResumeBtn).setVisibility(View.GONE);
             findViewById(R.id.CustomizeSaveBtn).setVisibility(View.GONE);
         } else {
-//            findViewById(R.id.CustomizeResumeBtn).setVisibility(View.VISIBLE);
             findViewById(R.id.CustomizeSaveBtn).setVisibility(View.VISIBLE);
 
         }
@@ -72,13 +69,4 @@ public class CustomizeActivity extends AppCompatActivity {
         });
     }
 
-//    public void setResumeBtn() {
-//        findViewById(R.id.CustomizeResumeBtn).setOnClickListener(v -> {
-//
-//            Intent i = new Intent(this, Activity.class);
-//            i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
-//            startActivity(i);
-//
-//        });
-//    }
 }
