@@ -19,10 +19,8 @@ class User implements Serializable {
             return false;
         } else if (username.equals("")) {
             return false;
-        } else if (password.length() <= 6 || username.length() <= 6) {
-            return false;
         }
-        return true;
+        else return (password.length() >= 7 && username.length() >= 7);
 
     }
 
