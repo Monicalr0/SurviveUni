@@ -27,7 +27,6 @@
         android:layout_alignParentLeft="true"
         android:layout_gravity="center"
         android:background="@null"
-        android:onClick="setUpPersonButton"
         android:scaleType="fitCenter"
         app:srcCompat="@null" />
 
@@ -41,7 +40,6 @@
 
         android:layout_weight="0"
         android:background="@null"
-        android:onClick="setUpMessageButton"
         android:scaleType="centerInside"
         app:srcCompat="@null" />
 
