@@ -40,12 +40,10 @@ public class SocialActivity extends AppCompatActivity{
             int correctAnswer = generate_expect(); // should be imported from previous activity
             if (number == correctAnswer) {
                 return "Correct! Let's be friend!";
-                // update(stats);
             }
 
             else if(number <=5 && number >=1 ) {
                 return "Sorry! Maybe next time.";
-                // update(stats);
             }
             else{
                 return "You are not here to be friend with me!";

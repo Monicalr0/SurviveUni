@@ -35,10 +35,8 @@ public class SleepAnswerActivity extends AppCompatActivity {
             int number = Integer.parseInt(answer);
             if (number == sheepNum) {
                 return "Correct!";
-                // update(stats);
             } else {
                 return "Sorry!";
-                // update(stats);
             }
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
