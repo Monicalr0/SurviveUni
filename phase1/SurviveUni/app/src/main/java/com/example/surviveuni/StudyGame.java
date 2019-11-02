@@ -16,7 +16,6 @@ import java.time.LocalTime;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class StudyGame extends AppCompatActivity {
 
@@ -167,9 +166,8 @@ public class StudyGame extends AppCompatActivity {
             i = new Intent(this, GameOverActivity.class);
         } else {
             gameState.updateDay();
-            i = new Intent(this, StudyMenu.class);
+            i = new Intent(this, GameActivity.class);
         }
-        i.addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(i);
     }
 
