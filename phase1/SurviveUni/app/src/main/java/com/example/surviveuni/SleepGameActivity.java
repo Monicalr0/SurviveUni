@@ -22,6 +22,6 @@ public class SleepGameActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_MESSAGE, SheepNum);
             SleepGameActivity.this.startActivity(intent);
             SleepGameActivity.this.finish();
-        }, 3000);
+        }, 3500);
     }
 }

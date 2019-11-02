@@ -16,11 +16,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Navigate to sign up activity
+     */
     public void LogIn(View view) {
         Intent logIn = new Intent(this, LoginActivity.class);
         startActivity(logIn);
     }
 
+    /**
+     * Navigate to create account activity
+     */
     public void createAccount(View view) {
         Intent createAcc = new Intent(this, CreateAccountActivity.class);
         startActivity(createAcc);

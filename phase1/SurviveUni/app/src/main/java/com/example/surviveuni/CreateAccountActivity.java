@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
+    /**
+     * The userManager manages users
+     */
     private UserManager userManager;
 
     @Override
@@ -21,6 +24,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         setCreateBtn();
     }
 
+    /**
+     * Navigate to MainActivity
+     */
     public void ExitCreate() {
         findViewById(R.id.CreateAccountExitBtn).setOnClickListener(v -> {
             Intent exitCreate = new Intent(this, MainActivity.class);
@@ -28,6 +34,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * create new account
+     */
     public void setCreateBtn() {
         findViewById(R.id.CreateAccountSubmitBtn).setOnClickListener(v -> {
             EditText accIn = findViewById(R.id.CreateAccountAccInput);
@@ -46,6 +55,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Check the validity of user's input
+     */
     private boolean checkReasonable(String username, String password) {
         if (username.equals("")) {
             Toast.makeText(this, "Username Cannot Be Empty!", Toast.LENGTH_SHORT).show();

@@ -26,6 +26,9 @@ public class GameOverActivity extends AppCompatActivity {
         reset_data();
     }
 
+    /**
+     * reset static variables to 50
+     */
     void reset_data() {
         gameState.setSpirit(50);
         gameState.setGPA(50);
@@ -33,6 +36,9 @@ public class GameOverActivity extends AppCompatActivity {
         gameState.setDayOfSurvival(0);
     }
 
+    /**
+     * Navigate to GameActivity
+     */
     public void NewGame(View view) {
         Intent newgame = new Intent(this, GameActivity.class);
         startActivity(newgame);

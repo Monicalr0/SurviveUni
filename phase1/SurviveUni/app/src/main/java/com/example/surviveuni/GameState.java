@@ -1,9 +1,5 @@
 package com.example.surviveuni;
 
-import android.content.Intent;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.Serializable;
 
 class GameState implements Serializable {
@@ -19,53 +15,117 @@ class GameState implements Serializable {
         dayOfSurvival = 0;
     }
 
+    /**
+     * Return the GPA of this user
+     *
+     * @return GPA
+     */
     int getGPA() {
         return GPA;
     }
 
+    /**
+     * Return the Spirit of this user
+     *
+     * @return Spirit
+     */
     int getSpirit() {
         return spirit;
     }
 
+    /**
+     * Return the Happiness of this user
+     *
+     * @return Happiness
+     */
     int getHappiness() {
         return happiness;
     }
 
+    /**
+     * Return the dayOfSurvival of this user
+     *
+     * @return number of days survived
+     */
     int getDayOfSurvival() {
         return dayOfSurvival;
     }
 
+    /**
+     * Set the GPA of this user
+     *
+     * @param GPA GPA to set
+     */
     void setGPA(int GPA) {
         this.GPA = GPA;
     }
 
+    /**
+     * Set the spirit of this user
+     *
+     * @param spirit spirit to set
+     */
     void setSpirit(int spirit) {
         this.spirit = spirit;
     }
 
+    /**
+     * Set the happiness of this user
+     *
+     * @param happiness happiness to set
+     */
     void setHappiness(int happiness) {
         this.happiness = happiness;
     }
 
-    public void setDayOfSurvival(int dayOfSurvival) {
+    /**
+     * Set the dayOfSurvival of this user
+     *
+     * @param dayOfSurvival dayOfSurvival to set
+     */
+    void setDayOfSurvival(int dayOfSurvival) {
         this.dayOfSurvival = dayOfSurvival;
     }
 
+    /**
+     * Change the GPA of this user
+     *
+     * @param GPA increase/decrease by GPA
+     */
     void changeGPA(int GPA) {
         this.GPA += GPA;
     }
 
+    /**
+     * Change the spirit of this user
+     *
+     * @param sp increase/decrease by sp
+     */
     void changeSpirit(int sp) {
         this.spirit += sp;
     }
 
+    /**
+     * Change the GPA of this user
+     *
+     * @param hp increase/decrease by hp
+     */
     void changeHappiness(int hp) {
         this.happiness += hp;
     }
-    void updateDay(){
+
+    /**
+     * Increase dayOfSurvival
+     */
+    void updateDay() {
         dayOfSurvival++;
     }
 
+    /**
+     * if one of GPA, Spirit, Happiness is 0, the game ends
+     *
+     * @return 1 if game ends, 0 if game continues
+     */
     int checkGameover() {
 
         if (getSpirit() <= 0 | getHappiness() <= 0 | getGPA() <= 0) {
