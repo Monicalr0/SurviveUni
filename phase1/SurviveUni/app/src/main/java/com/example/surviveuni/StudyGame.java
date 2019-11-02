@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,6 +14,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 
 public class StudyGame extends AppCompatActivity {
@@ -36,11 +36,6 @@ public class StudyGame extends AppCompatActivity {
     private ImageButton button;
 
     /**
-     * timer
-     */
-    private Timer timer;
-
-    /**
      * timertask
      */
     private TimerTask task2;
@@ -50,7 +45,6 @@ public class StudyGame extends AppCompatActivity {
     /**
      * Button to click
      */
-    private Button exit;
     private TextView result;
 
 
@@ -70,6 +64,7 @@ public class StudyGame extends AppCompatActivity {
      * Time counting
      */
     private void setupTime() {
+        Timer timer;
         timeDisplay = findViewById(R.id.studyTimeText);
         timer = new Timer();
 
@@ -81,11 +76,7 @@ public class StudyGame extends AppCompatActivity {
                 usedTime = convertTime(time);
 
                 if (usedTime == -1) {
-                    runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-
+                    runOnUiThread(() -> {
                             // Stuff that updates the UI
 
                             double i = Math.random();
@@ -95,16 +86,13 @@ public class StudyGame extends AppCompatActivity {
                                 setUpPersonButton();
 
                         }
-                    });
+                    );
                 } else if (usedTime >= 0) {
-                    runOnUiThread(new Runnable() {
+                    runOnUiThread(() -> {
 
-                        @Override
-                        public void run() {
 
                             // Stuff that updates the UI
                             timeDisplay.setText(String.format("Time: %s", usedTime));
-                        }
                     });
                 }
             }
@@ -113,8 +101,6 @@ public class StudyGame extends AppCompatActivity {
     }
 
     int convertTime(long time) {
-        Integer hour = (int) (time / 3600000);
-        Integer min = (int) ((time % 3600000) / 60000);
         Integer sec = (int) ((time % 3600000 % 60000) / 1000);
 
 
@@ -132,13 +118,11 @@ public class StudyGame extends AppCompatActivity {
         button.setImageResource(R.drawable.message1);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        button.setOnClickListener(view -> {
                 task2.cancel();
                 button.setImageDrawable(null);
                 setUpResult(true);
-            }
+
         });
     }
 
@@ -149,13 +133,11 @@ public class StudyGame extends AppCompatActivity {
         button.setImageResource(R.drawable.person1);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        button.setOnClickListener(view -> {
                 task2.cancel();
                 button.setImageDrawable(null);
                 setUpResult(true);
-            }
+
         });
     }
 
@@ -174,11 +156,7 @@ public class StudyGame extends AppCompatActivity {
     public void setUpResult(boolean isSuccess) {
 
         result = findViewById(R.id.studyResult);
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-
+        runOnUiThread(() -> {
                 gameState.changeHappiness(-5);
                 gameState.changeSpirit(-5);
 
@@ -192,6 +170,6 @@ public class StudyGame extends AppCompatActivity {
                     gameState.changeGPA(-5);
                 }
             }
-        });
+        );
     }
 }
