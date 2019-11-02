@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SocialActivity extends AppCompatActivity{
     int expect;
@@ -34,20 +35,26 @@ public class SocialActivity extends AppCompatActivity{
     }
 
     private String checkAnswer(String answer) {
-        int number = Integer.parseInt(answer);
-        int correctAnswer = generate_expect(); // should be imported from previous activity
-        if (number == correctAnswer) {
-            return "Correct! Let's be friend!";
-            // update(stats);
+        try{
+            int number = Integer.parseInt(answer);
+            int correctAnswer = generate_expect(); // should be imported from previous activity
+            if (number == correctAnswer) {
+                return "Correct! Let's be friend!";
+                // update(stats);
+            }
+
+            else if(number <=5 && number >=1 ) {
+                return "Sorry! Maybe next time.";
+                // update(stats);
+            }
+            else{
+                return "You are not here to be friend with me!";
+            }
+        }catch (NumberFormatException e) {
+            Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
+            return "Sorry! Maybe next time.";
         }
 
-        else if(number <=5 && number >=1 ) {
-            return "Sorry! Maybe next time.";
-            // update(stats);
-        }
-        else{
-            return "You are not here to be friend with me!";
-        }
     }
     public void update(){}
 
