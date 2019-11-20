@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.sleep;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.view.Window;
 
 public class SleepGameActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "com.example.surviveuni.SleepGameActivity.MESSAGE";
+    public static final String EXTRA_MESSAGE = "com.example.surviveuni.sleep.SleepGameActivity.MESSAGE";
     private int SheepNum = (int) (Math.random() * 10) + 5;
 
     @Override

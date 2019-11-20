@@ -2,7 +2,7 @@ package com.example.surviveuni;
 
 import java.io.Serializable;
 
-class GameState implements Serializable {
+public class GameState implements Serializable {
     private int GPA;
     private int spirit;
     private int happiness;
@@ -92,7 +92,7 @@ class GameState implements Serializable {
      *
      * @param GPA increase/decrease by GPA
      */
-    void changeGPA(int GPA) {
+    public void changeGPA(int GPA) {
         this.GPA += GPA;
     }
 
@@ -101,7 +101,7 @@ class GameState implements Serializable {
      *
      * @param sp increase/decrease by sp
      */
-    void changeSpirit(int sp) {
+    public void changeSpirit(int sp) {
         this.spirit += sp;
     }
 
@@ -110,14 +110,14 @@ class GameState implements Serializable {
      *
      * @param hp increase/decrease by hp
      */
-    void changeHappiness(int hp) {
+    public void changeHappiness(int hp) {
         this.happiness += hp;
     }
 
     /**
      * Increase dayOfSurvival
      */
-    void updateDay() {
+    public void updateDay() {
         dayOfSurvival++;
     }
 
@@ -126,7 +126,7 @@ class GameState implements Serializable {
      *
      * @return 1 if game ends, 0 if game continues
      */
-    int checkGameover() {
+    public int checkGameover() {
 
         if (getSpirit() <= 0 | getHappiness() <= 0 | getGPA() <= 0) {
             return 1;

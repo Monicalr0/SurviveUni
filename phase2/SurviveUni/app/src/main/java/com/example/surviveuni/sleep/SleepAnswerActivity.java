@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.sleep;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.surviveuni.R;
 
 public class SleepAnswerActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.MESSAGE";

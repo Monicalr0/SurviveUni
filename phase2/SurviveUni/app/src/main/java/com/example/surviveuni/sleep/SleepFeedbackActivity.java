@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.sleep;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.GameManager;
+import com.example.surviveuni.GameOverActivity;
+import com.example.surviveuni.GameState;
+import com.example.surviveuni.R;
+import com.example.surviveuni.sleep.SleepAnswerActivity;
+
 public class SleepFeedbackActivity extends AppCompatActivity {
     private GameState gameState;
 
@@ -14,7 +21,7 @@ public class SleepFeedbackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_feedback);
-        gameState=GameManager.getGameState();
+        gameState= GameManager.getGameState();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
 

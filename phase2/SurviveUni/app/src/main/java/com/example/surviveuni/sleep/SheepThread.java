@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.sleep;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
@@ -31,7 +31,7 @@ public class SheepThread extends Thread {
      * @param surfaceHolder the canvas container.
      * @param view          where the sheep are drawn.
      */
-    public SheepThread(SurfaceHolder surfaceHolder, com.example.surviveuni.SheepView view) {
+    public SheepThread(SurfaceHolder surfaceHolder, SheepView view) {
         this.surfaceHolder = surfaceHolder;
         this.sheepView = view;
     }

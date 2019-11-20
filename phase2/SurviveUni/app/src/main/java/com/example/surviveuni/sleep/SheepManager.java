@@ -1,7 +1,9 @@
-package com.example.surviveuni;
+package com.example.surviveuni.sleep;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;
+
+import com.example.surviveuni.sleep.Sheep;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,13 +33,13 @@ public class SheepManager {
     }
 
     void draw(Canvas canvas) {
-        for (com.example.surviveuni.Sheep sheep : SheepList) {
+        for (Sheep sheep : SheepList) {
             sheep.draw(canvas);
         }
     }
 
     void update() {
-        for (com.example.surviveuni.Sheep sheep : SheepList) {
+        for (Sheep sheep : SheepList) {
             sheep.move(screenHeight, screenWidth);
         }
     }

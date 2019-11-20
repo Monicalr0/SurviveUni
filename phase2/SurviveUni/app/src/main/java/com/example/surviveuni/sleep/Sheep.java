@@ -1,9 +1,11 @@
-package com.example.surviveuni;
+package com.example.surviveuni.sleep;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+
+import com.example.surviveuni.R;
 
 /**
  * A sheep.

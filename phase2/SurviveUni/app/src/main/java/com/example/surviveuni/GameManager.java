@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-class GameManager {
+public class GameManager {
     private static GameState gameState;
     private User user;
     private Context context;
@@ -58,7 +58,7 @@ class GameManager {
         }
     }
 
-    static GameState getGameState(){
+    public static GameState getGameState(){
         return gameState;
     }
 

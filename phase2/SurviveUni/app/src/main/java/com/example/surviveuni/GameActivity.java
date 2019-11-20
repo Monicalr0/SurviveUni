@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.surviveuni.sleep.SleepMainActivity;
+
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class GameActivity extends AppCompatActivity {

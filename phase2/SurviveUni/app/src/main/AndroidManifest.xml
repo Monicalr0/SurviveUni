@@ -16,8 +16,8 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".SleepFeedbackActivity" />
-        <activity android:name=".SleepAnswerActivity" />
+        <activity android:name=".sleep.SleepFeedbackActivity" />
+        <activity android:name=".sleep.SleepAnswerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SleepGameActivity" />
-        <activity android:name=".SleepMainActivity" />
+        <activity android:name=".sleep.SleepGameActivity" />
+        <activity android:name=".sleep.SleepMainActivity" />
         <activity android:name=".SocialActivity" />
         <activity android:name=".Socialfeedback" />
         <activity android:name=".SocialMain" />

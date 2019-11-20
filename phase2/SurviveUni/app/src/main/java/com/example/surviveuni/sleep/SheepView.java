@@ -1,10 +1,13 @@
-package com.example.surviveuni;
+package com.example.surviveuni.sleep;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
+
+import com.example.surviveuni.sleep.SheepManager;
+import com.example.surviveuni.sleep.SheepThread;
 
 /**
  * The sleep game view.
