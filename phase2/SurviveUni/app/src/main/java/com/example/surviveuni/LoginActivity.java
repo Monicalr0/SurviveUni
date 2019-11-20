@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.surviveuni.data.User;
+
 import java.util.InputMismatchException;
 
 

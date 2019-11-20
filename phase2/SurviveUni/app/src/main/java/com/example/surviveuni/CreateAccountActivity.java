@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.surviveuni.data.User;
+
 public class CreateAccountActivity extends AppCompatActivity {
 
     /**

@@ -10,9 +10,8 @@ import android.widget.TextView;
 import com.example.surviveuni.GameActivity;
 import com.example.surviveuni.GameManager;
 import com.example.surviveuni.GameOverActivity;
-import com.example.surviveuni.GameState;
+import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
-import com.example.surviveuni.sleep.SleepAnswerActivity;
 
 public class SleepFeedbackActivity extends AppCompatActivity {
     private GameState gameState;

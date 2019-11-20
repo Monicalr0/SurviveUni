@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+import com.example.surviveuni.data.User;
 
 public class CustomizeActivity extends AppCompatActivity {
     private User user;

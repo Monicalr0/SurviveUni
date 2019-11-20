@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.data;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ public class GameState implements Serializable {
     private int happiness;
     private int dayOfSurvival;
 
-    GameState() {
+    public GameState() {
         GPA = 50;
         spirit = 50;
         happiness = 50;
@@ -20,7 +20,7 @@ public class GameState implements Serializable {
      *
      * @return GPA
      */
-    int getGPA() {
+    public int getGPA() {
         return GPA;
     }
 
@@ -29,7 +29,7 @@ public class GameState implements Serializable {
      *
      * @return Spirit
      */
-    int getSpirit() {
+    public int getSpirit() {
         return spirit;
     }
 
@@ -38,7 +38,7 @@ public class GameState implements Serializable {
      *
      * @return Happiness
      */
-    int getHappiness() {
+    public int getHappiness() {
         return happiness;
     }
 
@@ -47,7 +47,7 @@ public class GameState implements Serializable {
      *
      * @return number of days survived
      */
-    int getDayOfSurvival() {
+    public int getDayOfSurvival() {
         return dayOfSurvival;
     }
 
@@ -56,7 +56,7 @@ public class GameState implements Serializable {
      *
      * @param GPA GPA to set
      */
-    void setGPA(int GPA) {
+    public void setGPA(int GPA) {
         this.GPA = GPA;
     }
 
@@ -65,7 +65,7 @@ public class GameState implements Serializable {
      *
      * @param spirit spirit to set
      */
-    void setSpirit(int spirit) {
+    public void setSpirit(int spirit) {
         this.spirit = spirit;
     }
 
@@ -74,7 +74,7 @@ public class GameState implements Serializable {
      *
      * @param happiness happiness to set
      */
-    void setHappiness(int happiness) {
+    public void setHappiness(int happiness) {
         this.happiness = happiness;
     }
 
@@ -83,7 +83,7 @@ public class GameState implements Serializable {
      *
      * @param dayOfSurvival dayOfSurvival to set
      */
-    void setDayOfSurvival(int dayOfSurvival) {
+    public void setDayOfSurvival(int dayOfSurvival) {
         this.dayOfSurvival = dayOfSurvival;
     }
 

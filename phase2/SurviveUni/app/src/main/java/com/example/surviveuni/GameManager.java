@@ -3,6 +3,9 @@ package com.example.surviveuni;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.surviveuni.data.GameState;
+import com.example.surviveuni.data.User;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
