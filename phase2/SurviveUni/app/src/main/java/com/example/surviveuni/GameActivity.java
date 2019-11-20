@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.surviveuni.sleep.SleepMainActivity;
+import com.example.surviveuni.social.SocialMain;
+import com.example.surviveuni.study.StudyMenu;
 
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 

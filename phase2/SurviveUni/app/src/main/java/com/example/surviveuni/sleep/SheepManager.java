@@ -8,7 +8,7 @@ import com.example.surviveuni.sleep.Sheep;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SheepManager {
+class SheepManager {
 
     /**
      * The width of game screen.

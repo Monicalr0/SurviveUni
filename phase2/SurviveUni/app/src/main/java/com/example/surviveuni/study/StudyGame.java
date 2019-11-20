@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.study;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
+import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.GameManager;
+import com.example.surviveuni.GameOverActivity;
+import com.example.surviveuni.GameState;
+import com.example.surviveuni.R;
+
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Timer;
 import java.util.TimerTask;
-
 
 
 public class StudyGame extends AppCompatActivity {
@@ -77,22 +82,22 @@ public class StudyGame extends AppCompatActivity {
 
                 if (usedTime == -1) {
                     runOnUiThread(() -> {
-                            // Stuff that updates the UI
+                                // Stuff that updates the UI
 
-                            double i = Math.random();
-                            if (i > 0.5) setUpMessageButton();
+                                double i = Math.random();
+                                if (i > 0.5) setUpMessageButton();
 
-                            else
-                                setUpPersonButton();
+                                else
+                                    setUpPersonButton();
 
-                        }
+                            }
                     );
                 } else if (usedTime >= 0) {
                     runOnUiThread(() -> {
 
 
-                            // Stuff that updates the UI
-                            timeDisplay.setText(String.format("Time: %s", usedTime));
+                        // Stuff that updates the UI
+                        timeDisplay.setText(String.format("Time: %s", usedTime));
                     });
                 }
             }
@@ -119,9 +124,9 @@ public class StudyGame extends AppCompatActivity {
 
 
         button.setOnClickListener(view -> {
-                task2.cancel();
-                button.setImageDrawable(null);
-                setUpResult(true);
+            task2.cancel();
+            button.setImageDrawable(null);
+            setUpResult(true);
 
         });
     }
@@ -134,9 +139,9 @@ public class StudyGame extends AppCompatActivity {
 
 
         button.setOnClickListener(view -> {
-                task2.cancel();
-                button.setImageDrawable(null);
-                setUpResult(true);
+            task2.cancel();
+            button.setImageDrawable(null);
+            setUpResult(true);
 
         });
     }
@@ -157,19 +162,19 @@ public class StudyGame extends AppCompatActivity {
 
         result = findViewById(R.id.studyResult);
         runOnUiThread(() -> {
-                gameState.changeHappiness(-5);
-                gameState.changeSpirit(-5);
+                    gameState.changeHappiness(-5);
+                    gameState.changeSpirit(-5);
 
-                // Stuff that updates the UI
-                if (isSuccess && usedTime < 3) {
-                    result.setText("Success! GPA goes up!");
-                    gameState.changeGPA(5);
-                } else {
-                    task2.cancel();
-                    result.setText("Failure... :(");
-                    gameState.changeGPA(-5);
+                    // Stuff that updates the UI
+                    if (isSuccess && usedTime < 3) {
+                        result.setText("Success! GPA goes up!");
+                        gameState.changeGPA(5);
+                    } else {
+                        task2.cancel();
+                        result.setText("Failure... :(");
+                        gameState.changeGPA(-5);
+                    }
                 }
-            }
         );
     }
 }

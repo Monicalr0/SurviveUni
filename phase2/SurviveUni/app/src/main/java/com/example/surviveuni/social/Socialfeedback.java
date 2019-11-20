@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.social;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.GameManager;
+import com.example.surviveuni.GameOverActivity;
+import com.example.surviveuni.GameState;
+import com.example.surviveuni.R;
+
 public class Socialfeedback extends AppCompatActivity {
     private GameState gameState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +39,12 @@ public class Socialfeedback extends AppCompatActivity {
             gameState.changeSpirit(-5);
             gameState.changeHappiness(10);
             return ("Happiness:+10\nGPA:-5\nSpirit:-5");
-        }
-        else if (feedback.equals("Sorry! Maybe next time.")){
+        } else if (feedback.equals("Sorry! Maybe next time.")) {
             gameState.changeGPA(-5);
             gameState.changeSpirit(-5);
             gameState.changeHappiness(-5);
             return ("Happiness:-5\nGPA:-5\nSpirit:-5");
-        }
-        else{
+        } else {
             gameState.changeGPA(-5);
             gameState.changeSpirit(-10);
             gameState.changeHappiness(-10);
@@ -49,10 +54,9 @@ public class Socialfeedback extends AppCompatActivity {
 
     public void StartNextRound(View view) {
         Intent NextRound;
-        if(gameState.checkGameover() == 1){
+        if (gameState.checkGameover() == 1) {
             NextRound = new Intent(this, GameOverActivity.class);
-        }
-        else {
+        } else {
             NextRound = new Intent(this, GameActivity.class);
             gameState.updateDay();
         }

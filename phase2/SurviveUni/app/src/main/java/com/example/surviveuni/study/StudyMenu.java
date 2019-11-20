@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.study;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.view.View;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.R;
 
 
 public class StudyMenu extends AppCompatActivity {
@@ -17,7 +20,7 @@ public class StudyMenu extends AppCompatActivity {
 
     }
 
-    public void StartStudyGame(View view){
+    public void StartStudyGame(View view) {
         Intent startGame = new Intent(this, StudyGame.class);
         startActivity(startGame);
 

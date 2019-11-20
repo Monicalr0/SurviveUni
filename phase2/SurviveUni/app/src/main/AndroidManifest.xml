@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CustomizeActivity"></activity>
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".StudyGame" />
-        <activity android:name=".StudyMenu" />
+        <activity android:name=".study.StudyGame" />
+        <activity android:name=".study.StudyMenu" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
@@ -27,9 +27,9 @@
         </activity>
         <activity android:name=".sleep.SleepGameActivity" />
         <activity android:name=".sleep.SleepMainActivity" />
-        <activity android:name=".SocialActivity" />
-        <activity android:name=".Socialfeedback" />
-        <activity android:name=".SocialMain" />
+        <activity android:name=".social.SocialActivity" />
+        <activity android:name=".social.Socialfeedback" />
+        <activity android:name=".social.SocialMain" />
         <activity android:name=".GameActivity" />
         <activity android:name=".GameOverActivity" />
 

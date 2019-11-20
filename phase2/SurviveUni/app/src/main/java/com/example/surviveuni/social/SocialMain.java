@@ -1,10 +1,13 @@
-package com.example.surviveuni;
+package com.example.surviveuni.social;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.R;
 
 public class SocialMain extends AppCompatActivity {
     @Override
@@ -13,7 +16,7 @@ public class SocialMain extends AppCompatActivity {
         setContentView(R.layout.activity_social_main);
     }
 
-    public void StartSocialGame(View view){
+    public void StartSocialGame(View view) {
         Intent startGame = new Intent(this, SocialActivity.class);
         startActivity(startGame);
     }
