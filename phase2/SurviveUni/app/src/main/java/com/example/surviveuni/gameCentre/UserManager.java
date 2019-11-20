@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.gameCentre;
 
 import android.content.Context;
 import android.util.Log;

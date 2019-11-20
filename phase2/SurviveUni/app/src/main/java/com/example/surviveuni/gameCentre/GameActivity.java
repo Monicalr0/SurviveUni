@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.gameCentre;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.sleep.SleepMainActivity;
 import com.example.surviveuni.social.SocialMain;

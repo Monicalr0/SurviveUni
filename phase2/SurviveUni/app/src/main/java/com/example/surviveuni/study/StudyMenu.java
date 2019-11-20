@@ -7,7 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.R;
 
 

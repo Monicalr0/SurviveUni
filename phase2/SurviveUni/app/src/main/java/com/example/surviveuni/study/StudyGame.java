@@ -10,9 +10,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
-import com.example.surviveuni.GameActivity;
-import com.example.surviveuni.GameManager;
-import com.example.surviveuni.GameOverActivity;
+import com.example.surviveuni.gameCentre.GameActivity;
+import com.example.surviveuni.gameCentre.GameManager;
+import com.example.surviveuni.gameCentre.GameOverActivity;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
 

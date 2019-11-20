@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.gameCentre;
 
 import android.content.Context;
 import android.util.Log;
@@ -23,9 +23,11 @@ public class GameManager {
         this.context = context;
     }
 
-    void newGame() {gameState = new GameState();}
+    void newGame() {
+        gameState = new GameState();
+    }
 
-    void loadGame(){
+    void loadGame() {
 
         String filename = user.getUsername() + SUFFIX;
         try {
@@ -49,7 +51,7 @@ public class GameManager {
         }
     }
 
-    void saveGame(){
+    void saveGame() {
         String filename = user.getUsername() + SUFFIX;
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
@@ -61,29 +63,9 @@ public class GameManager {
         }
     }
 
-    public static GameState getGameState(){
+    public static GameState getGameState() {
         return gameState;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

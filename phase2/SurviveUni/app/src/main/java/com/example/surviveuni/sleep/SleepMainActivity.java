@@ -6,9 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.R;
-import com.example.surviveuni.sleep.SleepGameActivity;
 
 public class SleepMainActivity extends AppCompatActivity {
 

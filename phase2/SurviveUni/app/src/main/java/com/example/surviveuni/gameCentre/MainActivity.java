@@ -1,10 +1,14 @@
-package com.example.surviveuni;
+package com.example.surviveuni.gameCentre;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.surviveuni.R;
+import com.example.surviveuni.gameCentre.CreateAccountActivity;
+import com.example.surviveuni.gameCentre.LoginActivity;
 
 
 public class MainActivity extends AppCompatActivity {

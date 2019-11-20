@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.surviveuni.GameActivity;
+import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.R;
 
 public class SocialMain extends AppCompatActivity {

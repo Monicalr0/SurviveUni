@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.gameCentre;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.surviveuni.R;
+import com.example.surviveuni.gameCentre.UserManager;
 import com.example.surviveuni.data.User;
 
 public class CreateAccountActivity extends AppCompatActivity {

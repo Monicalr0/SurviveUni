@@ -1,4 +1,4 @@
-package com.example.surviveuni;
+package com.example.surviveuni.gameCentre;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
+import com.example.surviveuni.gameCentre.GameActivity;
+import com.example.surviveuni.gameCentre.GameManager;
 
 public class GameOverActivity extends AppCompatActivity {
     private GameState gameState;

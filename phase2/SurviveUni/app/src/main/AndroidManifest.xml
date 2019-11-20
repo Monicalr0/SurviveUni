@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustomizeActivity"></activity>
-        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".gameCentre.CustomizeActivity"></activity>
+        <activity android:name=".gameCentre.CreateAccountActivity" />
         <activity android:name=".study.StudyGame" />
         <activity android:name=".study.StudyMenu" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".gameCentre.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".sleep.SleepFeedbackActivity" />
         <activity android:name=".sleep.SleepAnswerActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".gameCentre.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +30,8 @@
         <activity android:name=".social.SocialActivity" />
         <activity android:name=".social.Socialfeedback" />
         <activity android:name=".social.SocialMain" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".GameOverActivity" />
+        <activity android:name=".gameCentre.GameActivity" />
+        <activity android:name=".gameCentre.GameOverActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
