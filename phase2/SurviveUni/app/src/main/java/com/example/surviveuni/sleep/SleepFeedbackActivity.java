@@ -20,7 +20,7 @@ public class SleepFeedbackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_feedback);
-        gameState= GameManager.getGameState();
+        gameState = GameManager.getGameState();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
 
@@ -31,12 +31,15 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         if (feedback == null) {
             feedback = "Sorry!";
         }
-        ChangeGameState(feedback);
+        changeGameState(feedback);
         String statsFeedback = checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
     }
 
+    /**
+     * Return the corresponding message to show the user the changer of data
+     */
     private String checkFeedback(String feedback) {
         if (feedback.equals("Correct!")) {
             return ("Spirit: +10\nGPA:-5");
@@ -48,7 +51,7 @@ public class SleepFeedbackActivity extends AppCompatActivity {
     /**
      * Modify the static variable according to the game result
      */
-    private void ChangeGameState(String feedback) {
+    private void changeGameState(String feedback) {
         if (feedback.equals("Correct!")) {
             gameState.changeSpirit(10);
             gameState.changeGPA(-5);
@@ -58,12 +61,14 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Go to the next activity(menu/game over) when user clicks the next round button
+     */
     public void nextRound(View view) {
         Intent NextRound;
-        if(gameState.checkGameover() == 1){
+        if (gameState.checkGameover() == 1) {
             NextRound = new Intent(this, GameOverActivity.class);
-        }
-        else {
+        } else {
             gameState.updateDay();
             NextRound = new Intent(this, GameActivity.class);
         }

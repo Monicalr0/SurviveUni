@@ -22,6 +22,9 @@ public class SleepAnswerActivity extends AppCompatActivity {
         sheepNum = intent.getIntExtra(SleepGameActivity.EXTRA_MESSAGE, 0);
     }
 
+    /**
+     * Get the user's input and check the answer. Send the feedback to next activity and start the feedback activity.
+     */
     public void submitAnswer(View view) {
         Intent intent = new Intent(this, SleepFeedbackActivity.class);
         EditText editText = findViewById(R.id.answerText);
@@ -32,6 +35,9 @@ public class SleepAnswerActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Returns the feedback based on whether the user's answer is right or wrong.
+     */
     private String checkAnswer(String answer) {
         try {
             int number = Integer.parseInt(answer);
