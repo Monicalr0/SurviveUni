@@ -6,6 +6,8 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String username;
     private String password;
+    private int score;
+    private String nickname;
 
     public User(String username, String password) {
         if(checkReasonable(username,password)){
