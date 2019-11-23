@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
+import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
@@ -53,6 +54,9 @@ public class StudyGame extends AppCompatActivity {
      */
     private TextView result;
 
+    private User user;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +66,10 @@ public class StudyGame extends AppCompatActivity {
         setContentView(R.layout.activity_study_game);
         setupTime();
 
+        Intent i = getIntent();
+        user = (User)i.getSerializableExtra("User");
 
+        findViewById(R.id.StudySaveBtn).setVisibility(View.GONE);
     }
 
 
@@ -110,8 +117,8 @@ public class StudyGame extends AppCompatActivity {
         Integer sec = (int) ((time % 3600000 % 60000) / 1000);
 
 
-        if (sec == 6)
-            setUpResult(false);
+        if (sec == 6){
+            setUpResult(false);}
 
         return sec - 3;
     }
@@ -159,6 +166,10 @@ public class StudyGame extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void setStudySaveBtn(View view) {
+        user.updateScore(gameState.getGPA()+gameState.getHappiness()+gameState.getSpirit());
+    }
+
     public void setUpResult(boolean isSuccess) {
 
         result = findViewById(R.id.studyResult);
@@ -175,6 +186,7 @@ public class StudyGame extends AppCompatActivity {
                     result.setText("Failure... :(");
                     gameState.changeGPA(-5);
                 }
+            findViewById(R.id.StudySaveBtn).setVisibility(View.VISIBLE);
             }
         );
     }

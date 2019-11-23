@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String username;
     private String password;
-    private int score;
+    private int score = -1;
     private String nickname;
 
     public User(String username, String password) {
@@ -33,6 +33,10 @@ public class User implements Serializable {
 
     public boolean checkPassword(String pw){
         return this.password.equals(pw);
+    }
+
+    public void updateScore(int new_score){
+        this.score = new_score;
     }
 
 

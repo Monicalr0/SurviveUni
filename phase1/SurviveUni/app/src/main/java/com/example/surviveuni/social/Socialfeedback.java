@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
@@ -15,6 +16,7 @@ import com.example.surviveuni.R;
 
 public class Socialfeedback extends AppCompatActivity {
     private GameState gameState;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,7 @@ public class Socialfeedback extends AppCompatActivity {
         gameState = GameManager.getGameState();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
+        user = (User)intent.getSerializableExtra("User");
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.feedbackText);
@@ -64,5 +67,9 @@ public class Socialfeedback extends AppCompatActivity {
         }
         startActivity(NextRound);
         finish();
+    }
+
+    public void setSocialSaveBtn(View view){
+        user.updateScore(gameState.getGPA()+gameState.getHappiness()+gameState.getSpirit());
     }
 }

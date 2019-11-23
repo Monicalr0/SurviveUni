@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
@@ -15,6 +16,7 @@ import com.example.surviveuni.R;
 
 public class SleepFeedbackActivity extends AppCompatActivity {
     private GameState gameState;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         String statsFeedback = checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
+
+        // to get user
+        Intent i = getIntent();
+        user = (User)i.getSerializableExtra("user");
     }
 
     private String checkFeedback(String feedback) {
@@ -69,5 +75,10 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         }
         startActivity(NextRound);
         finish();
+    }
+
+
+    public void setSleepSaveBtn(View view) {
+        user.updateScore(gameState.getGPA()+gameState.getSpirit()+gameState.getHappiness());
     }
 }

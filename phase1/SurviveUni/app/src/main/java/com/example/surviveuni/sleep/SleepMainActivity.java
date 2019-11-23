@@ -6,15 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.R;
 
 public class SleepMainActivity extends AppCompatActivity {
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_main);
+
+        Intent i = getIntent();
+        user = (User)i.getSerializableExtra("User");
     }
 
     /**
@@ -22,6 +27,7 @@ public class SleepMainActivity extends AppCompatActivity {
      */
     public void StartSleepGame(View view) {
         Intent startGame = new Intent(this, SleepGameActivity.class);
+        startGame.putExtra("User",user);
         startActivity(startGame);
     }
 

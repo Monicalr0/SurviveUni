@@ -10,15 +10,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.surviveuni.R;
+import com.example.surviveuni.data.User;
 
 public class SocialActivity extends AppCompatActivity{
     int expect;
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.MESSAGE";
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social_answer);
+
+        //get user here
+        Intent i = getIntent();
+        user = (User)i.getSerializableExtra("User");
     }
 
     public void submitAnswer(View view) {
@@ -27,6 +33,7 @@ public class SocialActivity extends AppCompatActivity{
         String answer = editText.getText().toString();
         String feedBack = checkAnswer(answer);
         intent.putExtra(EXTRA_MESSAGE, feedBack);
+        intent.putExtra("User",user);
         startActivity(intent);
         finish();
     }
