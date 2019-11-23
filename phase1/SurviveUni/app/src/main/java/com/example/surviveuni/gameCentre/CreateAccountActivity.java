@@ -44,12 +44,16 @@ public class CreateAccountActivity extends AppCompatActivity {
         findViewById(R.id.CreateAccountSubmitBtn).setOnClickListener(v -> {
             EditText accIn = findViewById(R.id.CreateAccountAccInput);
             EditText psIn = findViewById(R.id.CreateAccountPwInput);
+            EditText nickname = findViewById(R.id.CreateAccountNickName);
 
             String accInput = accIn.getText().toString();
             String psInput = psIn.getText().toString();
+            String nkInput = nickname.getText().toString();
 
             if (checkReasonable(accInput, psInput)) {
-                UserManager.users.put(accInput, new User(accInput, psInput));
+                User user = new User(accInput, psInput);
+                user.setNickName(nkInput);
+                UserManager.users.put(accInput, user);
                 userManager.SaveToFile();
                 Toast.makeText(this, "Your new acccount has been created!", Toast.LENGTH_SHORT).show();
                 Intent back = new Intent(this, MainActivity.class);

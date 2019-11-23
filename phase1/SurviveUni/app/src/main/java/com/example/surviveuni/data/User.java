@@ -39,5 +39,6 @@ public class User implements Serializable {
         this.score = new_score;
     }
 
+    public void setNickName(String nkName) {this.nickname = nkName;}
 
 }

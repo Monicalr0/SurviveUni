@@ -73,4 +73,8 @@ public class GameActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void setScoreBrdBtn(View view){
+        Intent i = new Intent(this, ScoreBoard.class);
+        startActivity(i);
+    }
 }
