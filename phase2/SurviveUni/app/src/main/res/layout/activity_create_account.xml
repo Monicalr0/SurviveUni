@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".gameCentre.CreateAccountActivity">
 
     <TextView
@@ -26,6 +27,7 @@
         android:layout_marginEnd="101dp"
         android:ems="10"
         android:hint="Username"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -41,6 +43,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,13 +51,15 @@
 
     <Button
         android:id="@+id/CreateAccountSubmitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="38dp"
         android:layout_marginStart="159dp"
         android:layout_marginTop="53dp"
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="134dp"
+        android:background="#70000000"
         android:text="Submit"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +67,8 @@
 
     <Button
         android:id="@+id/CreateAccountExitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="46dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="163dp"

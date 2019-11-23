@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".gameCentre.MainActivity">
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="290dp"
-        android:layout_height="60dp"
+        android:layout_width="372dp"
+        android:layout_height="55dp"
         android:fontFamily="casual"
         android:text="Survive In University"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textColor="#7A000000"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline30"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -22,10 +25,12 @@
 
     <Button
         android:id="@+id/MainLogInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="132dp"
+        android:layout_height="36dp"
+        android:background="#70000000"
         android:onClick="LogIn"
-        android:text="Login"
+        android:text="Senior"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,21 +41,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="313dp" />
+        app:layout_constraintGuide_begin="332dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="false"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="488dp" />
+        app:layout_constraintGuide_begin="569dp" />
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
         android:onClick="createAccount"
-        android:text="Create Account"
+        android:text="Freshman"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +67,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="399dp" />
+        app:layout_constraintGuide_begin="458dp" />
+
+    <TextView
+        android:id="@+id/login_teaminfo"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="©2019 Team0594"
+        android:textColor="#FFFCFC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
