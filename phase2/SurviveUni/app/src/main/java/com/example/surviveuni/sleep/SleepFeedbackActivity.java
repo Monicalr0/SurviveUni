@@ -1,7 +1,5 @@
 package com.example.surviveuni.sleep;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,19 +8,19 @@ import android.widget.TextView;
 import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
-import com.example.surviveuni.data.GameState;
+import com.example.surviveuni.gameCentre.FeedbackActivity;
 import com.example.surviveuni.R;
+import com.example.surviveuni.gameCentre.ScoreManager;
 
-public class SleepFeedbackActivity extends AppCompatActivity {
-    private GameState gameState;
+public class SleepFeedbackActivity extends FeedbackActivity {
+    public ScoreManager scoreManager= new SleepScoreManager();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sleep_feedback);
+        setContentView(R.layout.activity_feedback);
         gameState = GameManager.getGameState();
         Intent intent = getIntent();
-        String feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
+        String feedback = checkIntent(intent);
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.feedbackText);
@@ -31,12 +29,11 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         if (feedback == null) {
             feedback = "Sorry!";
         }
-        changeGameState(feedback);
-        String statsFeedback = checkFeedback(feedback);
+        scoreManager.changeGameState(feedback);
+        String statsFeedback = scoreManager.checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
     }
-
     /**
      * Return the corresponding message to show the user the changer of data
      */
@@ -52,13 +49,13 @@ public class SleepFeedbackActivity extends AppCompatActivity {
      * Modify the static variable according to the game result
      */
     private void changeGameState(String feedback) {
-        if (feedback.equals("Correct!")) {
-            gameState.changeSpirit(10);
-            gameState.changeGPA(-5);
-        } else {
-            gameState.changeSpirit(-10);
-            gameState.changeGPA(-5);
-        }
+            if (feedback.equals("Correct!")) {
+                gameState.changeSpirit(10);
+                gameState.changeGPA(-5);
+            } else {
+                gameState.changeSpirit(-10);
+                gameState.changeGPA(-5);
+            }
     }
 
     /**
@@ -74,5 +71,10 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         }
         startActivity(NextRound);
         finish();
+    }
+
+    private String checkIntent(Intent intent) {
+        String feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
+        return feedback;
     }
 }
