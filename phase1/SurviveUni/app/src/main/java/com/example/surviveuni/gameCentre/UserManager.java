@@ -15,7 +15,7 @@ import java.util.InputMismatchException;
 import java.util.Map;
 
 public class UserManager {
-    static Map<String, User> users = new HashMap<>();
+    public static Map<String, User> users = new HashMap<>();
     private Context context;
     private static final String FILENAME = "users.txt";
 

@@ -45,6 +45,8 @@ public class ScoreBoard extends AppCompatActivity {
                 if(!contains(onBoard,key))
                 {
                     user = UserManager.users.get(key);
+                    System.out.println(key);
+                    System.out.println(user.getScore());
                     if(user.getScore() > maxScore)
                     {
                         maxScore = user.getScore();
@@ -52,6 +54,7 @@ public class ScoreBoard extends AppCompatActivity {
                     }
                 }
             }
+            //System.out.println(maxScore);
 
             if(maxScore != -1)
             {
@@ -60,6 +63,7 @@ public class ScoreBoard extends AppCompatActivity {
                 onBoard[spaceused] = toBoard.getUsername();
                 spaceused += 1;
             }
+            //System.out.println(onBoard[0]);
         }
     }
 

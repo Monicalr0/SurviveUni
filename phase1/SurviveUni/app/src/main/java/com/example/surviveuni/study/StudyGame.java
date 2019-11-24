@@ -16,6 +16,7 @@ import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
+import com.example.surviveuni.gameCentre.UserManager;
 
 import java.time.Duration;
 import java.time.LocalTime;
@@ -168,7 +169,8 @@ public class StudyGame extends AppCompatActivity {
     }
 
     public void setStudySaveBtn(View view) {
-        user.updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
+        //user.updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
+        UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 
     public void setUpResult(boolean isSuccess) {
