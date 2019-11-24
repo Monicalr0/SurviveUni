@@ -9,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
+import com.example.surviveuni.data.User;
 
 public class GameOverActivity extends AppCompatActivity {
     private GameState gameState;
     String reason;
     String record;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,10 @@ public class GameOverActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.reasonText);
         textView.setText(reason);
         reset_data();
+
+        //get user here
+        Intent i = getIntent();
+        user = (User)i.getSerializableExtra("User");
     }
 
     /**
@@ -43,6 +49,7 @@ public class GameOverActivity extends AppCompatActivity {
      */
     public void NewGame(View view) {
         Intent newgame = new Intent(this, GameActivity.class);
+        newgame.putExtra("User",user);
         startActivity(newgame);
     }
 }

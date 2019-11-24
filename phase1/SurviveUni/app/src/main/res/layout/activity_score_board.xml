@@ -6,85 +6,148 @@
     android:layout_height="match_parent"
     tools:context=".gameCentre.ScoreBoard">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="308dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="56dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="49dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editText5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="274dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="645dp"
+        android:text="Score Board"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="313dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="50dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+    <TextView
+        android:id="@+id/BoardName1"
+        android:layout_width="180dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="34dp"
+        app:layout_constraintBottom_toTopOf="@+id/BoardName2"
+        app:layout_constraintEnd_toStartOf="@+id/BoardScore1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/BoardScore1"
+        android:layout_width="72dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="119dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/BoardScore2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/BoardName1"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/BoardName2"
+        android:layout_width="179dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="401dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/BoardScore2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BoardName1" />
+
+    <TextView
+        android:id="@+id/BoardScore2"
+        android:layout_width="76dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="401dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/BoardName2"
+        app:layout_constraintTop_toBottomOf="@+id/BoardScore1" />
+
+    <TextView
+        android:id="@+id/BoardName3"
+        android:layout_width="177dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="190dp"
+        android:layout_marginBottom="312dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/BoardName2" />
+
+    <TextView
+        android:id="@+id/BoardScore3"
+        android:layout_width="77dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="312dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/BoardName3"
+        app:layout_constraintTop_toBottomOf="@+id/BoardScore2" />
+
+    <TextView
+        android:id="@+id/BoardName4"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="189dp"
+        android:layout_marginBottom="228dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BoardName3" />
+
+    <TextView
+        android:id="@+id/BoardScore4"
+        android:layout_width="79dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="229dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/BoardName4"
+        app:layout_constraintTop_toBottomOf="@+id/BoardScore3" />
+
+    <TextView
+        android:id="@+id/BoardName5"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="189dp"
+        android:layout_marginBottom="147dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BoardName4" />
+
+    <TextView
+        android:id="@+id/BoardScore5"
+        android:layout_width="83dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="149dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/BoardName5"
+        app:layout_constraintTop_toBottomOf="@+id/BoardScore4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

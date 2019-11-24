@@ -65,6 +65,7 @@ public class Socialfeedback extends AppCompatActivity {
             NextRound = new Intent(this, GameActivity.class);
             gameState.updateDay();
         }
+        NextRound.putExtra("User",user);
         startActivity(NextRound);
         finish();
     }

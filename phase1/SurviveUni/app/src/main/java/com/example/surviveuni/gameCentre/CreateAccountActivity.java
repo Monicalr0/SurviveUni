@@ -75,8 +75,19 @@ public class CreateAccountActivity extends AppCompatActivity {
         } else if (password.length() <= 6 || username.length() <= 6) {
             Toast.makeText(this, "Length of Password And Username must be greater than 6", Toast.LENGTH_SHORT).show();
             return false;
-        } else
-            return true;
-
+        } else {
+            for (String key : UserManager.users.keySet())
+            {
+                if (key.equals(username))
+                {
+                    Toast.makeText(this, "Username has already been taken", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+        }
+        return true;
     }
+
+
+
 }

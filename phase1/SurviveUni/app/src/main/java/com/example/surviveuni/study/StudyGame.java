@@ -61,6 +61,7 @@ public class StudyGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         startingTime = LocalTime.now();
         gameState = GameManager.getGameState();
         setContentView(R.layout.activity_study_game);
@@ -71,7 +72,6 @@ public class StudyGame extends AppCompatActivity {
 
         findViewById(R.id.StudySaveBtn).setVisibility(View.GONE);
     }
-
 
     /**
      * Time counting
@@ -163,11 +163,12 @@ public class StudyGame extends AppCompatActivity {
             gameState.updateDay();
             i = new Intent(this, GameActivity.class);
         }
+        i.putExtra("User",user);
         startActivity(i);
     }
 
     public void setStudySaveBtn(View view) {
-        user.updateScore(gameState.getGPA()+gameState.getHappiness()+gameState.getSpirit());
+        user.updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 
     public void setUpResult(boolean isSuccess) {

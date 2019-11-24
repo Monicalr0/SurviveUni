@@ -21,9 +21,10 @@ public class SleepAnswerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sleep_answer);
         Intent intent = getIntent();
         sheepNum = intent.getIntExtra(SleepGameActivity.EXTRA_MESSAGE, 0);
-
-        Intent i = getIntent();
-        user = (User)i.getSerializableExtra("User");
+        user = (User)intent.getSerializableExtra("User");
+        if(user == null) {
+            System.out.println("444444444");
+        }
     }
 
     public void submitAnswer(View view) {
@@ -33,6 +34,9 @@ public class SleepAnswerActivity extends AppCompatActivity {
         String feedBack = checkAnswer(answer);
         intent.putExtra(EXTRA_MESSAGE, feedBack);
         intent.putExtra("User",user);
+        if(user == null) {
+            System.out.println("5555555555");
+        }
         startActivity(intent);
         finish();
     }

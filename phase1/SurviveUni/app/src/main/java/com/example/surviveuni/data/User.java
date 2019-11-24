@@ -41,4 +41,8 @@ public class User implements Serializable {
 
     public void setNickName(String nkName) {this.nickname = nkName;}
 
+    public int getScore(){return score;}
+
+    public String getNickname(){return nickname;}
+
 }

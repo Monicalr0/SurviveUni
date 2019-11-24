@@ -25,7 +25,7 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         gameState= GameManager.getGameState();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
-
+        user = (User)intent.getSerializableExtra("User");
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.feedbackText);
         textView.setText(feedback);
@@ -37,10 +37,6 @@ public class SleepFeedbackActivity extends AppCompatActivity {
         String statsFeedback = checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
-
-        // to get user
-        Intent i = getIntent();
-        user = (User)i.getSerializableExtra("user");
     }
 
     private String checkFeedback(String feedback) {
@@ -73,6 +69,7 @@ public class SleepFeedbackActivity extends AppCompatActivity {
             gameState.updateDay();
             NextRound = new Intent(this, GameActivity.class);
         }
+        NextRound.putExtra("User",user);
         startActivity(NextRound);
         finish();
     }
