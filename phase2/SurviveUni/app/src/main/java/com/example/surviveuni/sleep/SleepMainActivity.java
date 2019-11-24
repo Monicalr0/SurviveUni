@@ -5,23 +5,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.R;
 
 public class SleepMainActivity extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "com.example.surviveuni.sleep.SleepMainActivity.MESSAGE";
+
+    /**
+     * The list of choices for the spinner that allows the user to choose which
+     * Java feature to demonstrate.
+     */
+    private final String[] levels = {"EASY", "NORMAL", "HARD"};
+    private Spinner spinner;
+    private String levelChoice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_main);
+        setLevelSpinner();
     }
 
     /**
      * Start the game when the user clicks the start button
      */
     public void StartSleepGame(View view) {
+        levelChoice = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SleepGameActivity.class);
+        startGame.putExtra(EXTRA_MESSAGE, levelChoice);
         startActivity(startGame);
     }
 
@@ -32,4 +47,15 @@ public class SleepMainActivity extends AppCompatActivity {
         Intent ReturnGame = new Intent(this, GameActivity.class);
         startActivity(ReturnGame);
     }
+
+    /**
+     * Set up the gameLevel spinner
+     **/
+    public void setLevelSpinner() {
+        spinner = (Spinner) findViewById(R.id.gameLevel);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, levels);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+    }
+
 }
