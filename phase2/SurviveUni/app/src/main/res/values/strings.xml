@@ -15,4 +15,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="Next_Round">"Next Round"</string>
+    <string name="Level_1">"Level 1"</string>
+    <string name="Level_2">"Level 2"</string>
+    <string name="Level_3">"Level 3"</string>
+
 </resources>
