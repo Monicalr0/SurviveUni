@@ -9,14 +9,31 @@ import android.widget.TextView;
 
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
+import com.example.surviveuni.sleep.SleepAnswerActivity;
 
 public abstract class FeedbackActivity extends AppCompatActivity{
     protected GameState gameState;
     public ScoreManager scoreManager;
+    public String feedback;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_feedback);
+        gameState = GameManager.getGameState();
+
+
+        // Capture the layout's TextView and set the string as its text
+        TextView textView = findViewById(R.id.feedbackText);
+        textView.setText(feedback);
+
+        if (feedback == null) {
+            feedback = "Sorry!";
+        }
+        scoreManager.changeGameState(feedback);
+        String statsFeedback = scoreManager.checkFeedback(feedback);
+        TextView textView2 = findViewById(R.id.statsText);
+        textView2.setText(statsFeedback);
     }
 
     public void nextRound(View view) {
