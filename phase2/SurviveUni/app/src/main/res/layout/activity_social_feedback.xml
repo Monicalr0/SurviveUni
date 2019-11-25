@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="StartNextRound"
-            android:text="@string/Next_Round"
+            android:text="Next Round"
             app:layout_constraintBottom_toTopOf="@id/guideline19"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +79,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="650dp" />
+
+        <Button
+            android:id="@+id/SocialSaveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="318dp"
+            android:layout_marginBottom="21dp"
+            android:onClick="setSocialSaveBtn"
+            android:text="Save"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

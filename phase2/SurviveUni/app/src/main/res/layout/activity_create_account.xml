@@ -86,4 +86,20 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="184dp" />
 
+    <EditText
+        android:id="@+id/CreateAccountNickName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="45dp"
+        android:ems="10"
+        android:hint="Name On ScoreBoard"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/CreateAccountPwInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CreateAccountAccInput" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

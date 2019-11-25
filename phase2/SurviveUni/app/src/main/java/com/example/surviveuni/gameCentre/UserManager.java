@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
 
-class UserManager {
-    static Map<String, User> users = new HashMap<>();
+public class UserManager {
+    public static Map<String, User> users = new HashMap<>();
     private Context context;
     private static final String FILENAME = "users.txt";
 

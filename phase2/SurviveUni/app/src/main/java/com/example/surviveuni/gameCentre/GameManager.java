@@ -11,12 +11,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 
 public class GameManager {
     private static GameState gameState;
     private User user;
     private Context context;
     private static final String SUFFIX = "-sav1.dat";
+    private static final String FILENAME = "users.txt";
 
     public GameManager(User user, Context context) {
         this.user = user;
@@ -49,6 +51,25 @@ public class GameManager {
             Log.e("GameState", "ClassNotFoundException");
             gameState = new GameState();
         }
+
+        // load users
+        try {
+            InputStream inputStream = context.openFileInput(FILENAME);
+            if (inputStream != null) {
+                ObjectInputStream input = new ObjectInputStream(inputStream);
+                UserManager.users = (HashMap<String, User>) input.readObject();
+                inputStream.close();
+            }
+        } catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+            UserManager.users = new HashMap<>();
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+            UserManager.users = new HashMap<>();
+        } catch (ClassNotFoundException e) {
+            Log.e("login activity", "File contained unexpected data type: " + e.toString());
+            UserManager.users = new HashMap<>();
+        }
     }
 
     void saveGame() {
@@ -57,6 +78,16 @@ public class GameManager {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     context.openFileOutput(filename, context.MODE_PRIVATE));
             outputStream.writeObject(gameState);
+            outputStream.close();
+        } catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+
+        // save user user so the score is saved
+        try {
+            ObjectOutputStream outputStream = new ObjectOutputStream(
+                    context.openFileOutput(FILENAME, context.MODE_PRIVATE));
+            outputStream.writeObject(UserManager.users);
             outputStream.close();
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());

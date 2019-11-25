@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".gameCentre.CustomizeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".gameCentre.ScoreBoardActivity"></activity>
+        <activity android:name=".gameCentre.CustomizeActivity"/>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity android:name=".gameCentre.CreateAccountActivity" />
         <activity android:name=".study.StudyGame" />
         <activity android:name=".study.StudyMenu" />
@@ -25,11 +26,13 @@
         <activity android:name=".sleep.SleepFeedbackActivity" />
         <activity android:name=".sleep.SleepAnswerActivity" />
         <activity android:name=".gameCentre.MainActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity android:name=".sleep.SleepGameActivity" />
         <activity android:name=".sleep.SleepMainActivity" />

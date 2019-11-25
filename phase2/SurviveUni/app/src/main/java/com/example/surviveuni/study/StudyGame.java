@@ -10,11 +10,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
+import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
+import com.example.surviveuni.gameCentre.UserManager;
 
 import java.time.Duration;
 import java.time.LocalTime;
@@ -52,18 +54,24 @@ public class StudyGame extends AppCompatActivity {
      */
     private TextView result;
 
+    private User user;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         startingTime = LocalTime.now();
         gameState = GameManager.getGameState();
         setContentView(R.layout.activity_study_game);
         setupTime();
 
+        Intent i = getIntent();
+        user = (User)i.getSerializableExtra("User");
 
+        findViewById(R.id.StudySaveBtn).setVisibility(View.GONE);
     }
-
 
     /**
      * Time counting
@@ -109,8 +117,8 @@ public class StudyGame extends AppCompatActivity {
         Integer sec = (int) ((time % 3600000 % 60000) / 1000);
 
 
-        if (sec == 6)
-            setUpResult(false);
+        if (sec == 6){
+            setUpResult(false);}
 
         return sec - 3;
     }
@@ -155,7 +163,12 @@ public class StudyGame extends AppCompatActivity {
             gameState.updateDay();
             i = new Intent(this, GameActivity.class);
         }
+        i.putExtra("User",user);
         startActivity(i);
+    }
+
+    public void setStudySaveBtn(View view) {
+        UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 
     public void setUpResult(boolean isSuccess) {
@@ -174,6 +187,7 @@ public class StudyGame extends AppCompatActivity {
                         result.setText("Failure... :(");
                         gameState.changeGPA(-5);
                     }
+                    findViewById(R.id.StudySaveBtn).setVisibility(View.VISIBLE);
                 }
         );
     }

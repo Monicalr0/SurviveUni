@@ -22,16 +22,10 @@ public class SleepGameActivity extends AppCompatActivity {
         final Handler handler = new Handler();
         Intent i = getIntent();
         user = (User)i.getSerializableExtra("User");
-        if(user == null) {
-            System.out.println("2222222222");
-        }
         handler.postDelayed(() -> {
             Intent intent = new Intent(SleepGameActivity.this, SleepAnswerActivity.class);
             intent.putExtra(EXTRA_MESSAGE, SheepNum);
             intent.putExtra("User",user);
-            if(user == null) {
-                System.out.println("3333333333");
-            }
             SleepGameActivity.this.startActivity(intent);
             SleepGameActivity.this.finish();
         }, 3500);

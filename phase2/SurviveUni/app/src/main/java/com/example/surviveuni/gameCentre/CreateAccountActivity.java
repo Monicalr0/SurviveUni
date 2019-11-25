@@ -44,12 +44,16 @@ public class CreateAccountActivity extends AppCompatActivity {
         findViewById(R.id.CreateAccountSubmitBtn).setOnClickListener(v -> {
             EditText accIn = findViewById(R.id.CreateAccountAccInput);
             EditText psIn = findViewById(R.id.CreateAccountPwInput);
+            EditText nickname = findViewById(R.id.CreateAccountNickName);
 
             String accInput = accIn.getText().toString();
             String psInput = psIn.getText().toString();
+            String nkInput = nickname.getText().toString();
 
             if (checkReasonable(accInput, psInput)) {
-                UserManager.users.put(accInput, new User(accInput, psInput));
+                User user = new User(accInput, psInput);
+                user.setNickName(nkInput);
+                UserManager.users.put(accInput, user);
                 userManager.SaveToFile();
                 Toast.makeText(this, "Your new acccount has been created!", Toast.LENGTH_SHORT).show();
                 Intent back = new Intent(this, MainActivity.class);
@@ -71,8 +75,16 @@ public class CreateAccountActivity extends AppCompatActivity {
         } else if (password.length() <= 6 || username.length() <= 6) {
             Toast.makeText(this, "Length of Password And Username must be greater than 6", Toast.LENGTH_SHORT).show();
             return false;
-        } else
-            return true;
-
+        } else {
+            for (String key : UserManager.users.keySet())
+            {
+                if (key.equals(username))
+                {
+                    Toast.makeText(this, "Username has already been taken", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

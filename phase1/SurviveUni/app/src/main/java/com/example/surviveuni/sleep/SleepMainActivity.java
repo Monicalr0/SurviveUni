@@ -28,9 +28,6 @@ public class SleepMainActivity extends AppCompatActivity {
     public void StartSleepGame(View view) {
         Intent startGame = new Intent(this, SleepGameActivity.class);
         startGame.putExtra("User",user);
-        if(user == null){
-            System.out.println("1111111111");
-        }
         startActivity(startGame);
     }
 

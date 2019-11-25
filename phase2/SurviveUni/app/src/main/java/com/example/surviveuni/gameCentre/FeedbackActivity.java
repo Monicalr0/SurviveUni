@@ -9,17 +9,20 @@ import android.widget.TextView;
 
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
+import com.example.surviveuni.data.User;
 import com.example.surviveuni.sleep.SleepAnswerActivity;
 
 public abstract class FeedbackActivity extends AppCompatActivity{
     protected GameState gameState;
     public ScoreManager scoreManager;
     public String feedback;
+    public User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+
         gameState = GameManager.getGameState();
 
 
@@ -36,6 +39,8 @@ public abstract class FeedbackActivity extends AppCompatActivity{
         textView2.setText(statsFeedback);
     }
 
+    public void setUser(User user){this.user = user;}
+
     public void nextRound(View view) {
         Intent NextRound;
         if (gameState.checkGameover() == 1) {
@@ -44,7 +49,12 @@ public abstract class FeedbackActivity extends AppCompatActivity{
             gameState.updateDay();
             NextRound = new Intent(this, GameActivity.class);
         }
+        NextRound.putExtra("User",user);
         startActivity(NextRound);
         finish();
+    }
+
+    public void setSleepSaveBtn(View view) {
+        UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 }

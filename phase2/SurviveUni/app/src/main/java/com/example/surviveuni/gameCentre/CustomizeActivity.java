@@ -21,6 +21,7 @@ public class CustomizeActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("USER");
+
         gameManager = new GameManager(user, this);
         setNewGameBtn();
         setLoadGameBtn();
@@ -44,6 +45,7 @@ public class CustomizeActivity extends AppCompatActivity {
             gameManager.newGame();
 
             Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("User",user);
             startActivity(i);
 
         });
@@ -55,6 +57,7 @@ public class CustomizeActivity extends AppCompatActivity {
             gameManager.loadGame();
 
             Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("User",user);
             startActivity(i);
 
         });
