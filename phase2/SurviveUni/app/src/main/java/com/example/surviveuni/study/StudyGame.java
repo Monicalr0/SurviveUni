@@ -27,10 +27,17 @@ import java.util.TimerTask;
 public class StudyGame extends AppCompatActivity {
 
     /**
+     * Result feedback message
+     */
+    private static String SUCCESS_MESSAGE = "Success! GPA goes up!";
+    private static String FAILURE_MESSAGE = "Failure... :(";
+
+    /**
      * TextView for displaying time
      */
     private TextView timeDisplay;
     private GameState gameState;
+    private static String TIME_PREFIX = "Time: ";
 
     /**
      * Time when the game starts or loads
@@ -57,7 +64,6 @@ public class StudyGame extends AppCompatActivity {
     private User user;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +74,7 @@ public class StudyGame extends AppCompatActivity {
         setupTime();
 
         Intent i = getIntent();
-        user = (User)i.getSerializableExtra("User");
+        user = (User) i.getSerializableExtra("User");
 
         findViewById(R.id.StudySaveBtn).setVisibility(View.GONE);
     }
@@ -105,7 +111,7 @@ public class StudyGame extends AppCompatActivity {
 
 
                         // Stuff that updates the UI
-                        timeDisplay.setText(String.format("Time: %s", usedTime));
+                        timeDisplay.setText(String.format(TIME_PREFIX + "%s", usedTime));
                     });
                 }
             }
@@ -114,11 +120,12 @@ public class StudyGame extends AppCompatActivity {
     }
 
     int convertTime(long time) {
-        Integer sec = (int) ((time % 3600000 % 60000) / 1000);
+        int sec = (int) ((time % 3600000 % 60000) / 1000);
 
 
-        if (sec == 6){
-            setUpResult(false);}
+        if (sec == 6) {
+            setUpResult(false);
+        }
 
         return sec - 3;
     }
@@ -163,7 +170,7 @@ public class StudyGame extends AppCompatActivity {
             gameState.updateDay();
             i = new Intent(this, GameActivity.class);
         }
-        i.putExtra("User",user);
+        i.putExtra("User", user);
         startActivity(i);
     }
 
@@ -180,11 +187,11 @@ public class StudyGame extends AppCompatActivity {
 
                     // Stuff that updates the UI
                     if (isSuccess && usedTime < 3) {
-                        result.setText("Success! GPA goes up!");
+                        result.setText(SUCCESS_MESSAGE);
                         gameState.changeGPA(5);
                     } else {
                         task2.cancel();
-                        result.setText("Failure... :(");
+                        result.setText(FAILURE_MESSAGE);
                         gameState.changeGPA(-5);
                     }
                     findViewById(R.id.StudySaveBtn).setVisibility(View.VISIBLE);

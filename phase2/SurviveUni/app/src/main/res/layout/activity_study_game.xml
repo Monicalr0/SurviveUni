@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/all_good"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/StudySaveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="setStudySaveBtn"
-        android:text="Save" />
-
     <TextView
         android:id="@+id/studyTimeText"
         android:layout_width="wrap_content"
-        android:layout_height="168dp"
+        android:layout_height="205dp"
         android:layout_gravity="center"
-        android:text="Time: 0"
+        android:text="@string/timeStart"
         android:textAlignment="center"
 
         android:textColor="#FFFFFF"
@@ -43,7 +35,7 @@
         android:layout_height="73dp"
 
 
-        android:layout_gravity="left"
+        android:layout_gravity="start"
 
         android:layout_weight="0"
         android:background="@null"
@@ -78,8 +70,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:background="@android:drawable/button_onoff_indicator_off"
-            android:text="exit"
+            android:text="@string/exit"
             android:onClick="setExitBtn"/>
+
+        <Button
+            android:id="@+id/StudySaveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/doorDescription"
+            android:onClick="setStudySaveBtn"
+            android:text="@string/save" />
 
     </LinearLayout>
 
