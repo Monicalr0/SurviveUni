@@ -13,6 +13,7 @@ import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
+import com.example.surviveuni.gameCentre.UserManager;
 
 public class SleepFeedbackActivity extends AppCompatActivity {
     private GameState gameState;
@@ -76,6 +77,6 @@ public class SleepFeedbackActivity extends AppCompatActivity {
 
 
     public void setSleepSaveBtn(View view) {
-        user.updateScore(gameState.getGPA()+gameState.getSpirit()+gameState.getHappiness());
+        UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 }

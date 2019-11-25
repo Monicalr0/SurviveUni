@@ -169,6 +169,7 @@ public class StudyGame extends AppCompatActivity {
     }
 
     public void setStudySaveBtn(View view) {
+        //System.out.println(user.getUsername());
         //user.updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }

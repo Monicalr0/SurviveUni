@@ -1,70 +1,44 @@
 package com.example.surviveuni.gameCentre;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.widget.TextView;
-
-import com.example.surviveuni.R;
 import com.example.surviveuni.data.User;
 
-public class ScoreBoard extends AppCompatActivity {
+public class ScoreBoard {
 
     private int maxScore;
-    private String[] onBoard = new String[5];
+    private String[] onBoard;
     private User user;
     private User toBoard; // next user to put on ScoreBoard
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score_board);
 
-        setRanking();
+    public ScoreBoard(){
+        this.maxScore = -1;
+        this.onBoard = new String[5];
+        this.user = null;
+        this.toBoard = null;
     }
 
-    private void setRanking(){
-        TextView name1 = findViewById(R.id.BoardName1);
-        TextView name2 = findViewById(R.id.BoardName2);
-        TextView name3 = findViewById(R.id.BoardName3);
-        TextView name4 = findViewById(R.id.BoardName4);
-        TextView name5 = findViewById(R.id.BoardName5);
-        TextView score1 = findViewById(R.id.BoardScore1);
-        TextView score2 = findViewById(R.id.BoardScore2);
-        TextView score3 = findViewById(R.id.BoardScore3);
-        TextView score4 = findViewById(R.id.BoardScore4);
-        TextView score5 = findViewById(R.id.BoardScore5);
-        TextView[] texts = new TextView[] {name1,name2,name3,name4,name5,score1,score2,score3,score4,score5};
-
-        int spaceused = 0; // number of users already on board
-        for(int i = 0; i <5; i++)
-        {
-            maxScore = -1;
-            for(String key : UserManager.users.keySet())
-            {
-                if(!contains(onBoard,key))
-                {
-                    user = UserManager.users.get(key);
-                    System.out.println(key);
-                    System.out.println(user.getScore());
-                    if(user.getScore() > maxScore)
-                    {
-                        maxScore = user.getScore();
-                        toBoard = user;
-                    }
+    public User setRanking(int spaceused){
+        maxScore = -1;
+        for(String key : UserManager.users.keySet()) {
+            System.out.println(key);
+            if (!contains(onBoard, key)) {
+                user = UserManager.users.get(key);
+                System.out.println(user.getScore());
+                if (user.getScore() > maxScore) {
+                    maxScore = user.getScore();
+                    toBoard = user;
                 }
             }
-            //System.out.println(maxScore);
-
-            if(maxScore != -1)
-            {
-                texts[spaceused].setText(toBoard.getNickname());
-                texts[spaceused+5].setText(toBoard.getScore());
-                onBoard[spaceused] = toBoard.getUsername();
-                spaceused += 1;
-            }
-            //System.out.println(onBoard[0]);
         }
+
+        if(maxScore != -1)
+        {
+            onBoard[spaceused] = toBoard.getUsername();
+            spaceused++;
+            return toBoard;
+        }
+        return null;
+
     }
 
     private boolean contains(String[] a, String b)
@@ -79,6 +53,4 @@ public class ScoreBoard extends AppCompatActivity {
         }
         return false;
     }
-
-
 }

@@ -13,6 +13,7 @@ import com.example.surviveuni.gameCentre.GameManager;
 import com.example.surviveuni.gameCentre.GameOverActivity;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
+import com.example.surviveuni.gameCentre.UserManager;
 
 public class Socialfeedback extends AppCompatActivity {
     private GameState gameState;
@@ -71,6 +72,6 @@ public class Socialfeedback extends AppCompatActivity {
     }
 
     public void setSocialSaveBtn(View view){
-        user.updateScore(gameState.getGPA()+gameState.getHappiness()+gameState.getSpirit());
+        UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 }
