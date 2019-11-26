@@ -9,52 +9,57 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.surviveuni.R;
-import com.example.surviveuni.gameCentre.UserManager;
 import com.example.surviveuni.data.User;
 
-import java.util.InputMismatchException;
-
-
-public class LoginActivity extends AppCompatActivity {
-
+public class LoginActivity extends AppCompatActivity implements LoginView {
     /**
-     * the UserManager manages user
+     * the name that user entered.
      */
-    private UserManager userManager;
+    private EditText usernameInput;
+    /**
+     * the password that the user entered.
+     */
+    private EditText passwordInput;
+    /**
+     * the Login presenter
+     */
+    private LoginPresenter presenter;
+    /**
+     * the user input error Alert
+     */
+    private AlertDialog.Builder errorAlert;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        userManager = new UserManager(this);
-
-
+        presenter = new LoginPresenter(this, new UserManager(this));
+        errorAlert = new AlertDialog.Builder(this)
+                .setTitle("Wrong Input")
+                .setMessage("username or password is wrong")
+                .setPositiveButton(android.R.string.yes, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
     /**
      * user sign in
-     * check the existence of user
      */
+    @Override
     public void setLoginBtn(View view) {
-        EditText usernameInput = findViewById(R.id.LogInAccount);
-        EditText passwordInput = findViewById(R.id.LogInPw);
-        try {
-            User user = userManager.authenticate(usernameInput.getText().toString(),
-                    passwordInput.getText().toString());
+        usernameInput = findViewById(R.id.LogInAccount);
+        passwordInput = findViewById(R.id.LogInPw);
+        checkAuthentication();
+    }
 
-            Intent i = new Intent(this, CustomizeActivity.class);
-            i.putExtra("USER", user);
-            startActivity(i);
-
-        } catch (InputMismatchException e) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Wrong Input")
-                    .setMessage("username or password is wrong")
-                    .setPositiveButton(android.R.string.yes, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-        }
+    /**
+     * Navigate to CustomizeActivity
+     */
+    @Override
+    public void navigateToCustomize(User user) {
+        Intent i = new Intent(this, CustomizeActivity.class);
+        i.putExtra("USER", user);
+        startActivity(i);
     }
 
     /**
@@ -65,5 +70,18 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    /**
+     * Set the Alert Dialog when user input is wrong
+     */
+    @Override
+    public void setInputError() {
+        errorAlert.show();
+    }
 
+    /**
+     * Check the authentication of user
+     */
+    private void checkAuthentication() {
+        presenter.checkAuthentication(usernameInput.getText().toString(), passwordInput.getText().toString());
+    }
 }
