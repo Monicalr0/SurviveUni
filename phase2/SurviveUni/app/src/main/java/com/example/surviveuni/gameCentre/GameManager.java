@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class GameManager {
     private static GameState gameState;
     private User user;
+    private UserManager userManager;
     private Context context;
     private static final String SUFFIX = "-sav1.dat";
     private static final String FILENAME = "users.txt";
@@ -23,6 +24,7 @@ public class GameManager {
     public GameManager(User user, Context context) {
         this.user = user;
         this.context = context;
+        this.userManager = new UserManager(context);
     }
 
     void newGame() {
@@ -57,18 +59,18 @@ public class GameManager {
             InputStream inputStream = context.openFileInput(FILENAME);
             if (inputStream != null) {
                 ObjectInputStream input = new ObjectInputStream(inputStream);
-                UserManager.users = (HashMap<String, User>) input.readObject();
+                userManager.setUsers((HashMap<String, User>) input.readObject());
                 inputStream.close();
             }
         } catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
-            UserManager.users = new HashMap<>();
+            userManager.setUsers(new HashMap<>());
         } catch (IOException e) {
             Log.e("login activity", "Can not read file: " + e.toString());
-            UserManager.users = new HashMap<>();
+            userManager.setUsers(new HashMap<>());
         } catch (ClassNotFoundException e) {
             Log.e("login activity", "File contained unexpected data type: " + e.toString());
-            UserManager.users = new HashMap<>();
+            userManager.setUsers(new HashMap<>());
         }
     }
 
@@ -87,7 +89,7 @@ public class GameManager {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     context.openFileOutput(FILENAME, context.MODE_PRIVATE));
-            outputStream.writeObject(UserManager.users);
+            outputStream.writeObject(userManager.getUsers());
             outputStream.close();
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());

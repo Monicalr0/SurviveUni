@@ -17,6 +17,7 @@ public abstract class FeedbackActivity extends AppCompatActivity{
     public ScoreManager scoreManager;
     public String feedback;
     public User user;
+    private UserManager userManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public abstract class FeedbackActivity extends AppCompatActivity{
         setContentView(R.layout.activity_feedback);
 
         gameState = GameManager.getGameState();
+        userManager = new UserManager(this);
 
 
         // Capture the layout's TextView and set the string as its text
@@ -55,6 +57,6 @@ public abstract class FeedbackActivity extends AppCompatActivity{
     }
 
     public void setSleepSaveBtn(View view) {
-        UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
+        userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 }

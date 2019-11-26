@@ -15,7 +15,7 @@ import java.util.InputMismatchException;
 import java.util.Map;
 
 public class UserManager {
-    public static Map<String, User> users = new HashMap<>();
+    private Map<String, User> users = new HashMap<>();
     private Context context;
     private static final String FILENAME = "users.txt";
 
@@ -23,6 +23,14 @@ public class UserManager {
         this.context = context;
         loadUsers();
         SaveToFile();
+    }
+
+    public Map<String, User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Map<String, User> newUsers) {
+        this.users = newUsers;
     }
 
     private void loadUsers() {

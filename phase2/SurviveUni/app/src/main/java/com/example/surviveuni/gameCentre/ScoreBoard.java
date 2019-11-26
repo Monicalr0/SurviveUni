@@ -1,5 +1,7 @@
 package com.example.surviveuni.gameCentre;
 
+import android.content.Context;
+
 import com.example.surviveuni.data.User;
 
 public class ScoreBoard {
@@ -8,21 +10,23 @@ public class ScoreBoard {
     private String[] onBoard;
     private User user;
     private User toBoard; // next user to put on ScoreBoard
+    private UserManager userManager;
 
 
-    public ScoreBoard(){
+    public ScoreBoard(Context context){
         this.maxScore = -1;
         this.onBoard = new String[5];
         this.user = null;
         this.toBoard = null;
+        this.userManager = new UserManager(context);
     }
 
     public User setRanking(int spaceused){
         maxScore = -1;
-        for(String key : UserManager.users.keySet()) {
+        for(String key : userManager.getUsers().keySet()) {
             System.out.println(key);
             if (!contains(onBoard, key)) {
-                user = UserManager.users.get(key);
+                user = userManager.getUsers().get(key);
                 System.out.println(user.getScore());
                 if (user.getScore() > maxScore) {
                     maxScore = user.getScore();

@@ -69,6 +69,8 @@ public class StudyGame extends AppCompatActivity {
 
     private User user;
 
+    private UserManager userManager;
+
     private int timeInterval;
 
 
@@ -79,6 +81,7 @@ public class StudyGame extends AppCompatActivity {
         startingTime = LocalTime.now();
         gameState = GameManager.getGameState();
         setContentView(R.layout.activity_study_game);
+        userManager = new UserManager(this);
 
 
         Intent i = getIntent();
@@ -198,7 +201,7 @@ public class StudyGame extends AppCompatActivity {
     }
 
     public void setStudySaveBtn(View view) {
-        UserManager.users.get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
+        userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 
     public void setUpResult(boolean isSuccess) {

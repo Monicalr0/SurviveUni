@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.surviveuni.R;
-import com.example.surviveuni.gameCentre.UserManager;
 import com.example.surviveuni.data.User;
 
 public class CreateAccountActivity extends AppCompatActivity {
@@ -53,7 +52,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             if (checkReasonable(accInput, psInput)) {
                 User user = new User(accInput, psInput);
                 user.setNickName(nkInput);
-                UserManager.users.put(accInput, user);
+                userManager.getUsers().put(accInput, user);
                 userManager.SaveToFile();
                 Toast.makeText(this, "Your new acccount has been created!", Toast.LENGTH_SHORT).show();
                 Intent back = new Intent(this, MainActivity.class);
@@ -76,7 +75,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             Toast.makeText(this, "Length of Password And Username must be greater than 6", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            for (String key : UserManager.users.keySet())
+            for (String key : userManager.getUsers().keySet())
             {
                 if (key.equals(username))
                 {

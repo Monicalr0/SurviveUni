@@ -25,7 +25,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
     }
 
     private void display(){
-        ScoreBoard sb = new ScoreBoard();
+        ScoreBoard sb = new ScoreBoard(this);
         User user;
 
         TextView name1 = findViewById(R.id.BoardName1);
