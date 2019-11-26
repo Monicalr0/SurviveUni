@@ -15,9 +15,10 @@
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="40dp"
         android:onClick="StartStudyGame"
-        android:text="Let's Go"
+        android:text="@string/startStudying"
         app:layout_constraintBottom_toTopOf="@+id/StudyMenuExitBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +31,7 @@
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="177dp"
         android:onClick="ExitStudyGame"
-        android:text="Exit"
+        android:text="@string/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
         android:layout_marginEnd="134dp"
         android:layout_marginBottom="127dp"
         android:fontFamily="cursive"
-        android:text="There may be various distraction accur during study time, what you need to do is click the distraction within 3 seconds so you can survive this day "
+        android:text="@string/studyInstruction"
         android:textColor="#E91E63"
         android:textColorLink="#E91E63"
         android:textSize="24sp"
@@ -66,10 +67,30 @@
         android:layout_marginEnd="177dp"
         android:layout_marginBottom="116dp"
         android:fontFamily="cursive"
-        android:text="Hint: Remember to click Exit after each turn"
+        android:text="@string/studyHint"
         android:textColor="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StudyMenuExitBtn" />
+
+    <Spinner
+        android:id="@+id/studyLevel"
+        android:layout_width="159dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="268dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/chooseLevelMss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="279dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

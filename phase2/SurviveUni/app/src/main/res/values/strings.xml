@@ -23,5 +23,9 @@
     <string name="timeStart">"Time: 0"</string>
     <string name="doorDescription">"The door opened"</string>
     <string name="exit">"EXIT"</string>
+    <string name="startStudying">"Let's Go"</string>
+    <string name="studyInstruction">"There may be various distraction accur during study time, what you need to do is click the distraction within 3 seconds so you can survive this day."</string>
+    <string name="studyHint">"Hint: Remember to click Exit after each turn"</string>
+
 
 </resources>

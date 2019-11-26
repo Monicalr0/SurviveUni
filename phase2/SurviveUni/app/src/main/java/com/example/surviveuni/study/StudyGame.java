@@ -17,6 +17,7 @@ import com.example.surviveuni.gameCentre.GameOverActivity;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
 import com.example.surviveuni.gameCentre.UserManager;
+import com.example.surviveuni.sleep.SleepMainActivity;
 
 import java.time.Duration;
 import java.time.LocalTime;
@@ -31,6 +32,11 @@ public class StudyGame extends AppCompatActivity {
      */
     private static String SUCCESS_MESSAGE = "Success! GPA goes up!";
     private static String FAILURE_MESSAGE = "Failure... :(";
+
+    /**
+     * levels
+     */
+    private final String[] LEVELS = {"EASY", "NORMAL", "HARD"};
 
     /**
      * TextView for displaying time
@@ -63,6 +69,8 @@ public class StudyGame extends AppCompatActivity {
 
     private User user;
 
+    private int timeInterval;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +79,21 @@ public class StudyGame extends AppCompatActivity {
         startingTime = LocalTime.now();
         gameState = GameManager.getGameState();
         setContentView(R.layout.activity_study_game);
-        setupTime();
+
 
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("User");
+        Intent level = getIntent();
+        String levelSelected = level.getStringExtra(StudyMenu.EXTRA_MESSAGE);
 
         findViewById(R.id.StudySaveBtn).setVisibility(View.GONE);
+        setupTime(levelSelected);
     }
 
     /**
      * Time counting
      */
-    private void setupTime() {
+    private void setupTime(String level) {
         Timer timer;
         timeDisplay = findViewById(R.id.studyTimeText);
         timer = new Timer();
@@ -92,7 +103,7 @@ public class StudyGame extends AppCompatActivity {
             public void run() {
                 long time = Duration.between(startingTime, LocalTime.now()).toMillis();
 
-                usedTime = convertTime(time);
+                usedTime = convertTime(time, level);
 
                 if (usedTime == -1) {
                     runOnUiThread(() -> {
@@ -119,11 +130,23 @@ public class StudyGame extends AppCompatActivity {
         timer.schedule(task2, 0, 1000);
     }
 
-    int convertTime(long time) {
+    int convertTime(long time, String level) {
         int sec = (int) ((time % 3600000 % 60000) / 1000);
+        int deadline;
 
+        if (level.equals(LEVELS[0]))
+            deadline = 6;
+        else if (level.equals(LEVELS[1]))
+            deadline = 5;
+        else
+            deadline = 4;
 
-        if (sec == 6) {
+        System.out.println("LEVEL: " + level);
+        System.out.println("deadline: " + deadline);
+
+        System.out.println("sec: " + sec);
+        if (sec == deadline) {
+
             setUpResult(false);
         }
 
