@@ -19,20 +19,30 @@ import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class GameActivity extends AppCompatActivity {
     private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_main);
 
         Intent i = getIntent();
-        user = (User)i.getSerializableExtra("User");
+        user = (User) i.getSerializableExtra("User");
 
         GameState gs = GameManager.getGameState();
         Toast.makeText(this, "Your Three Values, GPA, Spirit and Happiness are "
                 + gs.getGPA() + ", " + gs.getSpirit() + ", " + gs.getHappiness(), Toast.LENGTH_SHORT).show();
 
-        TextView day = findViewById(R.id.GameMainDayShow);
-        day.setText(" Your record of survive in Uni is " + gs.getDayOfSurvival() + " days ");
+        TextView day = findViewById(R.id.textTitle);
+        day.setText(" Survive for " + gs.getDayOfSurvival() + " days ");
+
+        TextView gpa = findViewById(R.id.textGPA);
+        gpa.setText("GPA:" + gs.getGPA());
+
+        TextView happiness = findViewById(R.id.textHappiness);
+        happiness.setText("Happiness:" + gs.getHappiness());
+
+        TextView spirit = findViewById(R.id.textSpirit);
+        spirit.setText("Spirit:" + gs.getSpirit());
     }
 
     /**
@@ -40,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void StartSleep(View view) {
         Intent startGame = new Intent(this, SleepMainActivity.class);
-        startGame.putExtra("User",user);
+        startGame.putExtra("User", user);
         startActivity(startGame);
     }
 
@@ -49,7 +59,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void StartSocial(View view) {
         Intent startGame = new Intent(this, SocialMain.class);
-        startGame.putExtra("User",user);
+        startGame.putExtra("User", user);
         startActivity(startGame);
     }
 
@@ -58,7 +68,7 @@ public class GameActivity extends AppCompatActivity {
      */
     public void StartStudy(View view) {
         Intent startGame = new Intent(this, StudyMenu.class);
-        startGame.putExtra("User",user);
+        startGame.putExtra("User", user);
         startActivity(startGame);
     }
 
@@ -71,9 +81,9 @@ public class GameActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void setScoreBrdBtn(View view){
+    public void setScoreBrdBtn(View view) {
         Intent i = new Intent(this, ScoreBoardActivity.class);
-        i.putExtra("User",user);
+        i.putExtra("User", user);
         startActivity(i);
     }
 
