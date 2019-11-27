@@ -10,7 +10,7 @@ import com.example.surviveuni.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Wolf extends SleepGameItem {
+ class Wolf extends SleepGameItem {
     /**
      * This Wolf's width.
      */
@@ -45,8 +45,8 @@ public class Wolf extends SleepGameItem {
     Wolf(int x, int y, Resources res) {
         super(x, y);
         goingRight = true;
-//        wolfLeft = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_left), 200, 200);
-//        wolfRight = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_right), 200, 200);
+        wolfLeft = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_left), 200, 200);
+        wolfRight = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_right), 200, 200);
         appearance = wolfRight;
         wolfWidth = wolfLeft.getWidth();
         wolfHeight = wolfRight.getHeight();
@@ -71,7 +71,7 @@ public class Wolf extends SleepGameItem {
     /**
      * resize the bibmap
      */
-    public Bitmap getResizedBitmap(Bitmap image, int bitmapWidth, int bitmapHeight) {
+    private Bitmap getResizedBitmap(Bitmap image, int bitmapWidth, int bitmapHeight) {
         return Bitmap.createScaledBitmap(image, bitmapWidth, bitmapHeight, true);
     }
 
