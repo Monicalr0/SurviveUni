@@ -18,6 +18,9 @@ public class SocialActivity extends AppCompatActivity {
     int expect;
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.social.SocialActivity.MESSAGE";
     int remainingGuess;
+    private String feedBack = "";
+    boolean gameWon = false;
+    int correctAnswer = generate_expect();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +37,25 @@ public class SocialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_social_answer);
     }
 
+
+
     public void submitAnswer(View view) {
-        Intent intent = new Intent(this, Socialfeedback.class);
         EditText editText = findViewById(R.id.answerText);
         String answer = editText.getText().toString();
-        String feedBack = checkAnswer(answer);
-        intent.putExtra(EXTRA_MESSAGE, feedBack);
-        intent.putExtra("User",user);
-        startActivity(intent);
-        finish();
+
+        feedBack = checkAnswer(answer);
+
+        if(remainingGuess == 1){
+            checkGameOver(feedBack, true, false);
+        }
+        else {
+            checkGameOver(feedBack, false, false);
+            remainingGuess--;
+            Toast.makeText(this,feedBack, Toast.LENGTH_SHORT).show();
+
+        }
     }
+
 
     public int generate_expect() {
         Random r = new Random();
@@ -51,23 +63,56 @@ public class SocialActivity extends AppCompatActivity {
         return expect;
     }
 
+    private void checkGameOver(String feedBack, boolean limitStatus, boolean unExpectInput) {
+
+        if(gameWon || limitStatus || unExpectInput){
+            Intent intent = new Intent(this, Socialfeedback.class);
+            intent.putExtra(EXTRA_MESSAGE, feedBack);
+            intent.putExtra("User", user);
+            startActivity(intent);
+            finish();
+        }
+    }
+
     // should also check if remaining guesses are great than or equal to 1
     private String checkAnswer(String answer) {
+        String feedback;
+        boolean unexpectInput = false;
         try {
             int number = Integer.parseInt(answer);
-            int correctAnswer = generate_expect();
-            if (number == correctAnswer) {
-                return "Correct! Let's be friend!";
-            } else if (number <= 5 && number >= 1) {
-                return "Sorry! Maybe next time.";
-            } else {
-                return "You are not here to be friend with me!";
-            }
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
-            return "Sorry! Maybe next time.";
-        }
 
+            if ( !(number <= 5 && number >= 1 )) {
+                feedback = "You are not here to be friend with me!";
+                unexpectInput = true;
+            }
+
+            if(remainingGuess == 1){
+                if (number == correctAnswer) {
+                    feedback = "Correct! Let's be friend!";
+                } else {
+                    feedback =  "Sorry! Run out of playing times:( Maybe next time.";
+                }
+            }
+            else{
+                if (number == correctAnswer) {
+                    gameWon = true;
+                    feedback =  "Correct! Let's be friend!";
+                }
+                else if(number > correctAnswer){
+                    feedback = "It's too high, try another time.";
+                }
+                else {
+                    feedback = "It's too low, try another time.";
+                }
+            }
+        }
+        catch (NumberFormatException e) {
+            Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
+            unexpectInput = true;
+            feedback = "You are not here to be friend with me!";
+        }
+        checkGameOver(feedback, remainingGuess == 1, unexpectInput);
+        return feedback;
     }
 
     private void setRemainingGuess(String level) {
