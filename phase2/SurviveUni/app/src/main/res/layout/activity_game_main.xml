@@ -38,8 +38,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="53dp"
-        android:layout_height="56dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
         android:background="@drawable/save"
         android:onClick="goBack"
         app:layout_constraintBottom_toTopOf="@+id/guideline21"
@@ -47,12 +47,12 @@
         app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline14"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.87" />
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="53dp"
-        android:layout_height="46dp"
+        android:layout_width="47dp"
+        android:layout_height="40dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="69dp"
         android:background="@drawable/leaderboard"
