@@ -54,7 +54,7 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         thread = new SheepThread(getHolder(), this);
         setFocusable(true);
-        background = BitmapFactory.decodeResource(getResources(), R.drawable.sleep_background);
+//        background = BitmapFactory.decodeResource(getResources(), R.drawable.sleep_background);
         this.SheepNum = SheepNum;
     }
 

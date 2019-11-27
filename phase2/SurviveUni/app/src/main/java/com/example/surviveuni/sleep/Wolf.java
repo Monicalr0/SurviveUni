@@ -45,8 +45,8 @@ public class Wolf extends SleepGameItem {
     Wolf(int x, int y, Resources res) {
         super(x, y);
         goingRight = true;
-        wolfLeft = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_left), 200, 200);
-        wolfRight = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_right), 200, 200);
+//        wolfLeft = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_left), 200, 200);
+//        wolfRight = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_right), 200, 200);
         appearance = wolfRight;
         wolfWidth = wolfLeft.getWidth();
         wolfHeight = wolfRight.getHeight();
