@@ -2,12 +2,13 @@ package com.example.surviveuni.sleep;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 
-import com.example.surviveuni.sleep.SheepManager;
-import com.example.surviveuni.sleep.SheepThread;
+import com.example.surviveuni.R;
 
 /**
  * The sleep game view.
@@ -39,6 +40,11 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
     private SheepThread thread;
 
     /**
+     * background image of the sleep game
+     */
+    private Bitmap background;
+
+    /**
      * Create a new sleep game in the context environment.
      *
      * @param context the environment.
@@ -48,13 +54,14 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         thread = new SheepThread(getHolder(), this);
         setFocusable(true);
+        background = BitmapFactory.decodeResource(getResources(), R.drawable.sleep_background);
         this.SheepNum = SheepNum;
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         sheepManager = new SheepManager(screenHeight, screenWidth, getResources());
-        sheepManager.createSheep(SheepNum);
+        sheepManager.createItems(SheepNum);
 
         thread.setRunning(true);
         thread.start();
@@ -89,8 +96,8 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        if (canvas != null) {
-            sheepManager.draw(canvas);
-        }
+        canvas.drawBitmap(background, 0, 0, null);
+        sheepManager.draw(canvas);
     }
 }
+

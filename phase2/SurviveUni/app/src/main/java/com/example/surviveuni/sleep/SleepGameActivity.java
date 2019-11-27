@@ -21,7 +21,7 @@ public class SleepGameActivity extends AppCompatActivity {
 
         Intent level = getIntent();
         String levelSelected = level.getStringExtra(SleepMainActivity.EXTRA_MESSAGE);
-        user = (User)level.getSerializableExtra("User");
+        user = (User) level.getSerializableExtra("User");
         setSheepNum(levelSelected);
 
         setContentView(new SheepView(this, SheepNum));
@@ -31,12 +31,15 @@ public class SleepGameActivity extends AppCompatActivity {
         handler.postDelayed(() -> {
             Intent intent = new Intent(SleepGameActivity.this, SleepAnswerActivity.class);
             intent.putExtra(EXTRA_MESSAGE, SheepNum);
-            intent.putExtra("User",user);
+            intent.putExtra("User", user);
             SleepGameActivity.this.startActivity(intent);
             SleepGameActivity.this.finish();
-        }, 4000);
+        }, 6000);
     }
 
+    /**
+     * set the number Sheep to be created according to the user selected level
+     */
     private void setSheepNum(String levelSelected) {
         switch (levelSelected) {
             case "HARD":
