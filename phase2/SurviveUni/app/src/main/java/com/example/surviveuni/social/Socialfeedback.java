@@ -50,7 +50,7 @@ public class Socialfeedback extends AppCompatActivity {
             gameState.changeSpirit(-5);
             gameState.changeHappiness(10);
             return ("Happiness:+10\nGPA:-5\nSpirit:-5");
-        } else if (feedback.equals("Sorry! Maybe next time.")) {
+        } else if (feedback.equals("Sorry! Run out of playing times:( Maybe next time.")) {
             iv.setImageResource(R.drawable.sorry);
             gameState.changeGPA(-5);
             gameState.changeSpirit(-5);
