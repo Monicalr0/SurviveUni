@@ -1,6 +1,7 @@
 SurviveUni
 =
-This is a course project for CSC207.
+This is a course project for CSC207 Fall 2019 at the University of 
+Toronto.
    
 **General Information :**  
 
@@ -16,21 +17,29 @@ SurviveUni is a game. Each time an user start the game, he/she will be
  games to play: Study, Sleep and Social, corresponding to the attributes
  GPA, Spirit and Happiness. Each time the user start a round of game, 
  the DayofSurvival will add 1. Playing each game will cost other two not
- correspond attributes. 
+ corresponding attributes. 
+ 
+ *Level*:
+ The user can choose different levels to play in each game. Each level 
+ corresponds to a different difficulty.
  
  *Win/Lose*:  
- If the user win, he/she will get points added to the corresponding 
+ If the user wins, he/she will get points added to the corresponding 
  attributes, else the corresponding attributes will also be deducted 
  with some points. 
  
  *Gameover*:  
- Once the user has one of the attributes deducted to 0, the game over.
+ Once the user has one of the attributes deducted to 0, the game is over.
  All attributes will be reset to 50, the DayofSurvival will be reset to 0.
  
  **Game Introduction**:
  
  *Study*:  
  
- *Sleep*:  
+ *Social*:  A socializing guess-the-number game. A number ranging from
+ 1 to 5 is randomly generated each time and user would guess the number.
+ There are different remaining guesses according to the level that the 
+ user chooses. If the user guesses the number correctly within the 
+ remaining guesses, he/she wins. Else, the user loses.
  
- *Social*:  
+ *Sleep*:  
