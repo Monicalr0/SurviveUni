@@ -26,6 +26,14 @@
     <string name="startStudying">"Let's Go"</string>
     <string name="studyInstruction">"There may be various distraction accur during study time, what you need to do is click the distraction within 3 seconds so you can survive this day."</string>
     <string name="studyHint">"Hint: Remember to click Exit after each turn"</string>
+    <string name="socialAnswerText">"I have thought of an integer ranging from 1 to 5. Wanna try and guess it?"</string>
+    <string name="socialAnswerButton">"Submit"</string>
+    <string name="socialFeedbackNextButton">"Next Round"</string>
+    <string name="socialFeedbackSaveButton">"Save"</string>
+    <string name="socialMainTitle">"Social: Oh isn't that scary!"</string>
+    <string name="socialMainText">"But don't worry ;) — we will try and make it as easy as we can for you. \nYou will meet a strange but nice person trying to befriend you. However, you can only succeed when you think in the same way — that is, guess the number correctly! \nSo, are you ready?"</string>
+    <string name="socialMainGoButton">"LET'S GO!"</string>
+    <string name="socialMainNoButton">"NOT YET"</string>
 
 
 </resources>
