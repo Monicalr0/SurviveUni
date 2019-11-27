@@ -10,18 +10,7 @@ import com.example.surviveuni.R;
 /**
  * A sheep.
  */
-class Sheep {
-
-    /**
-     * This sheep's first coordinate.
-     */
-    private int x;
-
-    /**
-     * This sheep's second coordinate.
-     */
-    private int y;
-
+class Sheep extends SleepGameItem {
     /**
      * This sheep's width.
      */
@@ -35,7 +24,7 @@ class Sheep {
     /**
      * Bitmap of sheep
      */
-    private Bitmap sheep_left, sheep_right, appearance;
+    private Bitmap sheepLeft, sheepRight, appearance;
 
     /**
      * Indicates whether this sheep is moving right.
@@ -54,17 +43,28 @@ class Sheep {
      * @param y the y coordinate of the sheep.
      */
     Sheep(int x, int y, Resources res) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         goingRight = true;
-        sheep_left = BitmapFactory.decodeResource(res, R.drawable.sheep_left);
-        sheep_right = BitmapFactory.decodeResource(res, R.drawable.sheep_right);
-        sheepWidth = sheep_left.getWidth();
-        sheepHeight = sheep_left.getHeight();
+        sheepLeft = BitmapFactory.decodeResource(res, R.drawable.sheep_left);
+        sheepRight = BitmapFactory.decodeResource(res, R.drawable.sheep_right);
+        appearance = sheepRight;
+        sheepWidth = sheepLeft.getWidth();
+        sheepHeight = sheepLeft.getHeight();
     }
 
+    @Override
     void draw(Canvas canvas) {
-        canvas.drawBitmap(appearance, x, y, null);
+        canvas.drawBitmap(appearance, getX(), getY(), null);
+    }
+
+    /**
+     * Causes this sheep to move, change its corresponding coordinates.
+     */
+    @Override
+    void move(int ScreenHeight, int ScreenWidth) {
+        turnAround();
+        moveRightLeft(ScreenWidth);
+        moveUpDown(ScreenHeight);
     }
 
     /**
@@ -73,19 +73,10 @@ class Sheep {
     private void turnAround() {
         d = Math.random();
         if (d < 0.1) {
-            if (goingRight) appearance = sheep_left;
-            else appearance = sheep_right;
+            if (goingRight) appearance = sheepLeft;
+            else appearance = sheepRight;
             goingRight = !goingRight;
         }
-    }
-
-    /**
-     * Causes this sheep to move, change its corresponding coordinates.
-     */
-    void move(int Height, int Width) {
-        turnAround();
-        moveRightLeft(Width);
-        moveUpDown(Height);
     }
 
     /**
@@ -93,11 +84,15 @@ class Sheep {
      */
     private void moveRightLeft(int Width) {
         if (goingRight) {
-            if (x + sheepWidth >= Width) turnAround();
-            else x += Width / 50;
+            if (getX() + sheepWidth >= Width) {
+                appearance = sheepLeft;
+                goingRight = !goingRight;
+            } else setX(getX() + Width / 50);
         } else {
-            if (x <= 0) turnAround();
-            else x -= Width / 50;
+            if (getX() <= 0) {
+                appearance = sheepRight;
+                goingRight = !goingRight;
+            } else setX(getX() - Width / 50);
         }
     }
 
@@ -106,7 +101,7 @@ class Sheep {
      */
     private void moveUpDown(int Height) {
         d = Math.random();
-        if (d < 0.1 && y + sheepHeight <= Height - Height / 50) y += Height / 50;
-        else if (d < 0.2 && y >= 10) y -= Height / 50;
+        if (d < 0.2 && getY() + sheepHeight <= Height - Height / 50) setY(getY() + Height / 50);
+        else if (d > 0.8 && getY() >= 15) setY(getY() - Height / 50);
     }
 }

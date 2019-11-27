@@ -32,7 +32,7 @@ public class SleepMainActivity extends AppCompatActivity {
         setLevelSpinner();
 
         Intent i = getIntent();
-        user = (User)i.getSerializableExtra("User");
+        user = (User) i.getSerializableExtra("User");
     }
 
     /**
@@ -42,7 +42,7 @@ public class SleepMainActivity extends AppCompatActivity {
         levelChoice = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SleepGameActivity.class);
         startGame.putExtra(EXTRA_MESSAGE, levelChoice);
-        startGame.putExtra("User",user);
+        startGame.putExtra("User", user);
         startActivity(startGame);
     }
 
@@ -51,7 +51,7 @@ public class SleepMainActivity extends AppCompatActivity {
      */
     public void ReturnGameMain(View view) {
         Intent ReturnGame = new Intent(this, GameActivity.class);
-        ReturnGame.putExtra("User",user);
+        ReturnGame.putExtra("User", user);
         startActivity(ReturnGame);
     }
 

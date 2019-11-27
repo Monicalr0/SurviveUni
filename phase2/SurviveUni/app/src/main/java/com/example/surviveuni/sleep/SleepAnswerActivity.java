@@ -16,13 +16,14 @@ public class SleepAnswerActivity extends AppCompatActivity {
     private int sheepNum;
     private User user;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_answer);
         Intent intent = getIntent();
         sheepNum = intent.getIntExtra(SleepGameActivity.EXTRA_MESSAGE, 0);
-        user = (User)intent.getSerializableExtra("User");
+        user = (User) intent.getSerializableExtra("User");
     }
 
     /**
@@ -34,7 +35,7 @@ public class SleepAnswerActivity extends AppCompatActivity {
         String answer = editText.getText().toString();
         String feedBack = checkAnswer(answer);
         intent.putExtra(EXTRA_MESSAGE, feedBack);
-        intent.putExtra("User",user);
+        intent.putExtra("User", user);
         startActivity(intent);
         finish();
     }

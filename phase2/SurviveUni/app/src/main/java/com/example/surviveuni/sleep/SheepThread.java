@@ -58,9 +58,8 @@ public class SheepThread extends Thread {
                     }
                 }
             }
-
             try {
-                this.sleep(50);
+                this.sleep(30);
             } catch (Exception e) {
                 e.printStackTrace();
             }

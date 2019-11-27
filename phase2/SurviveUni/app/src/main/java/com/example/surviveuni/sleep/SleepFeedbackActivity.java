@@ -16,7 +16,7 @@ public class SleepFeedbackActivity extends FeedbackActivity {
     public void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
-        user = (User)intent.getSerializableExtra("User");
+        user = (User) intent.getSerializableExtra("User");
         scoreManager = new SleepScoreManager();
         super.onCreate(savedInstanceState);
         super.setUser(user);
