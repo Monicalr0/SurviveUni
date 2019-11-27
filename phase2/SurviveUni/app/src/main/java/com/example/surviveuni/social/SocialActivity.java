@@ -81,12 +81,11 @@ public class SocialActivity extends AppCompatActivity {
         try {
             int number = Integer.parseInt(answer);
 
-            if ( !(number <= 5 && number >= 1 )) {
+            if ( number > 5 || number < 1 ) {
                 feedback = "You are not here to be friend with me!";
                 unexpectInput = true;
             }
-
-            if(remainingGuess == 1){
+            else if(remainingGuess == 1){
                 if (number == correctAnswer) {
                     feedback = "Correct! Let's be friend!";
                 } else {
