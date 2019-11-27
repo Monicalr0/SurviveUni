@@ -21,6 +21,7 @@ public class SocialActivity extends AppCompatActivity {
     private String feedBack = "";
     boolean gameWon = false;
     int correctAnswer = generate_expect();
+    private boolean unexpectedInput = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +46,14 @@ public class SocialActivity extends AppCompatActivity {
 
         feedBack = checkAnswer(answer);
 
-        if(remainingGuess == 1){
-            checkGameOver(feedBack, true, false);
-        }
-        else {
-            checkGameOver(feedBack, false, false);
+        if (remainingGuess != 1) {
             remainingGuess--;
-            Toast.makeText(this,feedBack, Toast.LENGTH_SHORT).show();
-
+            if (!unexpectedInput){
+                Toast.makeText(this, feedBack, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "unexpected input: out of range or not a number", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -63,7 +64,7 @@ public class SocialActivity extends AppCompatActivity {
         return expect;
     }
 
-    private void checkGameOver(String feedBack, boolean limitStatus, boolean unExpectInput) {
+    private int checkGameOver(String feedBack, boolean limitStatus, boolean unExpectInput) {
 
         if(gameWon || limitStatus || unExpectInput){
             Intent intent = new Intent(this, Socialfeedback.class);
@@ -71,19 +72,20 @@ public class SocialActivity extends AppCompatActivity {
             intent.putExtra("User", user);
             startActivity(intent);
             finish();
+            return 1;
         }
+        return 0;
     }
 
     // should also check if remaining guesses are great than or equal to 1
     private String checkAnswer(String answer) {
         String feedback;
-        boolean unexpectInput = false;
         try {
             int number = Integer.parseInt(answer);
 
             if ( number > 5 || number < 1 ) {
                 feedback = "You are not here to be friend with me!";
-                unexpectInput = true;
+                unexpectedInput = true;
             }
             else if(remainingGuess == 1){
                 if (number == correctAnswer) {
@@ -107,10 +109,10 @@ public class SocialActivity extends AppCompatActivity {
         }
         catch (NumberFormatException e) {
             Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
-            unexpectInput = true;
+            unexpectedInput = true;
             feedback = "You are not here to be friend with me!";
         }
-        checkGameOver(feedback, remainingGuess == 1, unexpectInput);
+        checkGameOver(feedback, remainingGuess == 1, unexpectedInput);
         return feedback;
     }
 
