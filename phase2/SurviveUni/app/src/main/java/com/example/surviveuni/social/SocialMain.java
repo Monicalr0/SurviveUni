@@ -14,6 +14,7 @@ import com.example.surviveuni.R;
 
 public class SocialMain extends AppCompatActivity {
     private User user;
+    public static final String EXTRA_MESSAGE = "com.example.surviveuni.social.SocialMain.MESSAGE";
 
     /**
      * The list of choices for the spinner that allows the user to choose which
@@ -41,6 +42,7 @@ public class SocialMain extends AppCompatActivity {
     public void StartSocialGame(View view) {
         levelChoice = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SocialActivity.class);
+        startGame.putExtra(EXTRA_MESSAGE, levelChoice);
         startGame.putExtra("User",user);
         startActivity(startGame);
     }
