@@ -38,7 +38,7 @@ public class StudyMenu extends AppCompatActivity {
     public void StartStudyGame(View view) {
         levelChoice = spinner.getSelectedItem().toString();
 
-        Intent startGame = new Intent(this, StudyGame.class);
+        Intent startGame = new Intent(this, StudyGameActivity.class);
         startGame.putExtra(EXTRA_MESSAGE, levelChoice);
         startGame.putExtra("User", user);
         startActivity(startGame);

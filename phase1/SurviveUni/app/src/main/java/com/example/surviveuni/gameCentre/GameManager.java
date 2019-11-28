@@ -51,23 +51,23 @@ public class GameManager {
         }
 
         // load users
-        try {
-            InputStream inputStream = context.openFileInput(FILENAME);
-            if (inputStream != null) {
-                ObjectInputStream input = new ObjectInputStream(inputStream);
-                UserManager.users = (HashMap<String, User>) input.readObject();
-                inputStream.close();
-            }
-        } catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-            UserManager.users = new HashMap<>();
-        } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
-            UserManager.users = new HashMap<>();
-        } catch (ClassNotFoundException e) {
-            Log.e("login activity", "File contained unexpected data type: " + e.toString());
-            UserManager.users = new HashMap<>();
-        }
+//        try {
+//            InputStream inputStream = context.openFileInput(FILENAME);
+//            if (inputStream != null) {
+//                ObjectInputStream input = new ObjectInputStream(inputStream);
+//                UserManager.users = (HashMap<String, User>) input.readObject();
+//                inputStream.close();
+//            }
+//        } catch (FileNotFoundException e) {
+//            Log.e("login activity", "File not found: " + e.toString());
+//            UserManager.users = new HashMap<>();
+//        } catch (IOException e) {
+//            Log.e("login activity", "Can not read file: " + e.toString());
+//            UserManager.users = new HashMap<>();
+//        } catch (ClassNotFoundException e) {
+//            Log.e("login activity", "File contained unexpected data type: " + e.toString());
+//            UserManager.users = new HashMap<>();
+//        }
 
 
 

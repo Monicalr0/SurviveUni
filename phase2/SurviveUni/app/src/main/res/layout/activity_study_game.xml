@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/doorDescription"
-            android:onClick="setStudySaveBtn"
+            android:onClick="setSaveScoreBtn"
             android:text="@string/save" />
 
     </LinearLayout>

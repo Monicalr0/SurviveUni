@@ -73,64 +73,10 @@ public class StudyGame extends AppCompatActivity {
 
     private int timeInterval;
 
+    private StudyGameActivity sga = new StudyGameActivity();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        startingTime = LocalTime.now();
-        gameState = GameManager.getGameState();
-        setContentView(R.layout.activity_study_game);
-        userManager = new UserManager(this);
-
-
-        Intent i = getIntent();
-        user = (User) i.getSerializableExtra("User");
-        Intent level = getIntent();
-        String levelSelected = level.getStringExtra(StudyMenu.EXTRA_MESSAGE);
-
-        findViewById(R.id.StudySaveBtn).setVisibility(View.GONE);
-        setupTime(levelSelected);
-    }
-
-    /**
-     * Time counting
-     */
-    private void setupTime(String level) {
-        Timer timer;
-        timeDisplay = findViewById(R.id.studyTimeText);
-        timer = new Timer();
-
-        task2 = new TimerTask() {
-            @Override
-            public void run() {
-                long time = Duration.between(startingTime, LocalTime.now()).toMillis();
-
-                usedTime = convertTime(time, level);
-
-                if (usedTime == -1) {
-                    runOnUiThread(() -> {
-                                // Stuff that updates the UI
-
-                                double i = Math.random();
-                                if (i > 0.5) setUpMessageButton();
-
-                                else
-                                    setUpPersonButton();
-
-                            }
-                    );
-                } else if (usedTime >= 0) {
-                    runOnUiThread(() -> {
-
-
-                        // Stuff that updates the UI
-                        timeDisplay.setText(String.format(TIME_PREFIX + "%s", usedTime));
-                    });
-                }
-            }
-        };
-        timer.schedule(task2, 0, 1000);
+    StudyGame(GameState gameState){
+        this.gameState = gameState;
     }
 
     int convertTime(long time, String level) {
@@ -150,78 +96,33 @@ public class StudyGame extends AppCompatActivity {
         System.out.println("sec: " + sec);
         if (sec == deadline) {
 
-            setUpResult(false);
+            sga.setUpResult(false);
         }
 
         return sec - 3;
     }
 
-
-    private void setUpMessageButton() {
-
-        button = new ImageButton(this);
-        button = findViewById(R.id.MessageButton);
-        button.setImageResource(R.drawable.message1);
-
-
-        button.setOnClickListener(view -> {
-            task2.cancel();
-            button.setImageDrawable(null);
-            setUpResult(true);
-
-        });
-    }
-
-    private void setUpPersonButton() {
-
-        button = new ImageButton(this);
-        button = findViewById(R.id.theButton);
-        button.setImageResource(R.drawable.person1);
-
-
-        button.setOnClickListener(view -> {
-            task2.cancel();
-            button.setImageDrawable(null);
-            setUpResult(true);
-
-        });
-    }
-
-
-    public void setExitBtn(View view) {
-        Intent i;
+    boolean checkExit() {
         if (gameState.checkGameover() == 1) {
-            i = new Intent(this, GameOverActivity.class);
+            return true;
         } else {
             gameState.updateDay();
-            i = new Intent(this, GameActivity.class);
+            return false;
         }
-        i.putExtra("User", user);
-        startActivity(i);
     }
 
-    public void setStudySaveBtn(View view) {
+    void saveScore() {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
     }
 
     public void setUpResult(boolean isSuccess) {
-
-        result = findViewById(R.id.studyResult);
-        runOnUiThread(() -> {
                     gameState.changeHappiness(-5);
                     gameState.changeSpirit(-5);
+                    if(isSuccess){gameState.changeGPA(5);}
+                    else{gameState.changeGPA(-5);}
 
-                    // Stuff that updates the UI
-                    if (isSuccess && usedTime < 3) {
-                        result.setText(SUCCESS_MESSAGE);
-                        gameState.changeGPA(5);
-                    } else {
-                        task2.cancel();
-                        result.setText(FAILURE_MESSAGE);
-                        gameState.changeGPA(-5);
-                    }
-                    findViewById(R.id.StudySaveBtn).setVisibility(View.VISIBLE);
-                }
-        );
     }
+
+    void passActivity(StudyGameActivity sga){this.sga = sga;}
+
 }

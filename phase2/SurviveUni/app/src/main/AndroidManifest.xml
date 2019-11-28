@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".gameCentre.CreateAccountActivity" />
-        <activity android:name=".study.StudyGame" />
+        <activity android:name=".study.StudyGameActivity" />
         <activity android:name=".study.StudyMenu" />
         <activity
             android:name=".gameCentre.LoginActivity"
