@@ -77,6 +77,7 @@ public class StudyGame extends AppCompatActivity {
 
     StudyGame(GameState gameState){
         this.gameState = gameState;
+        this.userManager = UserManager.getInstance(this);
     }
 
     int convertTime(long time, String level) {

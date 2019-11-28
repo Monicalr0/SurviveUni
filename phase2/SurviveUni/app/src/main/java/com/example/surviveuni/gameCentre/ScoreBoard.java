@@ -18,7 +18,7 @@ public class ScoreBoard {
         this.onBoard = new String[5];
         this.user = null;
         this.toBoard = null;
-        this.userManager = new UserManager(context);
+        this.userManager = UserManager.getInstance(context);
     }
 
     public User setRanking(int spaceused){

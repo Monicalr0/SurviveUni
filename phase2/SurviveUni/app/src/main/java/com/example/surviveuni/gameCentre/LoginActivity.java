@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        presenter = new LoginPresenter(this, new UserManager(this));
+        presenter = new LoginPresenter(this, UserManager.getInstance(this));
         errorAlert = new AlertDialog.Builder(this)
                 .setTitle("Wrong Input")
                 .setMessage("username or password is wrong")

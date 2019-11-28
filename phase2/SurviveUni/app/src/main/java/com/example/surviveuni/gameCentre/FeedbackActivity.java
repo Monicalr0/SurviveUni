@@ -25,7 +25,7 @@ public abstract class FeedbackActivity extends AppCompatActivity{
         setContentView(R.layout.activity_feedback);
 
         gameState = GameManager.getGameState();
-        userManager = new UserManager(this);
+        userManager = UserManager.getInstance(this);
 
 
         // Capture the layout's TextView and set the string as its text

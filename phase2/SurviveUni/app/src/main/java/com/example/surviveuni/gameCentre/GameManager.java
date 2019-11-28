@@ -24,7 +24,7 @@ public class GameManager {
     public GameManager(User user, Context context) {
         this.user = user;
         this.context = context;
-        this.userManager = new UserManager(context);
+        this.userManager = UserManager.getInstance(context);
     }
 
     void newGame() {

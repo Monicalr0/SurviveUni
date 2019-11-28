@@ -31,7 +31,7 @@ public class Socialfeedback extends AppCompatActivity {
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
         user = (User) intent.getSerializableExtra("User");
-        userManager = new UserManager(this);
+        userManager = UserManager.getInstance(this);
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.feedbackText);
