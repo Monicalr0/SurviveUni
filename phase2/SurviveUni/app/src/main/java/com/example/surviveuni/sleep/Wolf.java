@@ -65,8 +65,26 @@ import java.util.List;
         turnAround();
         moveRightLeft(ScreenWidth);
         moveUpDown(ScreenHeight);
-//        eat();
     }
+
+     /**
+      * Wolf eats nearby items.
+      */
+     List<SleepGameItem> eat(List<SleepGameItem> sleepGameItems) {
+         List<SleepGameItem> eatenItem = new ArrayList<>();
+         for (SleepGameItem item : sleepGameItems) {
+             if (!(item instanceof Wolf)) {
+                 // check for the distance between wolf and other items
+                 double distance =
+                         Math.hypot(Math.abs(item.getX() - this.getX()), Math.abs(item.getY() - this.getY()));
+                 if (distance <= 50) {
+                     eatenItem.add(item);
+                     this.setX(item.getX());
+                     this.setY(item.getY());
+                 }
+             }
+         } return eatenItem;
+     }
 
     /**
      * resize the bibmap
@@ -93,10 +111,10 @@ import java.util.List;
     private void moveRightLeft(int Width) {
         if (goingRight) {
             if (getX() + wolfWidth >= Width) turnAround();
-            else setX(getX() + Width / 50);
+            else setX(getX() + Width / 40);
         } else {
             if (getX() <= 0) turnAround();
-            else setX(getX() - Width / 50);
+            else setX(getX() - Width / 40);
         }
     }
 
@@ -105,26 +123,7 @@ import java.util.List;
      */
     private void moveUpDown(int Height) {
         d = Math.random();
-        if (d < 0.1 && getY() + wolfHeight <= Height - Height / 50) setY(getY() + Height / 50);
-        else if (d > 0.8 && getY() >= 15) setY(getY() - Height / 50);
-    }
-
-    /**
-     * Wolf eats nearby items.
-     */
-    private void eat(List<SleepGameItem> sleepGameItems) {
-        List<SleepGameItem> eatenItem = new ArrayList<>();
-        for (SleepGameItem item : sleepGameItems) {
-            if (!(item instanceof Wolf)) {
-                // check for the distance between wolf and other items
-                double distance =
-                        Math.hypot(Math.abs(item.getX() - this.getX()), Math.abs(item.getY() - this.getY()));
-                if (distance <= 5) {
-                    eatenItem.add(item);
-                    this.setX(item.getX());
-                    this.setY(item.getY());
-                }
-            }
-        }
+        if (d < 0.1 && getY() + wolfHeight <= Height - Height / 40) setY(getY() + Height / 40);
+        else if (d > 0.9 && getY() >= 15) setY(getY() - Height / 40);
     }
 }

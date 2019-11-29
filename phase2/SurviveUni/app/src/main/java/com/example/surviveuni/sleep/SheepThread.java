@@ -23,7 +23,7 @@ public class SheepThread extends Thread {
     /**
      * The canvas on which to draw the sleep game
      */
-    public static Canvas canvas;
+    private Canvas canvas;
 
     /**
      * Construct the thread.
@@ -31,7 +31,7 @@ public class SheepThread extends Thread {
      * @param surfaceHolder the canvas container.
      * @param view          where the sheep are drawn.
      */
-    public SheepThread(SurfaceHolder surfaceHolder, SheepView view) {
+    SheepThread(SurfaceHolder surfaceHolder, SheepView view) {
         this.surfaceHolder = surfaceHolder;
         this.sheepView = view;
     }
@@ -59,14 +59,14 @@ public class SheepThread extends Thread {
                 }
             }
             try {
-                this.sleep(30);
+                sleep(1/10);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void setRunning(boolean isRunning) {
+    void setRunning(boolean isRunning) {
         this.isRunning = isRunning;
     }
 }
