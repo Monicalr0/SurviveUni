@@ -83,4 +83,12 @@ class SheepManager implements Serializable {
                 break;
         }
     }
+
+     void onTouchEvent(int touchX, int touchY) {
+        for (SleepGameItem item : itemList) {
+            if (item instanceof Wolf){
+                ((Wolf) item).onTouchEvent(touchX, touchY);
+            }
+        }
+    }
 }
