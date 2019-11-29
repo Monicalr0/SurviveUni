@@ -52,6 +52,7 @@ public class StudyGameActivity extends AppCompatActivity {
         studygame = new StudyGame(gameState);
         setupTime(levelSelected);
         studygame.passActivity(this);
+        studygame.passUser(user);
     }
 
     void setupTime(String level) {

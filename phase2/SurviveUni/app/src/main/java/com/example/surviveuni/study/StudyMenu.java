@@ -27,6 +27,7 @@ public class StudyMenu extends AppCompatActivity {
         setContentView(R.layout.activity_study_menu);
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("User");
+        if (user == null) System.out.println("44444444");
 
         spinner = findViewById(R.id.studyLevel);
 

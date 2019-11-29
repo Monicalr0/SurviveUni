@@ -80,5 +80,6 @@ public class Socialfeedback extends AppCompatActivity {
 
     public void setSocialSaveBtn(View view) {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
+        UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
     }
 }

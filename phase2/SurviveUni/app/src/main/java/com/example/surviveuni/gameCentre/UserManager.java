@@ -61,7 +61,7 @@ public class UserManager {
     }
   }
 
-  void SaveToFile() {
+  public void SaveToFile() {
     try {
       ObjectOutputStream outputStream =
           new ObjectOutputStream(context.openFileOutput(FILENAME, context.MODE_PRIVATE));
