@@ -31,10 +31,17 @@ import java.util.List;
      */
     private boolean goingRight;
 
+     /**
+      * Indicates whether this Wolf is touched.
+      */
+     private boolean touched;
+
     /**
      * Use for random movement up or down, turn around.
      */
     private double d;
+
+    private Resources res;
 
     /**
      * Constructs a new Wolf at the specified cursor location (x, y).
@@ -44,9 +51,11 @@ import java.util.List;
      */
     Wolf(int x, int y, Resources res) {
         super(x, y);
+        this.res = res;
+        touched = false;
         goingRight = true;
-        wolfLeft = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_left), 200, 200);
-        wolfRight = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_right), 200, 200);
+        wolfLeft = BitmapFactory.decodeResource(res, R.drawable.sheep_left);
+        wolfRight = BitmapFactory.decodeResource(res, R.drawable.sheep_right);
         appearance = wolfRight;
         wolfWidth = wolfLeft.getWidth();
         wolfHeight = wolfRight.getHeight();
@@ -86,6 +95,25 @@ import java.util.List;
          } return eatenItem;
      }
 
+     void onTouchEvent(int touchX, int touchY){
+         if (!touched){
+            if (getX() <= touchX && touchX <= (getX() +  wolfWidth)){
+                if (getY() <= touchY && touchY <= (getY() +  wolfHeight)){
+                 touched = true;
+                 wolfLeft = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_left), 200, 200);
+                 wolfRight = getResizedBitmap(BitmapFactory.decodeResource(res, R.drawable.wolf_right), 200, 200);
+                 changeAppearance();
+             }
+            }
+         }
+     }
+
+     private void changeAppearance(){
+         if (goingRight) appearance = wolfLeft;
+         else appearance = wolfRight;
+         goingRight = !goingRight;
+     }
+
     /**
      * resize the bibmap
      */
@@ -99,14 +127,12 @@ import java.util.List;
     private void turnAround() {
         d = Math.random();
         if (d < 0.1) {
-            if (goingRight) appearance = wolfLeft;
-            else appearance = wolfRight;
-            goingRight = !goingRight;
+            changeAppearance();
         }
     }
 
     /**
-     * Move Height / 50 steps to the right or left in the direction I'm going. turn around if bump into a wall.
+     * Move Height / 40 steps to the right or left in the direction I'm going. turn around if bump into a wall.
      */
     private void moveRightLeft(int Width) {
         if (goingRight) {
@@ -119,7 +145,7 @@ import java.util.List;
     }
 
     /**
-     * Figure out whether to move up or down Height / 50 steps, or neither.
+     * Figure out whether to move up or down Height / 40 steps, or neither.
      */
     private void moveUpDown(int Height) {
         d = Math.random();

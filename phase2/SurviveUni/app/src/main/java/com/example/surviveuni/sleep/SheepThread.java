@@ -15,7 +15,7 @@ public class SheepThread extends Thread {
     /**
      * The canvas container.
      */
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     /**
      * Whether the thread is running.
      */
@@ -59,7 +59,7 @@ public class SheepThread extends Thread {
                 }
             }
             try {
-                sleep(1/10);
+                sleep(50);
             } catch (Exception e) {
                 e.printStackTrace();
             }

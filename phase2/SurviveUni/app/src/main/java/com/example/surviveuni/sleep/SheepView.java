@@ -1,29 +1,25 @@
 package com.example.surviveuni.sleep;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
+import android.view.View;
 
 import com.example.surviveuni.R;
 
 /**
  * The sleep game view.
  */
-public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
+public class SheepView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener{
 
     /**
      * The sleep game contents.
      */
     public SheepManager sheepManager;
-
-    /**
-     * Number of Sheep to be created
-     */
-    private int SheepNum;
 
     /**
      * Game level that user selected
@@ -51,9 +47,9 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
         thread = new SheepThread(getHolder(), this);
         setFocusable(true);
         background = BitmapFactory.decodeResource(getResources(), R.drawable.sleep_background);
-        this.SheepNum = SheepNum;
         this.levelSelected = levelSelected;
         this.sheepManager = sheepManager;
+        setOnTouchListener(this);
     }
 
     @Override
@@ -93,8 +89,18 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        canvas.drawBitmap(background, 0, 0, null);
-        sheepManager.draw(canvas);
+        if (canvas != null) {
+            canvas.drawBitmap(background, 0, 0, null);
+            sheepManager.draw(canvas);
+        }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        sheepManager.onTouchEvent(x, y);
+        return true;
     }
 }
 

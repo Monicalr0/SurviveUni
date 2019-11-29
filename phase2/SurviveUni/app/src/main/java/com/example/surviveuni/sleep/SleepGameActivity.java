@@ -12,6 +12,7 @@ import com.example.surviveuni.data.User;
 public class SleepGameActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.sleep.SleepGameActivity.MESSAGE";
     private SheepManager sheepManager;
+    private SheepView sheepView;
     private User user;
 
     @Override
@@ -23,9 +24,8 @@ public class SleepGameActivity extends AppCompatActivity {
         String levelSelected = level.getStringExtra(SleepMainActivity.EXTRA_MESSAGE);
         user = (User) level.getSerializableExtra("User");
         sheepManager = new SheepManager();
-
-        setContentView(new SheepView(this, sheepManager, levelSelected));
-
+        sheepView = new SheepView(this, sheepManager, levelSelected);
+        setContentView(sheepView);
 
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
@@ -34,6 +34,6 @@ public class SleepGameActivity extends AppCompatActivity {
             intent.putExtra("User", user);
             SleepGameActivity.this.startActivity(intent);
             SleepGameActivity.this.finish();
-        }, 6000);
+        }, 10000);
     }
 }
