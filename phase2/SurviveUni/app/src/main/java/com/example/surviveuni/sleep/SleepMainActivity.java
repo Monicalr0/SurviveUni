@@ -22,7 +22,7 @@ public class SleepMainActivity extends AppCompatActivity {
      */
     private final String[] levels = {"EASY", "NORMAL", "HARD"};
     private Spinner spinner;
-    private String levelChoice;
+    private String levelSelected;
     private User user;
 
     @Override
@@ -39,9 +39,9 @@ public class SleepMainActivity extends AppCompatActivity {
      * Start the game when the user clicks the start button
      */
     public void StartSleepGame(View view) {
-        levelChoice = spinner.getSelectedItem().toString();
+        levelSelected = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SleepGameActivity.class);
-        startGame.putExtra(EXTRA_MESSAGE, levelChoice);
+        startGame.putExtra(EXTRA_MESSAGE, levelSelected);
         startGame.putExtra("User", user);
         startActivity(startGame);
     }

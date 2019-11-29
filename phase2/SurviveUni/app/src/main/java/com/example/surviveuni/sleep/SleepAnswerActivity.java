@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.os.UserManager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,7 +28,8 @@ public class SleepAnswerActivity extends AppCompatActivity {
     }
 
     /**
-     * Get the user's input and check the answer. Send the feedback to next activity and start the feedback activity.
+     * Get the user's input and check the answer.
+     * Send the feedback to next activity and start the feedback activity.
      */
     public void submitAnswer(View view) {
         Intent intent = new Intent(this, SleepFeedbackActivity.class);

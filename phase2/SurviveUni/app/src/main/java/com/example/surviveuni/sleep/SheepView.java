@@ -16,15 +16,6 @@ import com.example.surviveuni.R;
 public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
 
     /**
-     * Screen width.
-     */
-    private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-    /**
-     * Screen height.
-     */
-    private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
-
-    /**
      * The sleep game contents.
      */
     public SheepManager sheepManager;
@@ -33,6 +24,11 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
      * Number of Sheep to be created
      */
     private int SheepNum;
+
+    /**
+     * Game level that user selected
+     */
+    private String levelSelected;
 
     /**
      * The part of the program that manages time.
@@ -49,19 +45,20 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback {
      *
      * @param context the environment.
      */
-    public SheepView(Context context, int SheepNum) {
+    public SheepView(Context context, SheepManager sheepManager, String levelSelected) {
         super(context);
         getHolder().addCallback(this);
         thread = new SheepThread(getHolder(), this);
         setFocusable(true);
         background = BitmapFactory.decodeResource(getResources(), R.drawable.sleep_background);
         this.SheepNum = SheepNum;
+        this.levelSelected = levelSelected;
+        this.sheepManager = sheepManager;
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        sheepManager = new SheepManager(screenHeight, screenWidth, getResources());
-        sheepManager.createItems(SheepNum);
+        sheepManager.createItems(levelSelected, getResources());
 
         thread.setRunning(true);
         thread.start();

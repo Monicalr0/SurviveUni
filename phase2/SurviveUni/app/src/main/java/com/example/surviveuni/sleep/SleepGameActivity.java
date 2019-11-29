@@ -11,7 +11,7 @@ import com.example.surviveuni.data.User;
 
 public class SleepGameActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.sleep.SleepGameActivity.MESSAGE";
-    private int SheepNum;
+    private SheepManager sheepManager;
     private User user;
 
     @Override
@@ -22,35 +22,18 @@ public class SleepGameActivity extends AppCompatActivity {
         Intent level = getIntent();
         String levelSelected = level.getStringExtra(SleepMainActivity.EXTRA_MESSAGE);
         user = (User) level.getSerializableExtra("User");
-        setSheepNum(levelSelected);
+        sheepManager = new SheepManager();
 
-        setContentView(new SheepView(this, SheepNum));
+        setContentView(new SheepView(this, sheepManager, levelSelected));
 
 
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
             Intent intent = new Intent(SleepGameActivity.this, SleepAnswerActivity.class);
-            intent.putExtra(EXTRA_MESSAGE, SheepNum);
+            intent.putExtra(EXTRA_MESSAGE, sheepManager.getSheepNum());
             intent.putExtra("User", user);
             SleepGameActivity.this.startActivity(intent);
             SleepGameActivity.this.finish();
         }, 6000);
-    }
-
-    /**
-     * set the number Sheep to be created according to the user selected level
-     */
-    private void setSheepNum(String levelSelected) {
-        switch (levelSelected) {
-            case "HARD":
-                SheepNum = (int) (Math.random() * 5) + 13;
-                break;
-            case "NORMAL":
-                SheepNum = (int) (Math.random() * 5) + 8;
-                break;
-            case "EASY":
-                SheepNum = (int) (Math.random() * 5) + 3;
-                break;
-        }
     }
 }
