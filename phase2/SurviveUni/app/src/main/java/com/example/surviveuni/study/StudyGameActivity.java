@@ -1,5 +1,6 @@
 package com.example.surviveuni.study;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class StudyGameActivity extends AppCompatActivity {
     private TimerTask task2;
     private LocalTime startingTime;
     private int usedTime = 0;
+    private AlertDialog.Builder scoreSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,10 @@ public class StudyGameActivity extends AppCompatActivity {
         studygame.passActivity(this);
         studygame.passUser(user);
         studygame.passUserManager(UserManager.getInstance(this));
+        scoreSaved = new AlertDialog.Builder(this)
+                .setMessage("Your Score Has Been Saved To ScoreBoard")
+                .setPositiveButton(android.R.string.yes, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
     void setupTime(String level) {
@@ -153,5 +159,10 @@ public class StudyGameActivity extends AppCompatActivity {
                     findViewById(R.id.StudySaveBtn).setVisibility(View.VISIBLE);
                 }
         );
+    }
+
+    void setScoreSaveMessage(){
+        scoreSaved.show();
+
     }
 }

@@ -2,6 +2,7 @@ package com.example.surviveuni.social;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class Socialfeedback extends AppCompatActivity {
     private User user;
     private UserManager userManager;
     private ImageView iv;
+    private AlertDialog.Builder scoreSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,11 @@ public class Socialfeedback extends AppCompatActivity {
         String statsFeedback = checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
+
+        scoreSaved = new AlertDialog.Builder(this)
+                .setMessage("Your Score Has Been Saved To ScoreBoard")
+                .setPositiveButton(android.R.string.yes, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
     };
 
     private String checkFeedback(String feedback) {
@@ -81,5 +88,6 @@ public class Socialfeedback extends AppCompatActivity {
     public void setSocialSaveBtn(View view) {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
+        scoreSaved.show();
     }
 }
