@@ -61,5 +61,5 @@
     <string name="sleepAnswer">"How many sheep are there in your dream?"</string>
     <string name="sleepTitle">"Sleep: Count Sheep"</string>
     <string name="sleepRule">"Game Rule: A number of sheep will appear in your dream, please count and indicate the number later to have a good sleep."</string>
-
+    <string name="anonymous">"ANONYMOUS"</string>
 </resources>

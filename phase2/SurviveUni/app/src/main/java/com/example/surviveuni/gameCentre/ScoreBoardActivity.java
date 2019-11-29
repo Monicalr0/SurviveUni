@@ -45,7 +45,13 @@ public class ScoreBoardActivity extends AppCompatActivity {
             user = sb.setRanking(spaceused);
             if(user != null)
             {
-                texts[spaceused].setText(String.valueOf(user.getNickname()));
+        System.out.println(String.valueOf(user.getNickname()).equals(""));
+                if(String.valueOf(user.getNickname()).equals("")) {
+                    texts[spaceused].setText(getString(R.string.anonymous));
+                }
+                else{
+                    texts[spaceused].setText(String.valueOf(user.getNickname()));
+                }
                 texts[spaceused+5].setText(String.valueOf(user.getScore()));
                 spaceused++;
             }
