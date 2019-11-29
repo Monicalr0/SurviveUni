@@ -32,32 +32,24 @@ class SheepManager implements Serializable {
         this.itemList = new ArrayList<>();
     }
 
-    public int getSheepNum(){
+    int getSheepNum(){
         return sheepNum;
     }
 
-    public List<SleepGameItem> getItemList() {
-        return itemList;
-    }
-
-    public void addItems(List<SleepGameItem> itemToAdd) {
-        this.itemList.addAll(itemToAdd);
-    }
-
-    public void removeItems(List<SleepGameItem> itemToRemove) {
-        this.itemList.removeAll(itemToRemove);
-    }
-
-    public void draw(Canvas canvas) {
+    void draw(Canvas canvas) {
         for (SleepGameItem item : itemList) {
             item.draw(canvas);
         }
     }
 
     void update() {
+        List<SleepGameItem> itemToRemove = new ArrayList<>();
         for (SleepGameItem item : itemList) {
             item.move(screenHeight, screenWidth);
+            if (item instanceof Wolf)
+                itemToRemove.addAll(((Wolf) item).eat(itemList));
         }
+        itemList.removeAll(itemToRemove);
     }
 
     /**
@@ -67,7 +59,7 @@ class SheepManager implements Serializable {
         setSheepNum(levelSelected);
         for (int i = 0; i < sheepNum + 3; i++) {
             int x = (int) (Math.random() * (screenWidth - 15)) + 10;
-            int y = (int) (Math.random() * (screenHeight - 15)) + 10;
+            int y = (int) (Math.random() * (screenHeight - 40)) + 10;
             if (i < sheepNum)
                 itemList.add(new Sheep(x, y, res));
             else
