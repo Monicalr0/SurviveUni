@@ -26,6 +26,7 @@ public class CustomizeActivity extends AppCompatActivity {
         setNewGameBtn();
         setLoadGameBtn();
         setSaveGameBtn();
+        setSignOutBtn();
     }
 
     @Override
@@ -70,6 +71,13 @@ public class CustomizeActivity extends AppCompatActivity {
             gameManager.saveGame();
             Toast.makeText(this, "Your game is successfully saved!", Toast.LENGTH_SHORT).show();
 
+        });
+    }
+
+    public void setSignOutBtn(){
+        findViewById(R.id.CustomizeSignOutBtn).setOnClickListener(v -> {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         });
     }
 

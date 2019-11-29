@@ -2,6 +2,7 @@ package com.example.surviveuni.gameCentre;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ public abstract class FeedbackActivity extends AppCompatActivity{
     public String feedback;
     public User user;
     private UserManager userManager;
+    private AlertDialog.Builder scoreSaved;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,11 @@ public abstract class FeedbackActivity extends AppCompatActivity{
         String statsFeedback = scoreManager.checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
+
+        scoreSaved = new AlertDialog.Builder(this)
+                .setMessage("Your Score Has Been Saved To ScoreBoard")
+                .setPositiveButton(android.R.string.yes, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
     public void setUser(User user){this.user = user;}
@@ -58,5 +65,7 @@ public abstract class FeedbackActivity extends AppCompatActivity{
 
     public void setSleepSaveBtn(View view) {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
+        UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
+        scoreSaved.show();
     }
 }

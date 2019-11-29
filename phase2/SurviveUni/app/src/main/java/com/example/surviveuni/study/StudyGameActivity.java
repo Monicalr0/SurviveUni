@@ -1,5 +1,6 @@
 package com.example.surviveuni.study;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,16 +28,16 @@ public class StudyGameActivity extends AppCompatActivity {
     private ImageButton button;
 
     private StudyGame studygame;
-    private TextView timeDisplay;
     private static String TIME_PREFIX = "Time: ";
     private TextView result;
     private TimerTask task2;
     private LocalTime startingTime;
     private int usedTime = 0;
-    private GameState gameState;
+    private AlertDialog.Builder scoreSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        GameState gameState;
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_study_game);
@@ -52,6 +53,12 @@ public class StudyGameActivity extends AppCompatActivity {
         studygame = new StudyGame(gameState);
         setupTime(levelSelected);
         studygame.passActivity(this);
+        studygame.passUser(user);
+        studygame.passUserManager(UserManager.getInstance(this));
+        scoreSaved = new AlertDialog.Builder(this)
+                .setMessage("Your Score Has Been Saved To ScoreBoard")
+                .setPositiveButton(android.R.string.yes, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
     void setupTime(String level) {
@@ -116,6 +123,7 @@ public class StudyGameActivity extends AppCompatActivity {
     }
 
     void setTimeDisplay(int usedTime){
+        TextView timeDisplay;
         timeDisplay = findViewById(R.id.studyTimeText);
         timeDisplay.setText(String.format(TIME_PREFIX + "%s", usedTime));
     }
@@ -151,5 +159,10 @@ public class StudyGameActivity extends AppCompatActivity {
                     findViewById(R.id.StudySaveBtn).setVisibility(View.VISIBLE);
                 }
         );
+    }
+
+    void setScoreSaveMessage(){
+        scoreSaved.show();
+
     }
 }
