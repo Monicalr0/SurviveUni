@@ -15,27 +15,23 @@ import com.example.surviveuni.data.User;
 
 public class SocialActivity extends AppCompatActivity {
     private User user;
-    int expect;
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.social.SocialActivity.MESSAGE";
     int remainingGuess;
     private String feedBack = "";
-    boolean gameWon = false;
-    int correctAnswer = generate_expect();
     private boolean unexpectedInput = false;
+    private Social social;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_social_answer);
-//
-//        //get user here
-//        Intent i = getIntent();
-//        user = (User)i.getSerializableExtra("User");
         Intent level = getIntent();
         String levelSelected = level.getStringExtra(SocialMain.EXTRA_MESSAGE);
         user = (User)level.getSerializableExtra("User");
-        setRemainingGuess(levelSelected);
+        social = new Social();
+        social.setRemainingGuess(levelSelected);
+        remainingGuess = social.getRemainingGuess();
         setContentView(R.layout.activity_social_answer);
+        social.passSocialActivity(this);
     }
 
 
@@ -44,7 +40,7 @@ public class SocialActivity extends AppCompatActivity {
         EditText editText = findViewById(R.id.answerText);
         String answer = editText.getText().toString();
 
-        feedBack = checkAnswer(answer);
+        feedBack = social.checkAnswer(answer);
 
         if (remainingGuess != 1) {
             remainingGuess--;
@@ -57,77 +53,17 @@ public class SocialActivity extends AppCompatActivity {
         }
     }
 
-
-    public int generate_expect() {
-        Random r = new Random();
-        expect = r.nextInt(5) + 1; // generate a random number ranging from 1 to 5
-        return expect;
-    }
-
-    private int checkGameOver(String feedBack, boolean limitStatus, boolean unExpectInput) {
-
-        if(gameWon || limitStatus || unExpectInput){
+    void checkGameOver() {
             Intent intent = new Intent(this, Socialfeedback.class);
             intent.putExtra(EXTRA_MESSAGE, feedBack);
             intent.putExtra("User", user);
             startActivity(intent);
             finish();
-            return 1;
-        }
-        return 0;
     }
 
-    // should also check if remaining guesses are great than or equal to 1
-    private String checkAnswer(String answer) {
-        String feedback;
-        try {
-            int number = Integer.parseInt(answer);
+    void setUnexpectedInput(boolean unexpectedInput){this.unexpectedInput = unexpectedInput;}
 
-            if ( number > 5 || number < 1 ) {
-                feedback = "You are not here to be friend with me!";
-                unexpectedInput = true;
-            }
-            else if(remainingGuess == 1){
-                if (number == correctAnswer) {
-                    feedback = "Correct! Let's be friend!";
-                } else {
-                    feedback =  "Sorry! Run out of playing times:( Maybe next time.";
-                }
-            }
-            else{
-                if (number == correctAnswer) {
-                    gameWon = true;
-                    feedback =  "Correct! Let's be friend!";
-                }
-                else if(number > correctAnswer){
-                    feedback = "It's too high, try another time.";
-                }
-                else {
-                    feedback = "It's too low, try another time.";
-                }
-            }
-        }
-        catch (NumberFormatException e) {
-            Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
-            unexpectedInput = true;
-            feedback = "You are not here to be friend with me!";
-        }
-        checkGameOver(feedback, remainingGuess == 1, unexpectedInput);
-        return feedback;
-    }
+    void setFailedMessage(){Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();}
 
-    private void setRemainingGuess(String level) {
-        switch (level) {
-            case "HARD":
-                remainingGuess = 1;
-                break;
-            case "NORMAL":
-                remainingGuess = 2;
-                break;
-            case "EASY":
-                remainingGuess = 3;
-                break;
-        }
-    }
 
 }

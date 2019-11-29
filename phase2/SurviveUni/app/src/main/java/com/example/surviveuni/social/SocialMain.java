@@ -34,9 +34,6 @@ public class SocialMain extends AppCompatActivity {
         //get user here
         Intent i = getIntent();
         user = (User)i.getSerializableExtra("User");
-        if(user == null){
-            System.out.println("111111111");
-        }
     }
 
     public void StartSocialGame(View view) {

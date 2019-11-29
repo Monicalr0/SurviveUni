@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".gameCentre.ScoreBoardActivity"></activity>
-        <activity android:name=".gameCentre.CustomizeActivity"/>
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity android:name=".gameCentre.CustomizeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".gameCentre.CreateAccountActivity" />
         <activity android:name=".study.StudyGameActivity" />
         <activity android:name=".study.StudyMenu" />
@@ -25,15 +25,15 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".sleep.SleepFeedbackActivity" />
         <activity android:name=".sleep.SleepAnswerActivity" />
-        <activity android:name=".gameCentre.MainActivity">
+        <activity android:name=".gameCentre.MainActivity"/>
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-        </activity>
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
+<!--        </activity>-->
         <activity android:name=".sleep.SleepGameActivity" />
         <activity android:name=".sleep.SleepMainActivity" />
         <activity android:name=".social.SocialActivity" />
