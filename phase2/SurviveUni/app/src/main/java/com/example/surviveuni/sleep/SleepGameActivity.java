@@ -32,6 +32,7 @@ public class SleepGameActivity extends AppCompatActivity {
             Intent intent = new Intent(SleepGameActivity.this, SleepAnswerActivity.class);
             intent.putExtra(EXTRA_MESSAGE, sheepManager.getSheepNum());
             intent.putExtra("User", user);
+            intent.putExtra("TouchedWolf", sheepManager.getTouchedWolfNumber());
             SleepGameActivity.this.startActivity(intent);
             SleepGameActivity.this.finish();
         }, 10000);

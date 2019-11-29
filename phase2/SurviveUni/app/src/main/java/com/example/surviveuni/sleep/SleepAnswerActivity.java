@@ -15,6 +15,7 @@ import com.example.surviveuni.data.User;
 public class SleepAnswerActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.MESSAGE";
     private int sheepNum;
+    private int touchedWolfNum;
     private User user;
 
 
@@ -25,6 +26,7 @@ public class SleepAnswerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         sheepNum = intent.getIntExtra(SleepGameActivity.EXTRA_MESSAGE, 0);
         user = (User) intent.getSerializableExtra("User");
+        touchedWolfNum = intent.getIntExtra("TouchedWolf",0);
     }
 
     /**
@@ -38,6 +40,7 @@ public class SleepAnswerActivity extends AppCompatActivity {
         String feedBack = checkAnswer(answer);
         intent.putExtra(EXTRA_MESSAGE, feedBack);
         intent.putExtra("User", user);
+        intent.putExtra("TouchedWolfNum", touchedWolfNum);
         startActivity(intent);
         finish();
     }

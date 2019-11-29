@@ -15,16 +15,20 @@ import java.util.HashMap;
 
 public class GameManager {
     private static GameState gameState;
-    private User user;
+    private static User user;
     private UserManager userManager;
     private Context context;
     private static final String SUFFIX = "-sav1.dat";
     private static final String FILENAME = "users.txt";
 
     public GameManager(User user, Context context) {
-        this.user = user;
+        GameManager.user = user;
         this.context = context;
         this.userManager = UserManager.getInstance(context);
+    }
+
+    public static User getUser(){
+        return user;
     }
 
     void newGame() {

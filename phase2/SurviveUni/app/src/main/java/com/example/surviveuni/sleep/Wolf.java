@@ -75,6 +75,9 @@ import java.util.List;
         moveRightLeft(ScreenWidth);
         moveUpDown(ScreenHeight);
     }
+    boolean getTouched(){
+        return touched;
+    }
 
      /**
       * Wolf eats nearby items.

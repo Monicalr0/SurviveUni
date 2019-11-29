@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.data.User;
-import com.example.surviveuni.sleep.SleepAnswerActivity;
+
 
 public abstract class FeedbackActivity extends AppCompatActivity{
     protected GameState gameState;
@@ -20,6 +20,7 @@ public abstract class FeedbackActivity extends AppCompatActivity{
     public User user;
     private UserManager userManager;
     private AlertDialog.Builder scoreSaved;
+    public String message;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,9 @@ public abstract class FeedbackActivity extends AppCompatActivity{
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.feedbackText);
+        TextView textView3 = findViewById(R.id.secondFeeedback);
         textView.setText(feedback);
+        textView3.setText(message);
 
         if (feedback == null) {
             feedback = "Sorry!";

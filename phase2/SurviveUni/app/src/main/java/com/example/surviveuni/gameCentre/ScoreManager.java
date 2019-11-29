@@ -11,4 +11,8 @@ public abstract class ScoreManager {
     public String checkFeedback(String feedback) {
         return null;
     }
+
+    public abstract void loadGame();
+
+    public abstract void saveGame();
 }
