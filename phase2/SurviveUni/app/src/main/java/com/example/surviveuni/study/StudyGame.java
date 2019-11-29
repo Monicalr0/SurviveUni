@@ -1,77 +1,25 @@
 package com.example.surviveuni.study;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 
 import com.example.surviveuni.data.User;
-import com.example.surviveuni.gameCentre.GameActivity;
-import com.example.surviveuni.gameCentre.GameManager;
-import com.example.surviveuni.gameCentre.GameOverActivity;
 import com.example.surviveuni.data.GameState;
-import com.example.surviveuni.R;
 import com.example.surviveuni.gameCentre.UserManager;
-import com.example.surviveuni.sleep.SleepMainActivity;
-
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class StudyGame extends AppCompatActivity {
-
-    /**
-     * Result feedback message
-     */
-    private static String SUCCESS_MESSAGE = "Success! GPA goes up!";
-    private static String FAILURE_MESSAGE = "Failure... :(";
 
     /**
      * levels
      */
     private final String[] LEVELS = {"EASY", "NORMAL", "HARD"};
 
-    /**
-     * TextView for displaying time
-     */
-    private TextView timeDisplay;
     private GameState gameState;
-    private static String TIME_PREFIX = "Time: ";
-
-    /**
-     * Time when the game starts or loads
-     */
-    private LocalTime startingTime;
-
-    /**
-     * Button to click
-     */
-    private ImageButton button;
-
-    /**
-     * timertask
-     */
-    private TimerTask task2;
-
-    private int usedTime = 0;
-
-    /**
-     * Button to click
-     */
-    private TextView result;
 
     private User user;
 
     private UserManager userManager;
-
-    private int timeInterval;
 
     private StudyGameActivity sga = new StudyGameActivity();
 
@@ -128,5 +76,7 @@ public class StudyGame extends AppCompatActivity {
     void passActivity(StudyGameActivity sga){this.sga = sga;}
 
     void passUser(User user){this.user = user;}
+
+    void passUserManager(UserManager userManager){this.userManager = userManager;}
 
 }

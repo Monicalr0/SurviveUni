@@ -27,16 +27,15 @@ public class StudyGameActivity extends AppCompatActivity {
     private ImageButton button;
 
     private StudyGame studygame;
-    private TextView timeDisplay;
     private static String TIME_PREFIX = "Time: ";
     private TextView result;
     private TimerTask task2;
     private LocalTime startingTime;
     private int usedTime = 0;
-    private GameState gameState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        GameState gameState;
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_study_game);
@@ -53,6 +52,7 @@ public class StudyGameActivity extends AppCompatActivity {
         setupTime(levelSelected);
         studygame.passActivity(this);
         studygame.passUser(user);
+        studygame.passUserManager(UserManager.getInstance(this));
     }
 
     void setupTime(String level) {
@@ -117,6 +117,7 @@ public class StudyGameActivity extends AppCompatActivity {
     }
 
     void setTimeDisplay(int usedTime){
+        TextView timeDisplay;
         timeDisplay = findViewById(R.id.studyTimeText);
         timeDisplay.setText(String.format(TIME_PREFIX + "%s", usedTime));
     }
