@@ -40,6 +40,8 @@ SurviveUni is a game. Each time an user start the game, he/she will be
  1 to 5 is randomly generated each time and user would guess the number.
  There are different remaining guesses according to the level that the 
  user chooses. If the user guesses the number correctly within the 
- remaining guesses, he/she wins. Else, the user loses.
+ remaining guesses, he/she wins. Else, the user loses. There is a hidden
+ setting of the game, that is, if the user's Happiness is lower or equal
+ to 10, something special would happen ;)
  
  *Sleep*:  
