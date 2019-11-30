@@ -1,15 +1,10 @@
 package com.example.surviveuni.study;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
-import com.example.surviveuni.data.User;
 import com.example.surviveuni.data.GameState;
+import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.UserManager;
 
-
-public class StudyGame extends AppCompatActivity {
-
+public class StudyGamePresenter{
     /**
      * levels
      */
@@ -23,9 +18,12 @@ public class StudyGame extends AppCompatActivity {
 
     private StudyGameActivity sga = new StudyGameActivity();
 
-    StudyGame(GameState gameState){
+    private StudyGameView studyGameView;
+
+    StudyGamePresenter(GameState gameState, StudyGameView studyGameView){
         this.gameState = gameState;
-        this.userManager = UserManager.getInstance(this);
+        this.userManager = UserManager.getInstance(sga);
+        this.studyGameView = studyGameView;
     }
 
     int convertTime(long time, String level) {
@@ -38,14 +36,9 @@ public class StudyGame extends AppCompatActivity {
             deadline = 5;
         else
             deadline = 4;
-
-        System.out.println("LEVEL: " + level);
-        System.out.println("deadline: " + deadline);
-
-        System.out.println("sec: " + sec);
         if (sec == deadline) {
 
-            sga.setUpResult(false);
+            studyGameView.setUpResult(false);
         }
 
         return sec - 3;
@@ -62,15 +55,15 @@ public class StudyGame extends AppCompatActivity {
 
     void saveScore() {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
-        UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
-        sga.setScoreSaveMessage();
+        UserManager.getInstance(sga).SaveToFile(); // Save to file so no need to save again when sign out
+        studyGameView.setScoreSaveMessage();
     }
 
     public void setUpResult(boolean isSuccess) {
-                    gameState.changeHappiness(-5);
-                    gameState.changeSpirit(-5);
-                    if(isSuccess){gameState.changeGPA(5);}
-                    else{gameState.changeGPA(-5);}
+        gameState.changeHappiness(-5);
+        gameState.changeSpirit(-5);
+        if(isSuccess){gameState.changeGPA(5);}
+        else{gameState.changeGPA(-5);}
 
     }
 
@@ -79,5 +72,4 @@ public class StudyGame extends AppCompatActivity {
     void passUser(User user){this.user = user;}
 
     void passUserManager(UserManager userManager){this.userManager = userManager;}
-
 }

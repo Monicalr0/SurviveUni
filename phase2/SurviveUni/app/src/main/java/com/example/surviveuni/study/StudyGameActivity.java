@@ -23,11 +23,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class StudyGameActivity extends AppCompatActivity {
+public class StudyGameActivity extends AppCompatActivity implements StudyGameView {
     private User user;
     private ImageButton button;
 
-    private StudyGame studygame;
+    private StudyGamePresenter studyGamePresenter;
     private static String TIME_PREFIX = "Time: ";
     private TextView result;
     private TimerTask task2;
@@ -50,18 +50,19 @@ public class StudyGameActivity extends AppCompatActivity {
         String levelSelected = i.getStringExtra(StudyMenu.EXTRA_MESSAGE);
 
         findViewById(R.id.StudySaveBtn).setVisibility(View.GONE);
-        studygame = new StudyGame(gameState);
-        setupTime(levelSelected);
-        studygame.passActivity(this);
-        studygame.passUser(user);
-        studygame.passUserManager(UserManager.getInstance(this));
+        studyGamePresenter = new StudyGamePresenter(gameState, this);
+        setUpTime(levelSelected);
+        studyGamePresenter.passActivity(this);
+        studyGamePresenter.passUser(user);
+        studyGamePresenter.passUserManager(UserManager.getInstance(this));
         scoreSaved = new AlertDialog.Builder(this)
                 .setMessage("Your Score Has Been Saved To ScoreBoard")
                 .setPositiveButton(android.R.string.yes, null)
                 .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
-    void setupTime(String level) {
+    @Override
+    public void setUpTime(String level) {
         Timer timer;
         timer = new Timer();
 
@@ -71,7 +72,7 @@ public class StudyGameActivity extends AppCompatActivity {
           public void run() {
             long time = Duration.between(startingTime, LocalTime.now()).toMillis();
 
-            usedTime = studygame.convertTime(time, level);
+            usedTime = studyGamePresenter.convertTime(time, level);
 
             if (usedTime == -1) {
               runOnUiThread(
@@ -94,7 +95,9 @@ public class StudyGameActivity extends AppCompatActivity {
         timer.schedule(task2, 0, 1000);
     }
 
-    void setUpMessageButton() {
+
+    @Override
+    public void setUpMessageButton() {
 
         button = new ImageButton(this);
         button = findViewById(R.id.MessageButton);
@@ -107,7 +110,9 @@ public class StudyGameActivity extends AppCompatActivity {
         });
     }
 
-    void setUpPersonButton() {
+
+    @Override
+    public void setUpPersonButton() {
 
         button = new ImageButton(this);
         button = findViewById(R.id.theButton);
@@ -128,9 +133,10 @@ public class StudyGameActivity extends AppCompatActivity {
         timeDisplay.setText(String.format(TIME_PREFIX + "%s", usedTime));
     }
 
+
     public void setExitBtn(View view){
         Intent i;
-        if(studygame.checkExit()){
+        if(studyGamePresenter.checkExit()){
             i = new Intent(this, GameOverActivity.class);
         }
         else{
@@ -141,18 +147,20 @@ public class StudyGameActivity extends AppCompatActivity {
     }
 
     public void setSaveScoreBtn(View view){
-        studygame.saveScore();
+        studyGamePresenter.saveScore();
     }
 
-    void setUpResult(boolean isSuccess){
+
+    @Override
+    public void setUpResult(boolean isSuccess){
         result = findViewById(R.id.studyResult);
         runOnUiThread(() -> {
                     // Stuff that updates the UI
                     if (isSuccess && usedTime < 3) {
-                        studygame.setUpResult(true);
+                        studyGamePresenter.setUpResult(true);
                         result.setText("Success! GPA goes up!");
                     } else {
-                        studygame.setUpResult(false);
+                        studyGamePresenter.setUpResult(false);
                         task2.cancel();
                         result.setText("Failure... :(");
                     }
@@ -161,7 +169,8 @@ public class StudyGameActivity extends AppCompatActivity {
         );
     }
 
-    void setScoreSaveMessage(){
+    @Override
+    public void setScoreSaveMessage(){
         scoreSaved.show();
 
     }
