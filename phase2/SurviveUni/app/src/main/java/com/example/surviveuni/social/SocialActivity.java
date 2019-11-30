@@ -29,7 +29,7 @@ public class SocialActivity extends AppCompatActivity {
         user = (User)level.getSerializableExtra("User");
         social = new Social();
         social.setRemainingGuess(levelSelected);
-        remainingGuess = social.getRemainingGuess();
+        social.remainingGuess = social.getRemainingGuess();
         setContentView(R.layout.activity_social_answer);
         social.passSocialActivity(this);
     }
@@ -42,8 +42,8 @@ public class SocialActivity extends AppCompatActivity {
 
         feedBack = social.checkAnswer(answer);
 
-        if (remainingGuess != 1) {
-            remainingGuess--;
+        if (social.remainingGuess != 1) {
+            social.remainingGuess--;
             if (!unexpectedInput){
                 Toast.makeText(this, feedBack, Toast.LENGTH_SHORT).show();
             }
@@ -53,9 +53,9 @@ public class SocialActivity extends AppCompatActivity {
         }
     }
 
-    void checkGameOver() {
+    void checkGameOver(String feedback) {
             Intent intent = new Intent(this, Socialfeedback.class);
-            intent.putExtra(EXTRA_MESSAGE, feedBack);
+            intent.putExtra(EXTRA_MESSAGE, feedback);
             intent.putExtra("User", user);
             startActivity(intent);
             finish();

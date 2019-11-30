@@ -4,14 +4,14 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class Social {
+class Social {
     private SocialActivity sa;
-    private boolean gameWon;
+    private boolean gameWon = false;
     private int correctAnswer = generate_expect();
-    private int remainingGuess;
-    int expect;
+    int remainingGuess;
+    private int expect;
     private boolean unexpectedInput = false;
-    private String feedBack;
+    String feedBack;
 
     String checkAnswer(String answer){
         String feedback;
@@ -49,11 +49,11 @@ public class Social {
             unexpectedInput = true;
             feedback = "You are not here to be friend with me!";
         }
-        checkGameOver(remainingGuess == 1, unexpectedInput);
+        checkGameOver(feedback,remainingGuess == 1, unexpectedInput);
         return feedback;
     }
 
-    int generate_expect() {
+    private int generate_expect() {
         Random r = new Random();
         expect = r.nextInt(5) + 1; // generate a random number ranging from 1 to 5
         return expect;
@@ -61,9 +61,9 @@ public class Social {
 
     void passSocialActivity(SocialActivity sa){this.sa = sa;}
 
-    void checkGameOver(boolean limitStatus, boolean unExpectInput){
+    private void checkGameOver(String feedback, boolean limitStatus, boolean unExpectInput){
         if(gameWon || limitStatus || unExpectInput){
-            sa.checkGameOver();
+            sa.checkGameOver(feedback);
         }
     }
 
