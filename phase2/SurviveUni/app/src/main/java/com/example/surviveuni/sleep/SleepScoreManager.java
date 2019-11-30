@@ -15,10 +15,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class SleepScoreManager extends ScoreManager {
+
+  /** the game statistic */
   private static GameState gameState;
+
+  /** the user playing the game */
   private User user;
+
+  /** the environment */
   private Context context;
+
+  /** the name of data file */
   private static final String SUFFIX = "-sav2.dat";
+
+  /** the number of wolves got touched */
   private int touchedWolfNum;
 
   SleepScoreManager(Context context) {
@@ -27,7 +37,7 @@ public class SleepScoreManager extends ScoreManager {
     this.context = context;
   }
 
-  public int getTouchedWolfNum() {
+  int getTouchedWolfNum() {
     return touchedWolfNum;
   }
 
@@ -82,7 +92,7 @@ public class SleepScoreManager extends ScoreManager {
     String filename = user.getUsername() + SUFFIX;
     try {
       ObjectOutputStream outputStream =
-          new ObjectOutputStream(context.openFileOutput(filename, context.MODE_PRIVATE));
+          new ObjectOutputStream(context.openFileOutput(filename, Context.MODE_PRIVATE));
       outputStream.writeObject(touchedWolfNum);
       outputStream.close();
     } catch (IOException e) {
