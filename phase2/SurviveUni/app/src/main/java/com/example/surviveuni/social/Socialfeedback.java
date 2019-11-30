@@ -24,12 +24,14 @@ public class Socialfeedback extends AppCompatActivity {
     private UserManager userManager;
     private ImageView iv;
     private AlertDialog.Builder scoreSaved;
+    private Social social;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social_feedback);
         gameState = GameManager.getGameState();
+        social = new Social();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
         user = (User) intent.getSerializableExtra("User");
@@ -50,6 +52,8 @@ public class Socialfeedback extends AppCompatActivity {
     };
 
     private String checkFeedback(String feedback) {
+        gameState.addObserver(social);
+        gameState.socialNotify();
         iv = findViewById(R.id.imageView1);
         if (feedback.equals("Correct! Let's be friend!")) {
             iv.setImageResource(R.drawable.wow);
