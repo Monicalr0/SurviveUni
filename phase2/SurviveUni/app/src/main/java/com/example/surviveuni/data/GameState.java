@@ -1,8 +1,9 @@
 package com.example.surviveuni.data;
 
 import java.io.Serializable;
+import java.util.Observable;
 
-public class GameState implements Serializable {
+public class GameState extends Observable implements Serializable {
     private int GPA;
     private int spirit;
     private int happiness;
@@ -132,6 +133,13 @@ public class GameState implements Serializable {
             return 1;
         }
         return 0;
+    }
+
+    public void socialNotify() {
+        if (happiness <= 10) {
+            setChanged();
+            notifyObservers();
+        }
     }
 
 

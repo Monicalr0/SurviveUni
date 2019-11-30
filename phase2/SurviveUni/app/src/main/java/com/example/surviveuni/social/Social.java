@@ -2,9 +2,11 @@ package com.example.surviveuni.social;
 
 import android.widget.Toast;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 
-class Social {
+class Social implements Observer {
     private SocialActivity sa;
     private boolean gameWon = false;
     private int correctAnswer = generate_expect();
@@ -82,4 +84,10 @@ class Social {
     }
 
     int getRemainingGuess(){return remainingGuess;}
+
+    @Override
+    public void update(Observable observable, Object o) {
+
+        feedBack = "Correct! Let's be friend!";
+    }
 }
