@@ -20,6 +20,8 @@ public class StudyGamePresenter{
 
     private StudyGameView studyGameView;
 
+    public static boolean changed = false;
+
     StudyGamePresenter(GameState gameState, StudyGameView studyGameView){
         this.gameState = gameState;
         this.userManager = UserManager.getInstance(sga);
@@ -57,6 +59,7 @@ public class StudyGamePresenter{
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(sga).SaveToFile(); // Save to file so no need to save again when sign out
         studyGameView.setScoreSaveMessage();
+        changed = true;
     }
 
     public void setUpResult(boolean isSuccess) {
