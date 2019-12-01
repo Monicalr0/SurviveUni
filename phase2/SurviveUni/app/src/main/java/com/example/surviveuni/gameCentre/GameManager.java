@@ -14,11 +14,28 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 public class GameManager {
+    /**
+     * variable representing the user's gameState
+     */
     private static GameState gameState;
+
+    /**
+     * representing the current login user
+     */
     private static User user;
+
     private UserManager userManager;
+
     private Context context;
+
+    /**
+     * file suffix for saving and reading gameState
+     */
     private static final String SUFFIX = "-sav1.dat";
+
+    /**
+     * file name for saving and reading users
+     */
     private static final String FILENAME = "users.txt";
 
     public GameManager(User user, Context context) {
@@ -27,14 +44,24 @@ public class GameManager {
         this.userManager = UserManager.getInstance(context);
     }
 
+    /**
+     * @return the user
+     */
     public static User getUser() {
         return user;
     }
 
+    /**
+     * initiate gameState
+     */
     void newGame() {
         gameState = new GameState();
     }
 
+
+    /**
+     * load the gameState for user and load hashMap users
+     */
     void loadGame() {
 
         String filename = user.getUsername() + SUFFIX;
@@ -58,26 +85,11 @@ public class GameManager {
             gameState = new GameState();
         }
 
-        // load users
-        try {
-            InputStream inputStream = context.openFileInput(FILENAME);
-            if (inputStream != null) {
-                ObjectInputStream input = new ObjectInputStream(inputStream);
-                userManager.setUsers((HashMap<String, User>) input.readObject());
-                inputStream.close();
-            }
-        } catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-            userManager.setUsers(new HashMap<>());
-        } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
-            userManager.setUsers(new HashMap<>());
-        } catch (ClassNotFoundException e) {
-            Log.e("login activity", "File contained unexpected data type: " + e.toString());
-            userManager.setUsers(new HashMap<>());
-        }
     }
 
+    /**
+     * save gameState and user
+     */
     void saveGame() {
         String filename = user.getUsername() + SUFFIX;
         try {
@@ -89,7 +101,7 @@ public class GameManager {
             Log.e("Exception", "File write failed: " + e.toString());
         }
 
-        // save user user so the score is saved
+        // save user  so the score is saved
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     context.openFileOutput(FILENAME, context.MODE_PRIVATE));
@@ -100,6 +112,9 @@ public class GameManager {
         }
     }
 
+    /**
+     * @return the gameState of user
+     */
     public static GameState getGameState() {
         return gameState;
     }
