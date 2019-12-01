@@ -14,10 +14,29 @@ import com.example.surviveuni.R;
 
 
 public class StudyMenu extends AppCompatActivity {
+    /**
+     * The user
+     */
     private User user;
+
+    /**
+     * Levels
+     */
     private final String[] LEVELS = {"EASY", "NORMAL", "HARD"};
+
+    /**
+     * Place to store the selected level
+     */
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.study.StudyMenu.MESSAGE";
+
+    /**
+     * Spinner to choose levels
+     */
     private Spinner spinner;
+
+    /**
+     * The selected level
+     */
     private String levelChoice;
 
 
@@ -36,6 +55,9 @@ public class StudyMenu extends AppCompatActivity {
 
     }
 
+    /**
+     * Switch to game page
+     */
     public void StartStudyGame(View view) {
         levelChoice = spinner.getSelectedItem().toString();
 
@@ -47,6 +69,9 @@ public class StudyMenu extends AppCompatActivity {
 
     }
 
+    /**
+     * Exit study game
+     */
     public void ExitStudyGame(View view) {
         Intent exitGame = new Intent(this, GameActivity.class);
         exitGame.putExtra("User", user);
@@ -54,8 +79,8 @@ public class StudyMenu extends AppCompatActivity {
 
     }
 
-    /*
-    Set up the level spinner
+    /**
+     * Set up the level spinner
      */
     private void setLevelSpinner() {
 
