@@ -87,6 +87,7 @@ class SheepManager implements Serializable {
             }
         }
         itemList.removeAll(itemToRemove);
+        sheepNum -= itemToRemove.size();
     }
 
     /**

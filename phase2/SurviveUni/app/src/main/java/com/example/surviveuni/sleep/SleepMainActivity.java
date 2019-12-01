@@ -13,18 +13,22 @@ import com.example.surviveuni.gameCentre.GameActivity;
 import com.example.surviveuni.R;
 
 public class SleepMainActivity extends AppCompatActivity {
-
-    public static final String EXTRA_MESSAGE =
-            "com.example.surviveuni.sleep.SleepMainActivity.MESSAGE";
-
     /**
      * The list of choices for the spinner that allows the user to choose which Java feature to
      * demonstrate.
      */
     private final String[] levels = {"EASY", "NORMAL", "HARD"};
-
+    /**
+     * the spinner allows user to choice the game level
+     */
     private Spinner spinner;
+    /**
+     * the level of the game
+     */
     private String levelSelected;
+    /**
+     * the user playing the game
+     */
     private User user;
 
     @Override
@@ -43,7 +47,7 @@ public class SleepMainActivity extends AppCompatActivity {
     public void StartSleepGame(View view) {
         levelSelected = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SleepGameActivity.class);
-        startGame.putExtra(EXTRA_MESSAGE, levelSelected);
+        startGame.putExtra("level", levelSelected);
         startGame.putExtra("User", user);
         startActivity(startGame);
     }

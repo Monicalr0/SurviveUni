@@ -5,7 +5,7 @@ import android.content.Context;
 import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.FeedbackActivity;
 import com.example.surviveuni.gameCentre.UserManager;
-import com.example.surviveuni.social.Socialfeedback;
+import com.example.surviveuni.social.SocialFeedbackActivity;
 import com.example.surviveuni.study.StudyGamePresenter;
 
 class ScoreBoardPresenter {
@@ -51,7 +51,7 @@ class ScoreBoardPresenter {
     void showRanking(){
         // if any of the three game is played and saved or the user never save score,
         // then re-sort the whole scoreBoard
-        if(StudyGamePresenter.changed || Socialfeedback.changed || FeedbackActivity.changed || us.getScore() == -1){
+        if(StudyGamePresenter.changed || SocialFeedbackActivity.changed || FeedbackActivity.changed || us.getScore() == -1){
             setRanking();
         }
         for(int i = 0 ; i < 5; i++){
@@ -67,7 +67,7 @@ class ScoreBoardPresenter {
         }
         // change them back to false
         StudyGamePresenter.changed = false;
-        Socialfeedback.changed = false;
+        SocialFeedbackActivity.changed = false;
         FeedbackActivity.changed = false;
     }
 
