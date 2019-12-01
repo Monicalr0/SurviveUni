@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.data.User;
+import com.example.surviveuni.gameCentre.ScoreBoardSystem.ScoreBoardActivity;
 import com.example.surviveuni.sleep.SleepMainActivity;
 import com.example.surviveuni.social.SocialMain;
 import com.example.surviveuni.study.StudyMenu;

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".gameCentre.ScoreBoardActivity"></activity>
+        <activity android:name=".gameCentre.ScoreBoardSystem.ScoreBoardActivity"></activity>
         <activity android:name=".gameCentre.CustomizeActivity">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
