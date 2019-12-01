@@ -1,17 +1,13 @@
 package com.example.surviveuni.social;
 
-import android.app.AlertDialog;
-
 import com.example.surviveuni.data.GameState;
-import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.GameManager;
-import com.example.surviveuni.gameCentre.UserManager;
 
 class SocialFeedbackPresenter {
-    private GameState gameState = GameManager.getGameState();;
+    private GameState gameState = GameManager.getGameState();
 
 //    private ImageView iv;
-    private Social social = new Social();
+    //private Social social = new Social();
     private Socialfeedback socialfb;
     private String setImage;
 
@@ -20,8 +16,8 @@ class SocialFeedbackPresenter {
     }
 
     void checkFeedback(String feedback) {
-        gameState.addObserver(social);
-        gameState.socialNotify();
+        //gameState.addObserver(social);
+        //gameState.socialNotify();
 //        iv = findViewById(R.id.imageView1);
         if (feedback.equals("Correct! Let's be friend!")) {
 //            iv.setImageResource(R.drawable.wow);

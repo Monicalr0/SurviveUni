@@ -1,17 +1,14 @@
 package com.example.surviveuni.social;
 
-import android.widget.Toast;
-
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
-class Social implements Observer {
+public class Social implements Observer {
     private SocialActivity sa;
     private boolean gameWon = false;
     private int correctAnswer = generate_expect();
     int remainingGuess;
-    private int expect;
     private boolean unexpectedInput = false;
     private String feedBack;
     private boolean triggered = false;
@@ -58,7 +55,7 @@ class Social implements Observer {
 
     private int generate_expect() {
         Random r = new Random();
-        expect = r.nextInt(5) + 1; // generate a random number ranging from 1 to 5
+        int expect = r.nextInt(5) + 1; // generate a random number ranging from 1 to 5
         return expect;
     }
 
@@ -92,7 +89,6 @@ class Social implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {
-
         feedBack = "Correct! Let's be friend!";
         triggered = true;
     }
