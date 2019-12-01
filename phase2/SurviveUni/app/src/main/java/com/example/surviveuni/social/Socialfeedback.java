@@ -25,6 +25,7 @@ public class Socialfeedback extends AppCompatActivity {
     private ImageView iv;
     private AlertDialog.Builder scoreSaved;
     private Social social;
+    public static boolean changed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,5 +96,6 @@ public class Socialfeedback extends AppCompatActivity {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
         scoreSaved.show();
+        changed = true;
     }
 }
