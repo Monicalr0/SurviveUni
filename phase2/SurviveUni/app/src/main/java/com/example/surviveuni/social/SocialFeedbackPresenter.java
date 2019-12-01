@@ -14,7 +14,6 @@ class SocialFeedbackPresenter {
     private Social social = new Social();
     private Socialfeedback socialfb;
     private String setImage;
-    private Socialfeedback sf;
 
     String getSetImage(){
         return setImage;
@@ -47,7 +46,7 @@ class SocialFeedbackPresenter {
 //            return ("Happiness:-10\nGPA:-5\nSpirit:-10");
         }
     }
-    void passSocialFeedback(Socialfeedback sf) {
-        this.socialfb = sf;
-    }
+//    void passSocialFeedback(Socialfeedback sf) {
+//        this.socialfb = sf;
+//    }
 }

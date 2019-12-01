@@ -33,7 +33,7 @@ public class Socialfeedback extends AppCompatActivity {
         gameState = GameManager.getGameState();
 //        social = new Social();
         presenter = new SocialFeedbackPresenter();
-        presenter.passSocialFeedback(this);
+//        presenter.passSocialFeedback(this);
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
         user = (User) intent.getSerializableExtra("User");
