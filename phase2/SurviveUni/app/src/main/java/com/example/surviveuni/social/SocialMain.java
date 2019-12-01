@@ -33,20 +33,20 @@ public class SocialMain extends AppCompatActivity {
 
         //get user here
         Intent i = getIntent();
-        user = (User)i.getSerializableExtra("User");
+        user = (User) i.getSerializableExtra("User");
     }
 
     public void StartSocialGame(View view) {
         levelChoice = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SocialActivity.class);
         startGame.putExtra(EXTRA_MESSAGE, levelChoice);
-        startGame.putExtra("User",user);
+        startGame.putExtra("User", user);
         startActivity(startGame);
     }
 
     public void ExitSocialGame(View view) {
         Intent exitGame = new Intent(this, GameActivity.class);
-        exitGame.putExtra("User",user);
+        exitGame.putExtra("User", user);
         startActivity(exitGame);
     }
 

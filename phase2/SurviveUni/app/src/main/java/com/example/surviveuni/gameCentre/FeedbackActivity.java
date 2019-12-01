@@ -13,7 +13,7 @@ import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.data.User;
 
 
-public abstract class FeedbackActivity extends AppCompatActivity{
+public abstract class FeedbackActivity extends AppCompatActivity {
     protected GameState gameState;
     public ScoreManager scoreManager;
     public String feedback;
@@ -51,7 +51,9 @@ public abstract class FeedbackActivity extends AppCompatActivity{
                 .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
-    public void setUser(User user){this.user = user;}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void nextRound(View view) {
         Intent NextRound;
@@ -61,7 +63,7 @@ public abstract class FeedbackActivity extends AppCompatActivity{
             gameState.updateDay();
             NextRound = new Intent(this, GameActivity.class);
         }
-        NextRound.putExtra("User",user);
+        NextRound.putExtra("User", user);
         startActivity(NextRound);
         finish();
     }

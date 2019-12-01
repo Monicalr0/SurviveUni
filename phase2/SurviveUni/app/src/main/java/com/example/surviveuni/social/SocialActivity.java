@@ -26,7 +26,7 @@ public class SocialActivity extends AppCompatActivity implements SocialGameView 
         super.onCreate(savedInstanceState);
         Intent level = getIntent();
         String levelSelected = level.getStringExtra(SocialMain.EXTRA_MESSAGE);
-        user = (User)level.getSerializableExtra("User");
+        user = (User) level.getSerializableExtra("User");
         social = new Social();
         social.setRemainingGuess(levelSelected);
         social.remainingGuess = social.getRemainingGuess();
@@ -42,28 +42,31 @@ public class SocialActivity extends AppCompatActivity implements SocialGameView 
 
         if (social.remainingGuess != 1) {
             social.remainingGuess--;
-            if (!unexpectedInput){
+            if (!unexpectedInput) {
                 Toast.makeText(this, feedBack, Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 Toast.makeText(this, "unexpected input: out of range or not a number", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     void checkGameOver(String feedback) {
-            Intent intent = new Intent(this, Socialfeedback.class);
-            intent.putExtra(EXTRA_MESSAGE, feedback);
-            intent.putExtra("User", user);
-            startActivity(intent);
-            finish();
+        Intent intent = new Intent(this, Socialfeedback.class);
+        intent.putExtra(EXTRA_MESSAGE, feedback);
+        intent.putExtra("User", user);
+        startActivity(intent);
+        finish();
     }
 
     @Override
-    public void setUnexpectedInput(boolean unexpectedInput){this.unexpectedInput = unexpectedInput;}
+    public void setUnexpectedInput(boolean unexpectedInput) {
+        this.unexpectedInput = unexpectedInput;
+    }
 
     @Override
-    public void setFailedMessage(){Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();}
+    public void setFailedMessage() {
+        Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();
+    }
 
 
 }

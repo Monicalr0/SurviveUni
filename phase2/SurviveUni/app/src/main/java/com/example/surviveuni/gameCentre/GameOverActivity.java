@@ -33,7 +33,7 @@ public class GameOverActivity extends AppCompatActivity {
 
         //get user here
         Intent i = getIntent();
-        user = (User)i.getSerializableExtra("User");
+        user = (User) i.getSerializableExtra("User");
     }
 
     /**
@@ -51,7 +51,7 @@ public class GameOverActivity extends AppCompatActivity {
      */
     public void NewGame(View view) {
         Intent newgame = new Intent(this, GameActivity.class);
-        newgame.putExtra("User",user);
+        newgame.putExtra("User", user);
         startActivity(newgame);
     }
 }

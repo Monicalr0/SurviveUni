@@ -46,7 +46,7 @@ public class CustomizeActivity extends AppCompatActivity {
             gameManager.newGame();
 
             Intent i = new Intent(this, GameActivity.class);
-            i.putExtra("User",user);
+            i.putExtra("User", user);
             startActivity(i);
 
         });
@@ -58,7 +58,7 @@ public class CustomizeActivity extends AppCompatActivity {
             gameManager.loadGame();
 
             Intent i = new Intent(this, GameActivity.class);
-            i.putExtra("User",user);
+            i.putExtra("User", user);
             startActivity(i);
 
         });
@@ -74,7 +74,7 @@ public class CustomizeActivity extends AppCompatActivity {
         });
     }
 
-    public void setSignOutBtn(){
+    public void setSignOutBtn() {
         findViewById(R.id.CustomizeSignOutBtn).setOnClickListener(v -> {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);

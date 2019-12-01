@@ -49,7 +49,9 @@ public class Socialfeedback extends AppCompatActivity {
                 .setMessage("Your Score Has Been Saved To ScoreBoard")
                 .setPositiveButton(android.R.string.yes, null)
                 .setIcon(android.R.drawable.ic_dialog_alert);
-    };
+    }
+
+    ;
 
     private String checkFeedback(String feedback) {
         gameState.addObserver(social);

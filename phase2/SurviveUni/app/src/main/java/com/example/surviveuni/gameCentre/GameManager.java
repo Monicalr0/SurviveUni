@@ -27,7 +27,7 @@ public class GameManager {
         this.userManager = UserManager.getInstance(context);
     }
 
-    public static User getUser(){
+    public static User getUser() {
         return user;
     }
 

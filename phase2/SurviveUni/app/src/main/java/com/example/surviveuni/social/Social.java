@@ -16,13 +16,12 @@ class Social implements Observer {
     private String feedBack;
     private boolean triggered = false;
 
-    String checkAnswer(String answer){
+    String checkAnswer(String answer) {
         String feedback;
-        if(triggered){
+        if (triggered) {
             feedback = feedBack;
             gameWon = true;
-        }
-        else {
+        } else {
             try {
                 int number = Integer.parseInt(answer);
 
@@ -53,7 +52,7 @@ class Social implements Observer {
                 feedback = "You are not here to be friend with me!";
             }
         }
-        checkGameOver(feedback,remainingGuess == 1, unexpectedInput);
+        checkGameOver(feedback, remainingGuess == 1, unexpectedInput);
         return feedback;
     }
 
@@ -63,15 +62,17 @@ class Social implements Observer {
         return expect;
     }
 
-    void passSocialActivity(SocialActivity sa){this.sa = sa;}
+    void passSocialActivity(SocialActivity sa) {
+        this.sa = sa;
+    }
 
-    private void checkGameOver(String feedback, boolean limitStatus, boolean unExpectInput){
-        if(gameWon || limitStatus || unExpectInput){
+    private void checkGameOver(String feedback, boolean limitStatus, boolean unExpectInput) {
+        if (gameWon || limitStatus || unExpectInput) {
             sa.checkGameOver(feedback);
         }
     }
 
-    void setRemainingGuess(String level){
+    void setRemainingGuess(String level) {
         switch (level) {
             case "HARD":
                 remainingGuess = 1;
@@ -85,7 +86,9 @@ class Social implements Observer {
         }
     }
 
-    int getRemainingGuess(){return remainingGuess;}
+    int getRemainingGuess() {
+        return remainingGuess;
+    }
 
     @Override
     public void update(Observable observable, Object o) {
