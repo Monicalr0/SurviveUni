@@ -16,6 +16,7 @@ class ScoreBoardPresenter {
     private UserManager userManager;
     private ScoreBoardView scoreBoardView;
     private int spaceUsed;
+    private User us;
 
 
     ScoreBoardPresenter(Context context, ScoreBoardView scoreBoardView) {
@@ -26,7 +27,7 @@ class ScoreBoardPresenter {
     }
 
     void showRanking(){
-        if(StudyGamePresenter.changed || Socialfeedback.changed || FeedbackActivity.changed){
+        if(StudyGamePresenter.changed || Socialfeedback.changed || FeedbackActivity.changed || us.getScore() == -1){
             setRanking();
         }
         for(int i = 0 ; i < 5; i++){
@@ -81,4 +82,6 @@ class ScoreBoardPresenter {
         }
         return false;
     }
+
+    void passUser(User user){this.us = user;}
 }

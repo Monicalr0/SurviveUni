@@ -38,6 +38,7 @@ public class ScoreBoardActivity extends AppCompatActivity implements ScoreBoardV
         TextView score5 = findViewById(R.id.BoardScore5);
         texts = new TextView[]{name1, name2, name3, name4, name5, score1, score2, score3, score4, score5};
 
+        sb.passUser(user);
         sb.showRanking();
     }
 
