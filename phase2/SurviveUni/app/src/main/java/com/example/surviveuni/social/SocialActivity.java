@@ -57,7 +57,7 @@ public class SocialActivity extends AppCompatActivity implements SocialGameView 
     }
 
     void checkGameOver(String feedback) {
-        Intent intent = new Intent(this, Socialfeedback.class);
+        Intent intent = new Intent(this, SocialFeedbackActivity.class);
         intent.putExtra(EXTRA_MESSAGE, feedback);
         intent.putExtra("User", user);
         startActivity(intent);

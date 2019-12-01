@@ -6,12 +6,12 @@ import com.example.surviveuni.gameCentre.GameManager;
 class SocialFeedbackPresenter {
     private GameState gameState = GameManager.getGameState();
 
-//    private ImageView iv;
+    //    private ImageView iv;
     //private Social social = new Social();
-    private Socialfeedback socialfb;
+    private SocialFeedbackActivity socialfb;
     private String setImage;
 
-    String getSetImage(){
+    String getSetImage() {
         return setImage;
     }
 
@@ -42,7 +42,7 @@ class SocialFeedbackPresenter {
 //            return ("Happiness:-10\nGPA:-5\nSpirit:-10");
         }
     }
-//    void passSocialFeedback(Socialfeedback sf) {
+//    void passSocialFeedback(SocialFeedbackActivity sf) {
 //        this.socialfb = sf;
 //    }
 }

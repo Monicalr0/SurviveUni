@@ -6,50 +6,26 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
-import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.data.User;
 
 
 public abstract class FeedbackActivity extends AppCompatActivity {
-    protected GameState gameState;
+    public GameState gameState;
     public ScoreManager scoreManager;
     public String feedback;
     public User user;
-    private UserManager userManager;
-    private AlertDialog.Builder scoreSaved;
+    public UserManager userManager;
+    public AlertDialog.Builder scoreSaved;
     public String message;
     public static boolean changed = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedback);
-
         gameState = GameManager.getGameState();
         userManager = UserManager.getInstance(this);
-
-
-        // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.feedbackText);
-        TextView textView3 = findViewById(R.id.secondFeeedback);
-        textView.setText(feedback);
-        textView3.setText(message);
-
-        if (feedback == null) {
-            feedback = "Sorry!";
-        }
-        scoreManager.changeGameState(feedback);
-        String statsFeedback = scoreManager.checkFeedback(feedback);
-        TextView textView2 = findViewById(R.id.statsText);
-        textView2.setText(statsFeedback);
-
-        scoreSaved = new AlertDialog.Builder(this)
-                .setMessage("Your Score Has Been Saved To ScoreBoard")
-                .setPositiveButton(android.R.string.yes, null)
-                .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
     public void setUser(User user) {
@@ -67,12 +43,5 @@ public abstract class FeedbackActivity extends AppCompatActivity {
         NextRound.putExtra("User", user);
         startActivity(NextRound);
         finish();
-    }
-
-    public void setSleepSaveBtn(View view) {
-        userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
-        UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
-        scoreSaved.show();
-        changed = true;
     }
 }

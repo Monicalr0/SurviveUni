@@ -10,15 +10,13 @@ import android.widget.TextView;
 import android.widget.ImageView;
 
 import com.example.surviveuni.data.User;
-import com.example.surviveuni.gameCentre.GameActivity;
-import com.example.surviveuni.gameCentre.GameManager;
-import com.example.surviveuni.gameCentre.GameOverActivity;
+import com.example.surviveuni.gameCentre.FeedbackActivity;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.R;
 import com.example.surviveuni.gameCentre.UserManager;
 
 
-public class Socialfeedback extends AppCompatActivity {
+public class SocialFeedbackActivity extends FeedbackActivity {
     private GameState gameState;
     private User user;
     private UserManager userManager;
@@ -29,10 +27,9 @@ public class Socialfeedback extends AppCompatActivity {
     private SocialFeedbackPresenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social_feedback);
-        gameState = GameManager.getGameState();
         social = new Social();
         presenter = new SocialFeedbackPresenter();
         Intent intent = getIntent();
@@ -85,31 +82,16 @@ public class Socialfeedback extends AppCompatActivity {
 
     private String checkFeedback() {
         iv = findViewById(R.id.imageView1);
-        if (presenter.getSetImage().equals("wow")){
+        if (presenter.getSetImage().equals("wow")) {
             iv.setImageResource(R.drawable.wow);
             return ("Happiness:+10\nGPA:-5\nSpirit:-5");
-        }
-        else if (presenter.getSetImage().equals("sorry")) {
+        } else if (presenter.getSetImage().equals("sorry")) {
             iv.setImageResource(R.drawable.sorry);
             return ("Happiness:-5\nGPA:-5\nSpirit:-5");
-        }
-        else {
+        } else {
             iv.setImageResource(R.drawable.angry);
             return ("Happiness:-10\nGPA:-5\nSpirit:-10");
         }
-    }
-
-    public void StartNextRound(View view) {
-        Intent NextRound;
-        if (gameState.checkGameover() == 1) {
-            NextRound = new Intent(this, GameOverActivity.class);
-        } else {
-            NextRound = new Intent(this, GameActivity.class);
-            gameState.updateDay();
-        }
-        NextRound.putExtra("User", user);
-        startActivity(NextRound);
-        finish();
     }
 
     public void setSocialSaveBtn(View view) {
