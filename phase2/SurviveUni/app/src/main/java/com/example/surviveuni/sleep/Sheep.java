@@ -49,7 +49,6 @@ class Sheep extends SleepGameItem {
      */
     Sheep(int x, int y, Resources res) {
         super(x, y, res);
-        goingRight = true;
         sheepLeft = BitmapFactory.decodeResource(res, R.drawable.sheep_left);
         sheepRight = BitmapFactory.decodeResource(res, R.drawable.sheep_right);
         appearance = sheepRight;
@@ -69,7 +68,7 @@ class Sheep extends SleepGameItem {
      * @return List of SleepGameItem got eaten, if none, return empty list
      */
     @Override
-    public List<SleepGameItem> eat(List<SleepGameItem> itemList) {
+    List<SleepGameItem> eat(List<SleepGameItem> itemList) {
         return new ArrayList<>();
     }
 
@@ -80,7 +79,7 @@ class Sheep extends SleepGameItem {
      * @param touchY y coordinate of user's touch
      */
     @Override
-    public void onTouchEvent(int touchX, int touchY) {
+    void onTouchEvent(int touchX, int touchY) {
     }
 
     /**

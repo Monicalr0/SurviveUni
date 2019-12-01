@@ -59,10 +59,20 @@ class Wolf extends SleepGameItem {
         wolfHeight = wolfRight.getHeight();
     }
 
+    /**
+     * getter method of getTouched
+     *
+     * @return whether this wolf is touched by user
+     */
     boolean getTouched() {
         return touched;
     }
 
+    /**
+     * draw the wolf on the canvas
+     *
+     * @param canvas the graphics context in which to draw this item.
+     */
     @Override
     void draw(Canvas canvas) {
         canvas.drawBitmap(appearance, getX(), getY(), null);

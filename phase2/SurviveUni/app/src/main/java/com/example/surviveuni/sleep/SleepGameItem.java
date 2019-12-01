@@ -34,22 +34,47 @@ abstract class SleepGameItem {
         this.res = res;
     }
 
+    /**
+     * getter method of Resource
+     *
+     * @return the resource for image
+     */
     Resources getRes() {
         return res;
     }
 
+    /**
+     * getter method of x coordinate of this item
+     *
+     * @return the x coordinate of this item
+     */
     int getX() {
         return x;
     }
 
+    /**
+     * getter method of y coordinate of this item
+     *
+     * @return the y coordinate of this item
+     */
     int getY() {
         return y;
     }
 
+    /**
+     * setter method of x coordinate of this item
+     *
+     * @param new_x the new x coordinate to set
+     */
     void setX(int new_x) {
         x = new_x;
     }
 
+    /**
+     * setter method of y coordinate of this item
+     *
+     * @param new_y the new y coordinate to set
+     */
     void setY(int new_y) {
         y = new_y;
     }
