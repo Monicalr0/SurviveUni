@@ -45,8 +45,8 @@ SurviveUni is a game. Each time an user start the game, he/she will be
  to 10, something special would happen ;)
  
  *Sleep*:  A memory and fast-reaction game. A number of sheep wil jump
-            around on your screen. However, some of these sheep are actually wolves
-            with camouflage! They will secretly eat the sheep. Tapping on them will
-            make them show themselves. After a certain amount of time, you will be
-            asked how many sheep there are finally. Try to get the number right and
-            have a good sleep.
+ around on your screen. However, some of these sheep are actually wolves
+ with camouflage! They will secretly eat the sheep. Tapping on them will
+ make them show themselves. After a certain amount of time, you will be
+ asked how many sheep there are finally. Try to get the number right and
+ have a good sleep.
