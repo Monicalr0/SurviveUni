@@ -138,7 +138,7 @@ public class GameState extends Observable implements Serializable {
     public void socialNotify() {
         if (happiness <= 10) {
             setChanged();
-            notifyObservers();
+            notifyObservers(null);
         }
     }
 

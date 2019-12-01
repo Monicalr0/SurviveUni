@@ -13,43 +13,45 @@ class Social implements Observer {
     int remainingGuess;
     private int expect;
     private boolean unexpectedInput = false;
-    String feedBack;
+    private String feedBack;
+    private boolean triggered = false;
 
     String checkAnswer(String answer){
         String feedback;
-        try {
-            int number = Integer.parseInt(answer);
+        if(triggered){
+            feedback = feedBack;
+            gameWon = true;
+        }
+        else {
+            try {
+                int number = Integer.parseInt(answer);
 
-            if ( number > 5 || number < 1 ) {
-                feedback = "You are not here to be friend with me!";
+                if (number > 5 || number < 1) {
+                    feedback = "You are not here to be friend with me!";
+                    sa.setUnexpectedInput(true);
+                    unexpectedInput = true;
+                } else if (remainingGuess == 1) {
+                    if (number == correctAnswer) {
+                        feedback = "Correct! Let's be friend!";
+                    } else {
+                        feedback = "Sorry! Run out of playing times:( Maybe next time.";
+                    }
+                } else {
+                    if (number == correctAnswer) {
+                        gameWon = true;
+                        feedback = "Correct! Let's be friend!";
+                    } else if (number > correctAnswer) {
+                        feedback = "It's too high, try another time.";
+                    } else {
+                        feedback = "It's too low, try another time.";
+                    }
+                }
+            } catch (NumberFormatException e) {
+                sa.setFailedMessage();
                 sa.setUnexpectedInput(true);
                 unexpectedInput = true;
+                feedback = "You are not here to be friend with me!";
             }
-            else if(remainingGuess == 1){
-                if (number == correctAnswer) {
-                    feedback = "Correct! Let's be friend!";
-                } else {
-                    feedback =  "Sorry! Run out of playing times:( Maybe next time.";
-                }
-            }
-            else{
-                if (number == correctAnswer) {
-                    gameWon = true;
-                    feedback =  "Correct! Let's be friend!";
-                }
-                else if(number > correctAnswer){
-                    feedback = "It's too high, try another time.";
-                }
-                else {
-                    feedback = "It's too low, try another time.";
-                }
-            }
-        }
-        catch (NumberFormatException e) {
-            sa.setFailedMessage();
-            sa.setUnexpectedInput(true);
-            unexpectedInput = true;
-            feedback = "You are not here to be friend with me!";
         }
         checkGameOver(feedback,remainingGuess == 1, unexpectedInput);
         return feedback;
@@ -89,5 +91,6 @@ class Social implements Observer {
     public void update(Observable observable, Object o) {
 
         feedBack = "Correct! Let's be friend!";
+        triggered = true;
     }
 }

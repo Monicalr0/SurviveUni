@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.User;
 
-public class SocialActivity extends AppCompatActivity {
+public class SocialActivity extends AppCompatActivity implements SocialGameView {
     private User user;
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.social.SocialActivity.MESSAGE";
     int remainingGuess;
@@ -33,8 +33,6 @@ public class SocialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_social_answer);
         social.passSocialActivity(this);
     }
-
-
 
     public void submitAnswer(View view) {
         EditText editText = findViewById(R.id.answerText);
@@ -61,9 +59,11 @@ public class SocialActivity extends AppCompatActivity {
             finish();
     }
 
-    void setUnexpectedInput(boolean unexpectedInput){this.unexpectedInput = unexpectedInput;}
+    @Override
+    public void setUnexpectedInput(boolean unexpectedInput){this.unexpectedInput = unexpectedInput;}
 
-    void setFailedMessage(){Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();}
+    @Override
+    public void setFailedMessage(){Toast.makeText(this, "Sorry! Your answer is not even a number.", Toast.LENGTH_SHORT).show();}
 
 
 }
