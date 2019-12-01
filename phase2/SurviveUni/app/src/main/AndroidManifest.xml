@@ -17,11 +17,11 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".gameCentre.CreateAccountActivity" />
+        <activity android:name=".gameCentre.CreateAccountSystem.CreateAccountActivity" />
         <activity android:name=".study.StudyGameActivity" />
         <activity android:name=".study.StudyMenu" />
         <activity
-            android:name=".gameCentre.LoginActivity"
+            android:name=".gameCentre.LoginSystem.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".sleep.SleepFeedbackActivity" />
         <activity android:name=".sleep.SleepAnswerActivity" />

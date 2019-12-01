@@ -2,11 +2,16 @@ package com.example.surviveuni.gameCentre;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
@@ -16,10 +21,21 @@ import com.example.surviveuni.sleep.SleepMainActivity;
 import com.example.surviveuni.social.SocialMain;
 import com.example.surviveuni.study.StudyMenu;
 
+
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class GameActivity extends AppCompatActivity {
     private User user;
+
+    /**
+     * Background music
+     */
+    BackgroundSound mBackgroundSound = new BackgroundSound();
+
+    /**
+     * System audio manager
+     */
+    AudioManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +60,20 @@ public class GameActivity extends AppCompatActivity {
 
         TextView spirit = findViewById(R.id.textSpirit);
         spirit.setText("Spirit:" + gs.getSpirit());
+
+        manager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
     }
+
+    /**
+     * When the page is reached, play music
+     */
+    protected void onResume() {
+        super.onResume();
+
+        mBackgroundSound.execute();
+
+    }
+
 
     /**
      * Navigate to SleepMain Activity
@@ -52,6 +81,7 @@ public class GameActivity extends AppCompatActivity {
     public void StartSleep(View view) {
         Intent startGame = new Intent(this, SleepMainActivity.class);
         startGame.putExtra("User", user);
+
         startActivity(startGame);
     }
 
@@ -61,6 +91,7 @@ public class GameActivity extends AppCompatActivity {
     public void StartSocial(View view) {
         Intent startGame = new Intent(this, SocialMain.class);
         startGame.putExtra("User", user);
+
         startActivity(startGame);
     }
 
@@ -70,6 +101,7 @@ public class GameActivity extends AppCompatActivity {
     public void StartStudy(View view) {
         Intent startGame = new Intent(this, StudyMenu.class);
         startGame.putExtra("User", user);
+
         startActivity(startGame);
     }
 
@@ -82,10 +114,52 @@ public class GameActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    /**
+     * Set up score board button
+     */
     public void setScoreBrdBtn(View view) {
         Intent i = new Intent(this, ScoreBoardActivity.class);
         i.putExtra("User", user);
         startActivity(i);
     }
 
+    /**
+     * Set up background sound
+     */
+    public class BackgroundSound extends AsyncTask<Void, Void, Void> {
+
+        MediaPlayer mMediaPlayer;
+
+        protected void onPreExecute() {
+
+
+            mMediaPlayer = MediaPlayer.create(GameActivity.this, R.raw.happy_dreams);
+
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            mMediaPlayer.setLooping(true); // Set looping
+            mMediaPlayer.setVolume(100, 100);
+
+            // If system is not already playing music
+            if (!manager.isMusicActive()) {
+                mMediaPlayer.start();
+
+            }
+            return null;
+        }
+
+        protected void onCancelled(Void v) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+        }
+
+
+    }
+
 }
+
+
