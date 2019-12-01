@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".gameCentre.CreateAccountActivity">
+    tools:context=".gameCentre.CreateAccountSystem.CreateAccountActivity">
 
     <TextView
         android:id="@+id/textView3"
@@ -60,6 +60,7 @@
         android:background="#70000000"
         android:text="@string/socialAnswerButton"
         android:textColor="#FFFFFF"
+        android:onClick="setCreateBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +75,7 @@
         android:layout_marginEnd="163dp"
         android:layout_marginBottom="52dp"
         android:text="@string/exit"
+        android:onClick="setExitBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

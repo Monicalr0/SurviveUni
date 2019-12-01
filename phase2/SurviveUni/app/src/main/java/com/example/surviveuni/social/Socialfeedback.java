@@ -24,16 +24,17 @@ public class Socialfeedback extends AppCompatActivity {
     private UserManager userManager;
     private ImageView iv;
     private AlertDialog.Builder scoreSaved;
-//    private Social social;
+    private Social social;
+    public static boolean changed = false;
     private SocialFeedbackPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_social_feedback);
         gameState = GameManager.getGameState();
-//        social = new Social();
+        social = new Social();
         presenter = new SocialFeedbackPresenter();
-//        presenter.passSocialFeedback(this);
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
         user = (User) intent.getSerializableExtra("User");
@@ -41,12 +42,9 @@ public class Socialfeedback extends AppCompatActivity {
 
         presenter.checkFeedback(feedback);
 
-        setContentView(R.layout.activity_social_feedback);
-
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.feedbackText);
         textView.setText(feedback);
-
 
         String statsFeedback = checkFeedback();
         TextView textView2 = findViewById(R.id.statsText);
@@ -84,6 +82,7 @@ public class Socialfeedback extends AppCompatActivity {
 //            return ("Happiness:-10\nGPA:-5\nSpirit:-10");
 //        }
 //    }
+
     private String checkFeedback() {
         iv = findViewById(R.id.imageView1);
         if (presenter.getSetImage().equals("wow")){
@@ -99,7 +98,6 @@ public class Socialfeedback extends AppCompatActivity {
             return ("Happiness:-10\nGPA:-5\nSpirit:-10");
         }
     }
-
 
     public void StartNextRound(View view) {
         Intent NextRound;
@@ -118,5 +116,6 @@ public class Socialfeedback extends AppCompatActivity {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
         scoreSaved.show();
+        changed = true;
     }
 }

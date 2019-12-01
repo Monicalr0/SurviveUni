@@ -4,10 +4,9 @@ import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.UserManager;
 
-
-public class StudyGamePresenter {
+public class StudyGamePresenter{
     /**
-     * Levels
+     * levels
      */
     private final String[] LEVELS = {"EASY", "NORMAL", "HARD"};
 
@@ -36,7 +35,9 @@ public class StudyGamePresenter {
      */
     private StudyGameView studyGameView;
 
-    StudyGamePresenter(GameState gameState, StudyGameView studyGameView) {
+    public static boolean changed = false;
+
+    StudyGamePresenter(GameState gameState, StudyGameView studyGameView){
         this.gameState = gameState;
         this.userManager = UserManager.getInstance(sga);
         this.studyGameView = studyGameView;
@@ -83,6 +84,7 @@ public class StudyGamePresenter {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(sga).SaveToFile(); // Save to file so no need to save again when sign out
         studyGameView.setScoreSaveMessage();
+        changed = true;
     }
 
     /**
@@ -91,32 +93,24 @@ public class StudyGamePresenter {
     public void setUpResult(boolean isSuccess) {
         gameState.changeHappiness(-5);
         gameState.changeSpirit(-5);
-        if (isSuccess) {
-            gameState.changeGPA(5);
-        } else {
-            gameState.changeGPA(-5);
-        }
+        if(isSuccess){gameState.changeGPA(5);}
+        else{gameState.changeGPA(-5);}
 
     }
+
 
     /**
      * Pass and set study game activity
      */
-    void passActivity(StudyGameActivity sga) {
-        this.sga = sga;
-    }
+    void passActivity(StudyGameActivity sga){this.sga = sga;}
 
     /**
      * Pass and set user
      */
-    void passUser(User user) {
-        this.user = user;
-    }
+    void passUser(User user){this.user = user;}
 
     /**
      * Pass and set user manager
      */
-    void passUserManager(UserManager userManager) {
-        this.userManager = userManager;
-    }
+    void passUserManager(UserManager userManager){this.userManager = userManager;}
 }

@@ -1,4 +1,4 @@
-package com.example.surviveuni.gameCentre;
+package com.example.surviveuni.gameCentre.LoginSystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.EditText;
 
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.User;
+import com.example.surviveuni.gameCentre.CustomizeActivity;
+import com.example.surviveuni.gameCentre.MainActivity;
+import com.example.surviveuni.gameCentre.UserManager;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
     /**

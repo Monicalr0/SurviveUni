@@ -1,4 +1,4 @@
-package com.example.surviveuni.gameCentre;
+package com.example.surviveuni.gameCentre.LoginSystem;
 
 import android.view.View;
 
