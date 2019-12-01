@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.surviveuni.R;
-import com.example.surviveuni.gameCentre.CreateAccountActivity;
-import com.example.surviveuni.gameCentre.LoginActivity;
+import com.example.surviveuni.gameCentre.CreateAccountSystem.CreateAccountActivity;
+import com.example.surviveuni.gameCentre.LoginSystem.LoginActivity;
 
 
 public class MainActivity extends AppCompatActivity {

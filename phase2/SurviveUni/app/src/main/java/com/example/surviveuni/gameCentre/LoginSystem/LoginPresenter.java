@@ -1,6 +1,7 @@
-package com.example.surviveuni.gameCentre;
+package com.example.surviveuni.gameCentre.LoginSystem;
 
 import com.example.surviveuni.data.User;
+import com.example.surviveuni.gameCentre.UserManager;
 
 import java.util.InputMismatchException;
 

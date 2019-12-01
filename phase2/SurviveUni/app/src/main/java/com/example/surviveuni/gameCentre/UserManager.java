@@ -72,7 +72,7 @@ public class UserManager {
         }
     }
 
-    User authenticate(String username, String password) {
+    public User authenticate(String username, String password) {
         if (!users.containsKey(username)) throw new InputMismatchException();
         if (!users.get(username).checkPassword(password)) throw new InputMismatchException();
         return users.get(username);
