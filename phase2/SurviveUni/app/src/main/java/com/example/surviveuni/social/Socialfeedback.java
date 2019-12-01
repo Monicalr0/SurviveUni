@@ -24,31 +24,25 @@ public class Socialfeedback extends AppCompatActivity {
     private UserManager userManager;
     private ImageView iv;
     private AlertDialog.Builder scoreSaved;
-//    private Social social;
-    private SocialFeedbackPresenter presenter;
+    private Social social;
+    public static boolean changed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_social_feedback);
         gameState = GameManager.getGameState();
-//        social = new Social();
-        presenter = new SocialFeedbackPresenter();
-//        presenter.passSocialFeedback(this);
+        social = new Social();
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
         user = (User) intent.getSerializableExtra("User");
         userManager = UserManager.getInstance(this);
 
-        presenter.checkFeedback(feedback);
-
-        setContentView(R.layout.activity_social_feedback);
-
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.feedbackText);
         textView.setText(feedback);
 
-
-        String statsFeedback = checkFeedback();
+        String statsFeedback = checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
 
@@ -60,46 +54,30 @@ public class Socialfeedback extends AppCompatActivity {
 
     ;
 
-//    private String checkFeedback(String feedback) {
-//        gameState.addObserver(social);
-//        gameState.socialNotify();
-//        iv = findViewById(R.id.imageView1);
-//        if (feedback.equals("Correct! Let's be friend!")) {
-//            iv.setImageResource(R.drawable.wow);
-//            gameState.changeGPA(-5);
-//            gameState.changeSpirit(-5);
-//            gameState.changeHappiness(10);
-//            return ("Happiness:+10\nGPA:-5\nSpirit:-5");
-//        } else if (feedback.equals("Sorry! Run out of playing times:( Maybe next time.")) {
-//            iv.setImageResource(R.drawable.sorry);
-//            gameState.changeGPA(-5);
-//            gameState.changeSpirit(-5);
-//            gameState.changeHappiness(-5);
-//            return ("Happiness:-5\nGPA:-5\nSpirit:-5");
-//        } else {
-//            iv.setImageResource(R.drawable.angry);
-//            gameState.changeGPA(-5);
-//            gameState.changeSpirit(-10);
-//            gameState.changeHappiness(-10);
-//            return ("Happiness:-10\nGPA:-5\nSpirit:-10");
-//        }
-//    }
-    private String checkFeedback() {
+    private String checkFeedback(String feedback) {
+        gameState.addObserver(social);
+        gameState.socialNotify();
         iv = findViewById(R.id.imageView1);
-        if (presenter.getSetImage().equals("wow")){
+        if (feedback.equals("Correct! Let's be friend!")) {
             iv.setImageResource(R.drawable.wow);
+            gameState.changeGPA(-5);
+            gameState.changeSpirit(-5);
+            gameState.changeHappiness(10);
             return ("Happiness:+10\nGPA:-5\nSpirit:-5");
-        }
-        else if (presenter.getSetImage().equals("sorry")) {
+        } else if (feedback.equals("Sorry! Run out of playing times:( Maybe next time.")) {
             iv.setImageResource(R.drawable.sorry);
+            gameState.changeGPA(-5);
+            gameState.changeSpirit(-5);
+            gameState.changeHappiness(-5);
             return ("Happiness:-5\nGPA:-5\nSpirit:-5");
-        }
-        else {
+        } else {
             iv.setImageResource(R.drawable.angry);
+            gameState.changeGPA(-5);
+            gameState.changeSpirit(-10);
+            gameState.changeHappiness(-10);
             return ("Happiness:-10\nGPA:-5\nSpirit:-10");
         }
     }
-
 
     public void StartNextRound(View view) {
         Intent NextRound;
@@ -118,5 +96,6 @@ public class Socialfeedback extends AppCompatActivity {
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
         scoreSaved.show();
+        changed = true;
     }
 }
