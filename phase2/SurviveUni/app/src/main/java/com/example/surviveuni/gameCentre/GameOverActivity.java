@@ -40,9 +40,9 @@ public class GameOverActivity extends AppCompatActivity {
      * reset static variables to 50
      */
     void reset_data() {
-        gameState.setSpirit(50);
-        gameState.setGPA(50);
-        gameState.setHappiness(50);
+        gameState.setSpirit(20);
+        gameState.setGPA(20);
+        gameState.setHappiness(20);
         gameState.setDayOfSurvival(0);
     }
 
