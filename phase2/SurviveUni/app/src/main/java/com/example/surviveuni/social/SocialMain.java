@@ -24,7 +24,9 @@ public class SocialMain extends AppCompatActivity {
     private Spinner spinner;
     private String levelChoice;
 
-
+    /**
+     * Set up main page of Social game.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,9 @@ public class SocialMain extends AppCompatActivity {
         user = (User) i.getSerializableExtra("User");
     }
 
+    /**
+     * Set up button to start the Social game.
+     */
     public void StartSocialGame(View view) {
         levelChoice = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SocialActivity.class);
@@ -44,6 +49,9 @@ public class SocialMain extends AppCompatActivity {
         startActivity(startGame);
     }
 
+    /**
+     * Set up button to exit the Social game.
+     */
     public void ExitSocialGame(View view) {
         Intent exitGame = new Intent(this, GameActivity.class);
         exitGame.putExtra("User", user);
