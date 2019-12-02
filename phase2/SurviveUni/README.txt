@@ -13,6 +13,14 @@ SurviveUni is a game. Each time an user start the game, he/she will be
  round.
 
  *Game Detail*:
+
+ *CreateAccount/freshman*
+ When creating a new account, user is allowed to create a nickname that will
+ appear on ScoreBoard representing the user. And for username and password,
+ the length must be greater than 6 and username cannot be the same with past
+ users'
+
+
  After the basic setting, the user can choose from three different
  games to play: Study, Sleep and Social, corresponding to the attributes
  GPA, Spirit and Happiness. Each time the user start a round of game,
@@ -53,3 +61,14 @@ SurviveUni is a game. Each time an user start the game, he/she will be
  make them show themselves. After a certain amount of time, you will be
  asked how many sheep there are finally. Try to get the number right and
  have a good sleep.
+
+ *Study*
+
+
+ *ScoreBoard*
+ The scoreBoard will display the top five users who have the best total score,
+ which is the summation of happiness, spirit and GPA, when creating account,
+ the user is allowed to choose the name beside the score, which is one feature
+ specified on phase2 request, the other one is ask the use whether to save the
+ score immediately after they finish a game, which is shown in our game by a
+ SAVE button in the result xml

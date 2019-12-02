@@ -32,7 +32,7 @@ public class SleepGameActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
         Intent level = getIntent();
-        String levelSelected = level.getStringExtra(SleepMainActivity.EXTRA_MESSAGE);
+        String levelSelected = level.getStringExtra("level");
         user = (User) level.getSerializableExtra("User");
         sheepManager = new SheepManager();
         sheepView = new SheepView(this, sheepManager, levelSelected);

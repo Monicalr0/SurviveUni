@@ -47,16 +47,28 @@ public class SleepScoreManager extends ScoreManager {
         this.context = context;
     }
 
+    /**
+     * getter method of touchedWolfNum
+     *
+     * @return number of wolves touched by user
+     */
     int getTouchedWolfNum() {
         return touchedWolfNum;
     }
 
+    /**
+     * setter method of touchedWolfNum
+     *
+     * @param touchedWolfNum new touchedWolfNum to set
+     */
     void setTouchedWolfNum(int touchedWolfNum) {
         this.touchedWolfNum = touchedWolfNum;
     }
 
     /**
      * Modify the static variable according to the game result
+     *
+     * @param feedback the feedback based on the user's answer
      */
     public void changeGameState(String feedback) {
         if (feedback.equals("Correct!")) {
@@ -70,6 +82,8 @@ public class SleepScoreManager extends ScoreManager {
 
     /**
      * Return the corresponding message to show the user the changer of data
+     *
+     * @param feedback the feedback based on the user's answer
      */
     public String checkFeedback(String feedback) {
         if (feedback.equals("Correct!")) {
@@ -79,6 +93,9 @@ public class SleepScoreManager extends ScoreManager {
         }
     }
 
+    /**
+     * load the score data of this user
+     */
     public void loadGame() {
 
         String filename = user.getUsername() + SUFFIX;
@@ -103,6 +120,9 @@ public class SleepScoreManager extends ScoreManager {
         }
     }
 
+    /**
+     * save the score data of this user
+     */
     public void saveGame() {
         String filename = user.getUsername() + SUFFIX;
         try {

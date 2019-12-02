@@ -5,20 +5,39 @@ import android.content.Context;
 import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.FeedbackActivity;
 import com.example.surviveuni.gameCentre.UserManager;
-import com.example.surviveuni.social.Socialfeedback;
+import com.example.surviveuni.social.SocialFeedbackActivity;
 import com.example.surviveuni.study.StudyGamePresenter;
 
 class ScoreBoardPresenter {
+    /**
+     * representing the maxScore for each loop
+     */
     private int maxScore;
-    public static User[] onBoard = new User[5];
-    private User user; // user variable for loop
-    private User toBoard; // next user to put on ScoreBoard
+
+    /**
+     * array that representing the five userd that should be displayed on scoreBoard
+     */
+    private static User[] onBoard = new User[5];
+
+    /**
+     * next user to put on ScoreBoard
+     */
+    private User toBoard;
+
+    /**
+     * userManager to get users
+     */
     private UserManager userManager;
+
+
     private ScoreBoardView scoreBoardView;
-    private int spaceUsed;
+
+    /**
+     * representing the current user
+     */
     private User us;
 
-
+    // Constructor
     ScoreBoardPresenter(Context context, ScoreBoardView scoreBoardView) {
         this.maxScore = -1;
         this.toBoard = null;
@@ -26,12 +45,18 @@ class ScoreBoardPresenter {
         this.scoreBoardView = scoreBoardView;
     }
 
+    /**
+     * show the ranking on ScoreBoard.xml
+     */
     void showRanking(){
-        if(StudyGamePresenter.changed || Socialfeedback.changed || FeedbackActivity.changed || us.getScore() == -1){
+        // if any of the three game is played and saved or the user never save score,
+        // then re-sort the whole scoreBoard
+        if(StudyGamePresenter.changed || SocialFeedbackActivity.changed || FeedbackActivity.changed || us.getScore() == -1){
             setRanking();
         }
         for(int i = 0 ; i < 5; i++){
             if(ScoreBoardPresenter.onBoard[i] != null){
+                // if the user didn't make a nickname when register, then show "ANONYMOUS"
                 if (String.valueOf(ScoreBoardPresenter.onBoard[i].getNickname()).equals("")) {
                     scoreBoardView.showAnonymous(i);
                 } else {
@@ -40,15 +65,21 @@ class ScoreBoardPresenter {
                 scoreBoardView.showTotalScore(i + 5, ScoreBoardPresenter.onBoard[i]);
             }
         }
+        // change them back to false
         StudyGamePresenter.changed = false;
-        Socialfeedback.changed = false;
+        SocialFeedbackActivity.changed = false;
         FeedbackActivity.changed = false;
     }
-    void setRanking() {
-        for(int i = 0; i < 5 ; i++)
-        {
-            onBoard[i] = null;
-        }
+
+    /**
+     * if someone save a new score or a new user just create his/her account, then re-sort the
+     * scoreBoard
+     */
+    private void setRanking() {
+        User user;
+        int spaceUsed;
+        // initialize the array for the five user should be on ScoreBoard
+        initializeOnBoard();
         spaceUsed = 0;
         for (int i = 0; i < 5; i++) {
             toBoard = null;
@@ -56,6 +87,8 @@ class ScoreBoardPresenter {
             for (String key : userManager.getUsers().keySet()) {
                 if (!contains(ScoreBoardPresenter.onBoard, key)) {
                     user = userManager.getUsers().get(key);
+                    // since the user is got by the key in the keySet, since the key is in the keySet
+                    // so the user cannot be null here
                     if (user.getScore() > maxScore) {
                         System.out.println(user.getScore());
                         maxScore = user.getScore();
@@ -63,7 +96,7 @@ class ScoreBoardPresenter {
                     }
                 }
             }
-
+            // if the next user exists
             if (maxScore != -1) {
                 ScoreBoardPresenter.onBoard[spaceUsed] = toBoard;
             }
@@ -72,6 +105,12 @@ class ScoreBoardPresenter {
         }
     }
 
+    /**
+     * determine whether a user with username b is in the array a
+     * @param a the User array
+     * @param b the username for which to look for
+     * @return if the user is found or not
+     */
     private boolean contains(User[] a, String b) {
         for (int i = 0; i < a.length; i++) {
             if (a[i] == null) {
@@ -83,5 +122,19 @@ class ScoreBoardPresenter {
         return false;
     }
 
+    /**
+     * accept the current login user for activity
+     * @param user current login user
+     */
     void passUser(User user){this.us = user;}
+
+    /**
+     * initialize the array representing the five users should be on ScoreBoard next turn
+     */
+    private void initializeOnBoard(){
+        for(int i = 0; i < 5 ; i++)
+        {
+            onBoard[i] = null;
+        }
+    }
 }
