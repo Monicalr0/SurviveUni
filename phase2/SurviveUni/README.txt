@@ -62,9 +62,6 @@ SurviveUni is a game. Each time an user start the game, he/she will be
  asked how many sheep there are finally. Try to get the number right and
  have a good sleep.
 
- *Study*
-
-
  *ScoreBoard*
  The scoreBoard will display the top five users who have the best total score,
  which is the summation of happiness, spirit and GPA, when creating account,
