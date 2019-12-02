@@ -18,11 +18,13 @@ import java.util.Observer;
 public class SocialActivity extends AppCompatActivity implements SocialGameView {
     private User user;
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.social.SocialActivity.MESSAGE";
-    int remainingGuess;
     private String feedBack = "";
     private boolean unexpectedInput = false;
     private Social social;
 
+    /**
+     * Set up the page.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,10 @@ public class SocialActivity extends AppCompatActivity implements SocialGameView 
         social.passSocialActivity(this);
     }
 
+    /**
+     * Set up the button for submit answer. Prompt message if there is unexpected input or there
+     * are still remain chances.
+     */
     public void submitAnswer(View view) {
         EditText editText = findViewById(R.id.answerText);
         String answer = editText.getText().toString();
@@ -56,6 +62,11 @@ public class SocialActivity extends AppCompatActivity implements SocialGameView 
         }
     }
 
+    /**
+     * Check whether the user won the game or have unexpected input or reach last chance to input
+     * answer, if any of these happens, game is over. Redirect to feedback page.
+     * @param feedback the String got from Social, will be sent to SocialFeedback.
+     */
     void checkGameOver(String feedback) {
         Intent intent = new Intent(this, SocialFeedbackActivity.class);
         intent.putExtra(EXTRA_MESSAGE, feedback);
@@ -63,6 +74,7 @@ public class SocialActivity extends AppCompatActivity implements SocialGameView 
         startActivity(intent);
         finish();
     }
+
 
     @Override
     public void setUnexpectedInput(boolean unexpectedInput) {
