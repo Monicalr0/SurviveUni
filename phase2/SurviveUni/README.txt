@@ -34,7 +34,10 @@ SurviveUni is a game. Each time an user start the game, he/she will be
 
  **Game Introduction**:
 
- *Study*:
+ *Study*: A fast-reaction game. Some random event will pop up after the
+ game starts, which will distract the character from studying. The player
+ needs to click the event as soon as possible or the study session will
+ be ineffective, resulting in a GPA reduction.
 
  *Social*:  A socializing guess-the-number game. A number ranging from
  1 to 5 is randomly generated each time and user would guess the number.

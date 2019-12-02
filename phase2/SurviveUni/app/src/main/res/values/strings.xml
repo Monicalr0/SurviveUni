@@ -24,7 +24,7 @@
     <string name="doorDescription">"The door opened"</string>
     <string name="exit">"Exit"</string>
     <string name="startStudying">"Let's Go"</string>
-    <string name="studyInstruction">"There may be various distraction accur during study time, what you need to do is click the distraction within 3 seconds so you can survive this day."</string>
+    <string name="studyInstruction">"There may be various distraction accur during study time, what you need to do is click the distraction asap so that you can survive this day."</string>
     <string name="studyHint">"Hint: Remember to click Exit after each turn"</string>
     <string name="socialAnswerText">"I have thought of an integer ranging from 1 to 5. Wanna try and guess it?"</string>
     <string name="socialAnswerButton">"Submit"</string>

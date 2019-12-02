@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +24,17 @@ import com.example.surviveuni.social.SocialMain;
 import com.example.surviveuni.study.StudyMenu;
 
 
+import java.io.IOException;
+
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class GameActivity extends AppCompatActivity {
     private User user;
+
+    /**
+     * Music player
+     */
+    MediaPlayer mMediaPlayer;
 
     /**
      * Background music
@@ -36,6 +45,11 @@ public class GameActivity extends AppCompatActivity {
      * System audio manager
      */
     AudioManager manager;
+
+    /**
+     * Background music switch
+     */
+    ImageButton soundBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +75,12 @@ public class GameActivity extends AppCompatActivity {
         TextView spirit = findViewById(R.id.textSpirit);
         spirit.setText("Spirit:" + gs.getSpirit());
 
+        //Only display the sound switch when it's the first time user reaches main page or
+        // when the music is off
         manager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        soundBtn = findViewById(R.id.soundButton);
+        if (manager.isMusicActive())
+            soundBtn.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -120,6 +139,7 @@ public class GameActivity extends AppCompatActivity {
     public void setScoreBrdBtn(View view) {
         Intent i = new Intent(this, ScoreBoardActivity.class);
         i.putExtra("User", user);
+
         startActivity(i);
     }
 
@@ -128,7 +148,6 @@ public class GameActivity extends AppCompatActivity {
      */
     public class BackgroundSound extends AsyncTask<Void, Void, Void> {
 
-        MediaPlayer mMediaPlayer;
 
         protected void onPreExecute() {
 
@@ -155,6 +174,43 @@ public class GameActivity extends AppCompatActivity {
         protected void onCancelled(Void v) {
             mMediaPlayer.stop();
             mMediaPlayer.release();
+        }
+
+
+    }
+
+    /**
+     * Set up the background music switch
+     */
+    public void soundSwitch(View view) {
+
+
+        soundBtn = findViewById(R.id.soundButton);
+        manager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+
+
+        if (manager.isMusicActive()) {
+
+            mMediaPlayer.stop();
+            soundBtn.setImageResource(android.R.drawable.ic_lock_silent_mode);
+        } else {
+            mMediaPlayer.reset();
+            Uri uri = Uri.parse("android.resource://com.example.surviveuni/" + R.raw.happy_dreams);
+            try {
+                mMediaPlayer.setDataSource(this, uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                mMediaPlayer.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mMediaPlayer.setLooping(true); // Set looping
+            mMediaPlayer.setVolume(100, 100);
+            mMediaPlayer.start();
+
+            soundBtn.setImageResource(android.R.drawable.ic_lock_silent_mode_off);
         }
 
 
