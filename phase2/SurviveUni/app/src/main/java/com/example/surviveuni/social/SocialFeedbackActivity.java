@@ -11,7 +11,6 @@ import com.example.surviveuni.gameCentre.FeedbackActivity;
 
 
 public class SocialFeedbackActivity extends FeedbackActivity {
-    private ImageView iv;
     private SocialFeedbackPresenter presenter;
 
 
@@ -44,7 +43,7 @@ public class SocialFeedbackActivity extends FeedbackActivity {
      * @return the feedback for the user.
      */
     private String checkFeedback() {
-        iv = findViewById(R.id.imageView1);
+        ImageView iv = findViewById(R.id.imageView1);
         if (presenter.getSetImage().equals("wow")) {
             iv.setImageResource(R.drawable.wow);
             return ("Happiness:+10\nGPA:-5\nSpirit:-5");
