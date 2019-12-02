@@ -12,6 +12,10 @@ import com.example.surviveuni.R;
 import com.example.surviveuni.data.User;
 
 public class SleepAnswerActivity extends AppCompatActivity {
+
+    /**
+     * the feedback message
+     */
     public static final String EXTRA_MESSAGE = "com.example.surviveuni.MESSAGE";
 
     /**

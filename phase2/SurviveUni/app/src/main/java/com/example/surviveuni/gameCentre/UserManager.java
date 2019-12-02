@@ -15,9 +15,21 @@ import java.util.InputMismatchException;
 import java.util.Map;
 
 public class UserManager {
+    /**
+     * there can only be one userManager in the game
+     */
     private static UserManager userManager;
+
+    /**
+     * a hashMap contains all the users with key to be their username and value be the corresponding
+     * user
+     */
     private Map<String, User> users = new HashMap<>();
     private Context context;
+
+    /**
+     * file name save all the users
+     */
     private static final String FILENAME = "users.txt";
 
     private UserManager(Context context) {
@@ -26,6 +38,10 @@ public class UserManager {
         SaveToFile();
     }
 
+    /**
+     * reference userManager so can reference users
+     * @return the UserManager for the game
+     */
     public static UserManager getInstance(Context context) {
         if (userManager == null) {
             userManager = new UserManager(context);
@@ -33,14 +49,26 @@ public class UserManager {
         return userManager;
     }
 
+    /**
+     * get the hashMap users
+     * @return users
+     */
     public Map<String, User> getUsers() {
         return users;
     }
 
-    public void setUsers(Map<String, User> newUsers) {
+
+    /**
+     * assign current users with a new users hashMap
+     * @param newUsers a hashMap of new Users
+     */
+    void setUsers(Map<String, User> newUsers) {
         this.users = newUsers;
     }
 
+    /**
+     * load hashMap users from file
+     */
     private void loadUsers() {
         try {
             InputStream inputStream = context.openFileInput(FILENAME);
@@ -61,6 +89,9 @@ public class UserManager {
         }
     }
 
+    /**
+     * save hashMap users to file
+     */
     public void SaveToFile() {
         try {
             ObjectOutputStream outputStream =
@@ -72,6 +103,12 @@ public class UserManager {
         }
     }
 
+    /**
+     * check if the user has already registered un the system
+     * @param username the incoming username
+     * @param password the incoming password
+     * @return the user variable if exists, throw exception otherwise
+     */
     public User authenticate(String username, String password) {
         if (!users.containsKey(username)) throw new InputMismatchException();
         if (!users.get(username).checkPassword(password)) throw new InputMismatchException();
