@@ -11,7 +11,6 @@ import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.FeedbackActivity;
 
 
-
 public class SocialFeedbackActivity extends FeedbackActivity {
     private ImageView iv;
     private SocialFeedbackPresenter presenter;
