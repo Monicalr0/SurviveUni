@@ -22,7 +22,7 @@ public class GameState extends Observable implements Serializable {
     private int dayOfSurvival;
 
     /**
-     * Initially start with 50 points for GPA, spirit, and happiness, and day 0 days survived
+     * Initially start with 20 points for GPA, spirit, and happiness, and day 0 days survived
      */
     public GameState() {
         GPA = 20;

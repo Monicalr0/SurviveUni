@@ -13,7 +13,7 @@ import com.example.surviveuni.data.User;
 
 public abstract class FeedbackActivity extends AppCompatActivity {
     private GameState gameState;
-    public User user;
+    private User user;
     private UserManager userManager;
     private AlertDialog.Builder scoreSaved;
     public static boolean changed = false;

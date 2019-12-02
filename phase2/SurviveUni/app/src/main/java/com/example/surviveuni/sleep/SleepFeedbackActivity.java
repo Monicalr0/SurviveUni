@@ -17,10 +17,7 @@ public class SleepFeedbackActivity extends FeedbackActivity {
         Intent intent = getIntent();
         String feedback = intent.getStringExtra(SleepAnswerActivity.EXTRA_MESSAGE);
 
-        /**
-         * the user playing the game
-         */
-        user = (User) intent.getSerializableExtra("User");
+        User user = (User) intent.getSerializableExtra("User");
         ScoreManager scoreManager = new SleepScoreManager(this);
         super.setUser(user);
         int touchedWolfNum = intent.getIntExtra("TouchedWolfNum", 0);
