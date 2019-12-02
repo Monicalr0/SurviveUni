@@ -16,6 +16,9 @@ public class SocialFeedbackActivity extends FeedbackActivity {
     private SocialFeedbackPresenter presenter;
 
 
+    /**
+     * Set up the page.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,11 @@ public class SocialFeedbackActivity extends FeedbackActivity {
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
     }
+
+    /**
+     * Check the feedback gotten from SocialActivity and give the user feedback accordingly.
+     * @return the feedback for the user.
+     */
 
     private String checkFeedback() {
         iv = findViewById(R.id.imageView1);
