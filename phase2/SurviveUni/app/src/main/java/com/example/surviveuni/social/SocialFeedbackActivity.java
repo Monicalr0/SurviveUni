@@ -22,7 +22,8 @@ public class SocialFeedbackActivity extends FeedbackActivity {
         setContentView(R.layout.activity_social_feedback);
         presenter = new SocialFeedbackPresenter();
         Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("User");
+        User user = (User) intent.getSerializableExtra("User");
+        super.setUser(user);
         String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
 
         presenter.checkFeedback(feedback);
