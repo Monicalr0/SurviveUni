@@ -3,7 +3,7 @@ package com.example.surviveuni.social;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.gameCentre.GameManager;
 
-class SocialFeedbackPresenter {
+class SocialFeedbackPresenter implements SocialFeedbackView {
     private GameState gameState = GameManager.getGameState();
 
     //    private ImageView iv;
@@ -11,11 +11,13 @@ class SocialFeedbackPresenter {
     private SocialFeedbackActivity socialfb;
     private String setImage;
 
-    String getSetImage() {
+    @Override
+    public String getSetImage() {
         return setImage;
     }
 
-    void checkFeedback(String feedback) {
+    @Override
+    public void checkFeedback(String feedback) {
         //gameState.addObserver(social);
         //gameState.socialNotify();
 //        iv = findViewById(R.id.imageView1);
