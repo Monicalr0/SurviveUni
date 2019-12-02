@@ -70,6 +70,10 @@ public class StudyGamePresenter{
      */
     boolean checkExit() {
         if (gameState.checkGameover() == 1) {
+            // re-order the scoreBoard
+            changed = true;
+            // set the user to be dead,since it is the user current login, so it cannot be null
+            userManager.getUsers().get(user.getUsername()).setIsDead(true);
             return true;
         } else {
             gameState.updateDay();
@@ -81,10 +85,13 @@ public class StudyGamePresenter{
      * Save the user's current score
      */
     void saveScore() {
+        // since variable user is the user current login, so it cannot be null
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(sga).SaveToFile(); // Save to file so no need to save again when sign out
         studyGameView.setScoreSaveMessage();
         changed = true;
+        // if the user save score, he/she must be alive
+        userManager.getUsers().get(user.getUsername()).setIsDead(false);
     }
 
     /**

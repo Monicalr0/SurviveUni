@@ -51,7 +51,7 @@ class ScoreBoardPresenter {
     void showRanking(){
         // if any of the three game is played and saved or the user never save score,
         // then re-sort the whole scoreBoard
-        if(StudyGamePresenter.changed || SocialFeedbackActivity.changed || FeedbackActivity.changed || us.getScore() == -1){
+        if(StudyGamePresenter.changed || FeedbackActivity.changed || us.getScore() == -1){
             setRanking();
         }
         for(int i = 0 ; i < 5; i++){
@@ -67,7 +67,6 @@ class ScoreBoardPresenter {
         }
         // change them back to false
         StudyGamePresenter.changed = false;
-        SocialFeedbackActivity.changed = false;
         FeedbackActivity.changed = false;
     }
 
@@ -85,7 +84,8 @@ class ScoreBoardPresenter {
             toBoard = null;
             maxScore = -1;
             for (String key : userManager.getUsers().keySet()) {
-                if (!contains(ScoreBoardPresenter.onBoard, key)) {
+                // if the user is not in the array and he/she is not dead
+                if (!contains(ScoreBoardPresenter.onBoard, key) && !userManager.getUsers().get(key).getIsDead()) {
                     user = userManager.getUsers().get(key);
                     // since the user is got by the key in the keySet, since the key is in the keySet
                     // so the user cannot be null here

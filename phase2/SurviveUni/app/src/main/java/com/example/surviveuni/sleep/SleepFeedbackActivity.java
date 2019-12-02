@@ -22,6 +22,7 @@ public class SleepFeedbackActivity extends FeedbackActivity {
          */
         user = (User) intent.getSerializableExtra("User");
         ScoreManager scoreManager = new SleepScoreManager(this);
+        super.setUser(user);
         int touchedWolfNum = intent.getIntExtra("TouchedWolfNum", 0);
         ((SleepScoreManager) scoreManager).setTouchedWolfNum(touchedWolfNum);
         scoreManager.loadGame();
@@ -44,6 +45,5 @@ public class SleepFeedbackActivity extends FeedbackActivity {
         String statsFeedback = scoreManager.checkFeedback(feedback);
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
-        super.setUser(user);
     }
 }

@@ -36,6 +36,10 @@ public abstract class FeedbackActivity extends AppCompatActivity {
     public void nextRound(View view) {
         Intent NextRound;
         if (gameState.checkGameover() == 1) {
+            //re-order the scoreBoard
+            changed = true;
+            // set the user to be dead,since it is the user current login, so it cannot be null
+            userManager.getUsers().get(user.getUsername()).setIsDead(true);
             NextRound = new Intent(this, GameOverActivity.class);
         } else {
             gameState.updateDay();
@@ -47,9 +51,12 @@ public abstract class FeedbackActivity extends AppCompatActivity {
     }
 
     public void setSaveBtn(View view) {
+        // since it is the user current login, so it cannot be null
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
         UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
         scoreSaved.show();
         changed = true;
+        // if the user save score, so he/she is not dead
+        userManager.getUsers().get(user.getUsername()).setIsDead(false);
     }
 }

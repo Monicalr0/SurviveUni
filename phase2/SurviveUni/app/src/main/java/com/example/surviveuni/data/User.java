@@ -21,9 +21,15 @@ public class User implements Serializable {
      */
     private String nickname;
 
+    /**
+     * if the user is game over
+     */
+    private boolean dead = false;
+
     public User(String username, String password) {
         this.password = password;
         this.username = username;
+        this.dead = false;
     }
 
     /**
@@ -80,5 +86,16 @@ public class User implements Serializable {
     public String getNickname() {
         return nickname;
     }
+
+    /**
+     * @return the living condition of the user
+     */
+    public boolean getIsDead() {return dead;}
+
+    /**
+     * set the living condition of the user
+     * @param bool new living condition of the user
+     */
+    public void setIsDead(boolean bool) {this.dead = bool;}
 
 }
