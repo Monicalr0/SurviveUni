@@ -4,45 +4,81 @@ package com.example.surviveuni.data;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    /**
+     * this user's username
+     */
     private String username;
+    /**
+     * this user's password
+     */
     private String password;
+    /**
+     * this user's score
+     */
     private int score = -1;
+    /**
+     * this user's nickname
+     */
     private String nickname;
 
     public User(String username, String password) {
-        if(checkReasonable(username,password)){
-            this.password = password;
-            this.username = username;
-        }
+        this.password = password;
+        this.username = username;
     }
 
-    private boolean checkReasonable(String username,String password){
-        if (password.equals("")) {
-            return false;
-        } else if (username.equals("")) {
-            return false;
-        }
-        else return (password.length() >= 7 && username.length() >= 7);
-
-    }
-
-
-    public String getUsername(){
+    /**
+     * getter method of username
+     *
+     * @return this user's username
+     */
+    public String getUsername() {
         return username;
     }
 
-    public boolean checkPassword(String pw){
+    /**
+     * check whether the entered password matches this user's password
+     *
+     * @param pw the password user entered
+     * @return true if password matches user's password
+     */
+    public boolean checkPassword(String pw) {
         return this.password.equals(pw);
     }
 
-    public void updateScore(int new_score){
+    /**
+     * update the score with new score
+     *
+     * @param new_score new score to set
+     */
+    public void updateScore(int new_score) {
         this.score = new_score;
     }
 
-    public void setNickName(String nkName) {this.nickname = nkName;}
+    /**
+     * setter method of this user's nickname
+     *
+     * @param nkName new nickname to set
+     */
+    public void setNickName(String nkName) {
+        this.nickname = nkName;
+    }
 
-    public int getScore(){return score;}
+    /**
+     * getter method of this user's score
+     *
+     * @return this user's score
+     */
+    public int getScore() {
+        return score;
+    }
 
-    public String getNickname(){return nickname;}
+    /**
+     * getter method of this user's nickname
+     *
+     * @return this user's nickname
+     */
+    public String getNickname() {
+        return nickname;
+    }
 
 }

@@ -1,13 +1,29 @@
 package com.example.surviveuni.data;
+
 import java.io.Serializable;
 import java.util.Observable;
 
 public class GameState extends Observable implements Serializable {
+    /**
+     * the GPA score
+     */
     private int GPA;
+    /**
+     * the spirit score
+     */
     private int spirit;
+    /**
+     * the happiness score
+     */
     private int happiness;
+    /**
+     * the number of days survived
+     */
     private int dayOfSurvival;
 
+    /**
+     * Initially start with 50 points for GPA, spirit, and happiness, and day 0 days survived
+     */
     public GameState() {
         GPA = 50;
         spirit = 50;
@@ -16,7 +32,6 @@ public class GameState extends Observable implements Serializable {
     }
 
     /**
-     *
      * Return the GPA of this user
      *
      * @return GPA
@@ -135,6 +150,9 @@ public class GameState extends Observable implements Serializable {
         return 0;
     }
 
+    /**
+     * Notify the social game when Happiness score is under 10
+     */
     public void socialNotify() {
         if (getHappiness() <= 10) {
             setChanged();

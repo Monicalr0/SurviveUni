@@ -32,7 +32,7 @@ class CreateAccountPresenter {
             user.setNickName(nkInput);
             userManager.getUsers().put(accInput, user);
             userManager.SaveToFile();
-            createAccountView.setToast("Your new acccount has been created!");
+            createAccountView.setToast("Your new account has been created!");
             createAccountView.navigateToMain();
         }
     }
