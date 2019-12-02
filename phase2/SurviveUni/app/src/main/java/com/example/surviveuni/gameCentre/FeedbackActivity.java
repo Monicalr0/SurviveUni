@@ -12,20 +12,21 @@ import com.example.surviveuni.data.User;
 
 
 public abstract class FeedbackActivity extends AppCompatActivity {
-    public GameState gameState;
-    public ScoreManager scoreManager;
-    public String feedback;
+    private GameState gameState;
     public User user;
-    public UserManager userManager;
-    public AlertDialog.Builder scoreSaved;
-    public String message;
+    private UserManager userManager;
+    private AlertDialog.Builder scoreSaved;
     public static boolean changed = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gameState = GameManager.getGameState();
         userManager = UserManager.getInstance(this);
+        gameState = GameManager.getGameState();
+        scoreSaved = new AlertDialog.Builder(this)
+                .setMessage("Your Score Has Been Saved To ScoreBoard")
+                .setPositiveButton(android.R.string.yes, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
     public void setUser(User user) {

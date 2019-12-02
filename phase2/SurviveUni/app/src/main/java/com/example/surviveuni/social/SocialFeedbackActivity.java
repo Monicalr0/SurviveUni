@@ -1,25 +1,22 @@
 package com.example.surviveuni.social;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.TextView;
 import android.widget.ImageView;
 
 import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.FeedbackActivity;
-import com.example.surviveuni.data.GameState;
+
 import com.example.surviveuni.R;
-import com.example.surviveuni.gameCentre.UserManager;
 
 
 public class SocialFeedbackActivity extends FeedbackActivity {
     private ImageView iv;
     private Social social;
     private SocialFeedbackPresenter presenter;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,9 +25,8 @@ public class SocialFeedbackActivity extends FeedbackActivity {
         social = new Social();
         presenter = new SocialFeedbackPresenter();
         Intent intent = getIntent();
-        String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
         user = (User) intent.getSerializableExtra("User");
-        userManager = UserManager.getInstance(this);
+        String feedback = intent.getStringExtra(SocialActivity.EXTRA_MESSAGE);
 
         presenter.checkFeedback(feedback);
 
@@ -41,11 +37,6 @@ public class SocialFeedbackActivity extends FeedbackActivity {
         String statsFeedback = checkFeedback();
         TextView textView2 = findViewById(R.id.statsText);
         textView2.setText(statsFeedback);
-
-        scoreSaved = new AlertDialog.Builder(this)
-                .setMessage("Your Score Has Been Saved To ScoreBoard")
-                .setPositiveButton(android.R.string.yes, null)
-                .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
     ;
