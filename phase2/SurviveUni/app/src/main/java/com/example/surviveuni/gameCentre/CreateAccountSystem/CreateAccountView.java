@@ -1,6 +1,6 @@
 package com.example.surviveuni.gameCentre.CreateAccountSystem;
 
-public interface CreateAccountView {
+interface CreateAccountView {
 
     void setToast(String text);
 

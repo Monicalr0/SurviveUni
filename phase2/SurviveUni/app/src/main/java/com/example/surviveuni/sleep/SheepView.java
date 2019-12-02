@@ -19,7 +19,7 @@ public class SheepView extends SurfaceView implements SurfaceHolder.Callback, Vi
     /**
      * The sleep game contents.
      */
-    public SheepManager sheepManager;
+    private SheepManager sheepManager;
 
     /**
      * Game level that user selected

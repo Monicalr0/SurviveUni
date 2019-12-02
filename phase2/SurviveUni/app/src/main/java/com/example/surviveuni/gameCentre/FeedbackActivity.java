@@ -19,7 +19,7 @@ public abstract class FeedbackActivity extends AppCompatActivity {
     /**
      * the user playing the game
      */
-    public User user;
+    protected User user;
     /**
      * the manager manages users
      */

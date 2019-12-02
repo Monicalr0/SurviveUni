@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.example.surviveuni.data.User;
 
-public interface LoginView {
+interface LoginView {
 
     void setLoginBtn(View view);
 

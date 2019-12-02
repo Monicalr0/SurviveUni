@@ -84,7 +84,7 @@ public class ScoreBoardActivity extends AppCompatActivity implements ScoreBoardV
      * helper function
      * create array texts and allocate with TextViews in ScoreBoard.xml
      */
-    void loadTextViews(){
+    private void loadTextViews(){
         TextView name1 = findViewById(R.id.BoardName1);
         TextView name2 = findViewById(R.id.BoardName2);
         TextView name3 = findViewById(R.id.BoardName3);

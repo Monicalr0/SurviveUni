@@ -1,6 +1,6 @@
 package com.example.surviveuni.social;
 
-public interface SocialGameView {
+interface SocialGameView {
 
     void setUnexpectedInput(boolean unexpectedInput);
 

@@ -37,22 +37,22 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Music player
      */
-    MediaPlayer mMediaPlayer;
+    private MediaPlayer mMediaPlayer;
 
     /**
      * Background music
      */
-    BackgroundSound mBackgroundSound = new BackgroundSound();
+    private BackgroundSound mBackgroundSound = new BackgroundSound();
 
     /**
      * System audio manager
      */
-    AudioManager manager;
+    private AudioManager manager;
 
     /**
      * Background music switch
      */
-    ImageButton soundBtn;
+    private ImageButton soundBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +149,7 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Set up background sound
      */
-    public class BackgroundSound extends AsyncTask<Void, Void, Void> {
+    class BackgroundSound extends AsyncTask<Void, Void, Void> {
 
 
         protected void onPreExecute() {

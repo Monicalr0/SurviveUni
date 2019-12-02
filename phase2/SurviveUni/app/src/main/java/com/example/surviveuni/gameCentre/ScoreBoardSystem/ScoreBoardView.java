@@ -2,7 +2,7 @@ package com.example.surviveuni.gameCentre.ScoreBoardSystem;
 
 import com.example.surviveuni.data.User;
 
-public interface ScoreBoardView {
+interface ScoreBoardView {
 
     void showAnonymous(int index);
 

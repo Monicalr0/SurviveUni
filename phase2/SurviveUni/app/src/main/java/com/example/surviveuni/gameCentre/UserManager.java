@@ -95,7 +95,7 @@ public class UserManager {
     public void SaveToFile() {
         try {
             ObjectOutputStream outputStream =
-                    new ObjectOutputStream(context.openFileOutput(FILENAME, context.MODE_PRIVATE));
+                    new ObjectOutputStream(context.openFileOutput(FILENAME, Context.MODE_PRIVATE));
             outputStream.writeObject(users);
             outputStream.close();
         } catch (IOException e) {

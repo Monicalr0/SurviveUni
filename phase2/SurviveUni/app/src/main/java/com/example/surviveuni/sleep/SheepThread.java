@@ -6,7 +6,7 @@ import android.view.SurfaceHolder;
 /**
  * Hacky way to manage threading and updates.
  */
-public class SheepThread extends Thread {
+class SheepThread extends Thread {
 
     /**
      * Where the sheep are drawn.

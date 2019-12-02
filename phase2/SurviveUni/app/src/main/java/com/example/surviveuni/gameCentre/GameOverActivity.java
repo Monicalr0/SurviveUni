@@ -10,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.data.User;
-import com.example.surviveuni.gameCentre.GameActivity;
-import com.example.surviveuni.gameCentre.GameManager;
+
 
 public class GameOverActivity extends AppCompatActivity {
     private GameState gameState;
-    String reason;
-    String record;
+    private String reason;
+    private String record;
     private User user;
 
     @Override
@@ -39,7 +38,7 @@ public class GameOverActivity extends AppCompatActivity {
     /**
      * reset static variables to 50
      */
-    void reset_data() {
+    private void reset_data() {
         gameState.setSpirit(20);
         gameState.setGPA(20);
         gameState.setHappiness(20);

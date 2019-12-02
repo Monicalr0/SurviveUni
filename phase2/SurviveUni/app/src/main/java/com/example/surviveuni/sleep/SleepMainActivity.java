@@ -64,7 +64,7 @@ public class SleepMainActivity extends AppCompatActivity {
     /**
      * Set up the gameLevel spinner
      */
-    public void setLevelSpinner() {
+    private void setLevelSpinner() {
         spinner = findViewById(R.id.gameLevel);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, levels);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

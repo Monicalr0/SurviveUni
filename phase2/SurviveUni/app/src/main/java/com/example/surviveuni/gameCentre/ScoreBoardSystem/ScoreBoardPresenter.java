@@ -5,7 +5,6 @@ import android.content.Context;
 import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.FeedbackActivity;
 import com.example.surviveuni.gameCentre.UserManager;
-import com.example.surviveuni.social.SocialFeedbackActivity;
 import com.example.surviveuni.study.StudyGamePresenter;
 
 class ScoreBoardPresenter {

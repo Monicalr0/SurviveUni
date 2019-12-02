@@ -1,6 +1,6 @@
 package com.example.surviveuni.study;
 
-public interface StudyGameView {
+interface StudyGameView {
     void setUpResult(boolean a);
 
     void setScoreSaveMessage();

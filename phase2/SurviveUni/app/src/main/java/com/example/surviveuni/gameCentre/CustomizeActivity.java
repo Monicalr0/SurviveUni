@@ -57,7 +57,7 @@ public class CustomizeActivity extends AppCompatActivity {
     /**
      * set the NEW GAME button in customize.xml
      */
-    public void setNewGameBtn() {
+    private void setNewGameBtn() {
         findViewById(R.id.CustomizeNewGameBtn).setOnClickListener(v -> {
             gameManager.newGame();
 
@@ -72,7 +72,7 @@ public class CustomizeActivity extends AppCompatActivity {
     /**
      * set LOAD GAME button in customize.xml
      */
-    public void setLoadGameBtn() {
+    private void setLoadGameBtn() {
         findViewById(R.id.CustomizeLoadGameBtn).setOnClickListener(v -> {
             gameManager.loadGame();
 
@@ -87,7 +87,7 @@ public class CustomizeActivity extends AppCompatActivity {
     /**
      * set SAVE GAME button in customize.xml
      */
-    public void setSaveGameBtn() {
+    private void setSaveGameBtn() {
         findViewById(R.id.CustomizeSaveBtn).setOnClickListener(v -> {
 
             gameManager.saveGame();
@@ -99,7 +99,7 @@ public class CustomizeActivity extends AppCompatActivity {
     /**
      * set SIGN OUT button in customize.xml for multi users to login
      */
-    public void setSignOutBtn() {
+    private void setSignOutBtn() {
         findViewById(R.id.CustomizeSignOutBtn).setOnClickListener(v -> {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);

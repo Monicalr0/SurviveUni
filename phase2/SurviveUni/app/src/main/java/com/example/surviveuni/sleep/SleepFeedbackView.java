@@ -1,6 +1,6 @@
 package com.example.surviveuni.sleep;
 
-public interface SleepFeedbackView {
+interface SleepFeedbackView {
 
     void setTextView(String feedback);
 

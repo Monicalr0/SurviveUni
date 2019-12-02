@@ -156,7 +156,7 @@ public class StudyGameActivity extends AppCompatActivity implements StudyGameVie
     /**
      * Set up the time counter display
      */
-    void setTimeDisplay(int usedTime) {
+    private void setTimeDisplay(int usedTime) {
         TextView timeDisplay;
         timeDisplay = findViewById(R.id.studyTimeText);
         timeDisplay.setText(String.format(TIME_PREFIX + "%s", usedTime));

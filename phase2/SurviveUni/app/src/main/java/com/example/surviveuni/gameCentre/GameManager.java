@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.HashMap;
 
 public class GameManager {
     /**
@@ -94,7 +93,7 @@ public class GameManager {
         String filename = user.getUsername() + SUFFIX;
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
-                    context.openFileOutput(filename, context.MODE_PRIVATE));
+                    context.openFileOutput(filename, Context.MODE_PRIVATE));
             outputStream.writeObject(gameState);
             outputStream.close();
         } catch (IOException e) {
@@ -104,7 +103,7 @@ public class GameManager {
         // save user  so the score is saved
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
-                    context.openFileOutput(FILENAME, context.MODE_PRIVATE));
+                    context.openFileOutput(FILENAME, Context.MODE_PRIVATE));
             outputStream.writeObject(userManager.getUsers());
             outputStream.close();
         } catch (IOException e) {
