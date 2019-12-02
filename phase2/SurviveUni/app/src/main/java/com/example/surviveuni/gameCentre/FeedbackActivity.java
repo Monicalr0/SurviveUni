@@ -12,10 +12,25 @@ import com.example.surviveuni.data.User;
 
 
 public abstract class FeedbackActivity extends AppCompatActivity {
+    /**
+     * variable representing the user's gameState
+     */
     private GameState gameState;
+    /**
+     * the user playing the game
+     */
     public User user;
+    /**
+     * the manager manages users
+     */
     private UserManager userManager;
+    /**
+     * the alert when score is saved
+     */
     private AlertDialog.Builder scoreSaved;
+    /**
+     * whether the score is changed
+     */
     public static boolean changed = false;
 
     @Override
@@ -29,10 +44,19 @@ public abstract class FeedbackActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert);
     }
 
+    /**
+     * setter method for the user
+     *
+     * @param user the user to set
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Navigate to the GameOverActivity if one of user's score is under 0,
+     * else, update the dayOfSurvival and navigate to GameActivity
+     */
     public void nextRound(View view) {
         Intent NextRound;
         if (gameState.checkGameover() == 1) {
@@ -50,6 +74,9 @@ public abstract class FeedbackActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * update the user's score on the scoreboard
+     */
     public void setSaveBtn(View view) {
         // since it is the user current login, so it cannot be null
         userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());

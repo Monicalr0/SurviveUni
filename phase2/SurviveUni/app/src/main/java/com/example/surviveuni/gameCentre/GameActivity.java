@@ -29,6 +29,9 @@ import java.io.IOException;
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 public class GameActivity extends AppCompatActivity {
+    /**
+     * the user plays the game
+     */
     private User user;
 
     /**
