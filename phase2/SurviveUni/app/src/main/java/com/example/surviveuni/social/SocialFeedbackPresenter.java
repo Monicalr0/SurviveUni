@@ -11,6 +11,7 @@ class SocialFeedbackPresenter implements SocialFeedbackView {
 
     /**
      * A getter for the setImage attribute.
+     *
      * @return the string of setImage.
      */
     @Override
@@ -20,6 +21,7 @@ class SocialFeedbackPresenter implements SocialFeedbackView {
 
     /**
      * Check the feedback gotten from SocialActivity and update the user's game state.
+     *
      * @param feedback the string gotten from SocialActivity.
      */
     @Override

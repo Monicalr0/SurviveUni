@@ -17,6 +17,7 @@ public class Social implements Observer {
      * First check whether happiness lower or equal to 10(by Observable pattern) if so directly
      * correct. Then game reach the last time, if so return the final message. Also if unexpected
      * input occur the game directly over. Else condition, return the message to be prompt.
+     *
      * @param answer the String got from SocialActivity by user input.
      */
     String checkAnswer(String answer) {
@@ -61,12 +62,12 @@ public class Social implements Observer {
 
     /**
      * Generate the answer for the game.
+     *
      * @return the number generated.
      */
     private int generate_expect() {
         Random r = new Random();
-        int expect = r.nextInt(5) + 1; // generate a random number ranging from 1 to 5
-        return expect;
+        return r.nextInt(5) + 1;
     }
 
     void passSocialActivity(SocialActivity sa) {
@@ -77,8 +78,9 @@ public class Social implements Observer {
      * Check whether the user won the game or have unexpected input or reach last chance to input
      * answer, if any of these happens, game is over. Redirect to feedback page by using method in
      * SocialActivity.
-     * @param feedback the string returned from checkAnswer.
-     * @param limitStatus the boolean showing if the game last chance is reached.
+     *
+     * @param feedback      the string returned from checkAnswer.
+     * @param limitStatus   the boolean showing if the game last chance is reached.
      * @param unExpectInput the boolean showing if the game got unexpected input.
      */
     private void checkGameOver(String feedback, boolean limitStatus, boolean unExpectInput) {
@@ -89,6 +91,7 @@ public class Social implements Observer {
 
     /**
      * Check which level did user choose at SocialMain, give corresponding chance to play the game.
+     *
      * @param level the String get from SocialMain by user's choice.
      */
     void setRemainingGuess(String level) {

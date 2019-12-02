@@ -65,6 +65,7 @@ public class SocialActivity extends AppCompatActivity implements SocialGameView 
     /**
      * Check whether the user won the game or have unexpected input or reach last chance to input
      * answer, if any of these happens, game is over. Redirect to feedback page.
+     *
      * @param feedback the String got from Social, will be sent to SocialFeedback.
      */
     void checkGameOver(String feedback) {

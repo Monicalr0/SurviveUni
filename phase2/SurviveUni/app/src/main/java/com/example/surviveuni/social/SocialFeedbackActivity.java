@@ -2,9 +2,8 @@ package com.example.surviveuni.social;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.surviveuni.R;
 import com.example.surviveuni.data.User;
@@ -41,6 +40,7 @@ public class SocialFeedbackActivity extends FeedbackActivity {
 
     /**
      * Check the feedback gotten from SocialActivity and give the user feedback accordingly.
+     *
      * @return the feedback for the user.
      */
     private String checkFeedback() {

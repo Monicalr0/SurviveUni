@@ -22,7 +22,6 @@ public class SocialMain extends AppCompatActivity {
      */
     private final String[] levels = {"EASY", "NORMAL", "HARD"};
     private Spinner spinner;
-    private String levelChoice;
 
     /**
      * Set up main page of Social game.
@@ -42,7 +41,7 @@ public class SocialMain extends AppCompatActivity {
      * Set up button to start the Social game.
      */
     public void StartSocialGame(View view) {
-        levelChoice = spinner.getSelectedItem().toString();
+        String levelChoice = spinner.getSelectedItem().toString();
         Intent startGame = new Intent(this, SocialActivity.class);
         startGame.putExtra(EXTRA_MESSAGE, levelChoice);
         startGame.putExtra("User", user);
