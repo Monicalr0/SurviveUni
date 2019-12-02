@@ -6,7 +6,6 @@ import com.example.surviveuni.gameCentre.GameManager;
 class SocialFeedbackPresenter implements SocialFeedbackView {
     private GameState gameState = GameManager.getGameState();
 
-    private SocialFeedbackActivity socialfb;
     private String setImage;
 
     /**
