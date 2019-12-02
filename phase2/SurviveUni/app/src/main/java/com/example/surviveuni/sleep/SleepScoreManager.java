@@ -6,7 +6,6 @@ import android.util.Log;
 import com.example.surviveuni.data.GameState;
 import com.example.surviveuni.data.User;
 import com.example.surviveuni.gameCentre.GameManager;
-import com.example.surviveuni.gameCentre.ScoreManager;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class SleepScoreManager extends ScoreManager {
+class SleepScoreManager {
 
     /**
      * the game statistic
@@ -70,7 +69,7 @@ public class SleepScoreManager extends ScoreManager {
      *
      * @param feedback the feedback based on the user's answer
      */
-    public void changeGameState(String feedback) {
+    void changeGameState(String feedback) {
         if (feedback.equals("Correct!")) {
             gameState.changeSpirit(10);
             gameState.changeGPA(-5);
@@ -85,7 +84,7 @@ public class SleepScoreManager extends ScoreManager {
      *
      * @param feedback the feedback based on the user's answer
      */
-    public String checkFeedback(String feedback) {
+    String checkFeedback(String feedback) {
         if (feedback.equals("Correct!")) {
             return ("Spirit: +10\nGPA:-5");
         } else {
@@ -96,7 +95,7 @@ public class SleepScoreManager extends ScoreManager {
     /**
      * load the score data of this user
      */
-    public void loadGame() {
+    void loadGame() {
 
         String filename = user.getUsername() + SUFFIX;
         try {
@@ -123,7 +122,7 @@ public class SleepScoreManager extends ScoreManager {
     /**
      * save the score data of this user
      */
-    public void saveGame() {
+    void saveGame() {
         String filename = user.getUsername() + SUFFIX;
         try {
             ObjectOutputStream outputStream =
