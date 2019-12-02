@@ -55,11 +55,4 @@ public class SleepFeedbackActivity extends FeedbackActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert);
         super.setUser(user);
     }
-
-    public void setSleepSaveBtn(View view) {
-        userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
-        UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
-        scoreSaved.show();
-        changed = true;
-    }
 }

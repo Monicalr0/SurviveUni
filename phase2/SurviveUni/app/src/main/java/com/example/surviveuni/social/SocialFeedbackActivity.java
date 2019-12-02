@@ -17,13 +17,8 @@ import com.example.surviveuni.gameCentre.UserManager;
 
 
 public class SocialFeedbackActivity extends FeedbackActivity {
-    private GameState gameState;
-    private User user;
-    private UserManager userManager;
     private ImageView iv;
-    private AlertDialog.Builder scoreSaved;
     private Social social;
-    public static boolean changed = false;
     private SocialFeedbackPresenter presenter;
 
     @Override
@@ -92,12 +87,5 @@ public class SocialFeedbackActivity extends FeedbackActivity {
             iv.setImageResource(R.drawable.angry);
             return ("Happiness:-10\nGPA:-5\nSpirit:-10");
         }
-    }
-
-    public void setSocialSaveBtn(View view) {
-        userManager.getUsers().get(user.getUsername()).updateScore(gameState.getGPA() + gameState.getHappiness() + gameState.getSpirit());
-        UserManager.getInstance(this).SaveToFile(); // Save to file so no need to save again when sign out
-        scoreSaved.show();
-        changed = true;
     }
 }
