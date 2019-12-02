@@ -11,9 +11,19 @@ import com.example.surviveuni.R;
 import com.example.surviveuni.data.User;
 
 public class CustomizeActivity extends AppCompatActivity {
+    /**
+     * variable representing the current login user
+     */
     private User user;
+
+    /**
+     * variable representing the gameManager
+     */
     private GameManager gameManager;
 
+    /**
+     * start the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +39,9 @@ public class CustomizeActivity extends AppCompatActivity {
         setSignOutBtn();
     }
 
+    /**
+     * Resume the activity
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -41,6 +54,9 @@ public class CustomizeActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * set the NEW GAME button in customize.xml
+     */
     public void setNewGameBtn() {
         findViewById(R.id.CustomizeNewGameBtn).setOnClickListener(v -> {
             gameManager.newGame();
@@ -53,6 +69,9 @@ public class CustomizeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * set LOAD GAME button in customize.xml
+     */
     public void setLoadGameBtn() {
         findViewById(R.id.CustomizeLoadGameBtn).setOnClickListener(v -> {
             gameManager.loadGame();
@@ -65,6 +84,9 @@ public class CustomizeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * set SAVE GAME button in customize.xml
+     */
     public void setSaveGameBtn() {
         findViewById(R.id.CustomizeSaveBtn).setOnClickListener(v -> {
 
@@ -74,6 +96,9 @@ public class CustomizeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * set SIGN OUT button in customize.xml for multi users to login
+     */
     public void setSignOutBtn() {
         findViewById(R.id.CustomizeSignOutBtn).setOnClickListener(v -> {
             Intent i = new Intent(this, MainActivity.class);
