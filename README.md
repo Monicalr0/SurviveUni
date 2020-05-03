@@ -1,7 +1,7 @@
 # SurviveUni
 
 This is a course group project for CSC207 Fall 2019 at the University of 
-Toronto. I helped develope part of the "social" part of the game and also some universal part over the three subgames. 
+Toronto. I helped develope part of the "social" part of the game and also some universal part over the three subgames as well as the README file. 
    
 **General Information :**  
 
