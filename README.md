@@ -1,7 +1,7 @@
 # SurviveUni
 
 This is a course group project for CSC207 Fall 2019 at the University of 
-Toronto. I personally contributed using the name "maminyi" in this project. I helped develope the "social" part of the game and also some universal part over the three subgames. 
+Toronto. 
    
 **General Information :**  
 
